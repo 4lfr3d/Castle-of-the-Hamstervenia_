@@ -185,7 +185,7 @@ public class REALplayerMovement : MonoBehaviour
 
 		if (!IsDashing)
 		{
-			//Debug.Log(CanJump() && LastPressedJumpTime > 0);
+			//Debug.Log(CanJump() && LastPressedJumpTime > 0 && LastOnGroundTime != 0);
 			//Jump
 			if (CanJump() && LastPressedJumpTime > 0)
 			{
@@ -421,7 +421,7 @@ public class REALplayerMovement : MonoBehaviour
 	{
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;
-		LastOnGroundTime = 0;
+		//LastOnGroundTime = 0;
 
 		#region Perform Jump
 		//We increase the force applied if we are falling

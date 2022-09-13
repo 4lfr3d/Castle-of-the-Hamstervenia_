@@ -17,7 +17,7 @@ public class TaroAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isTaroAttacking);
+        //Debug.Log(isTaroAttacking);
         //Weapon transform Taro
         this.transform.position=transform.parent.position;
 
