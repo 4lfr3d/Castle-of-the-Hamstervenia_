@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class REALplayerMovement : MonoBehaviour
 {
+
+	//Animator by Omar
+	public Animator animator;
+
 	//Scriptable object which holds all the player's movement parameters. If you don't want to use it
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public REALplayerMovementData Data;
@@ -84,6 +88,13 @@ public class REALplayerMovement : MonoBehaviour
 
 	private void Update()
 	{
+		//Animation Walking Code
+		float hInput = Input.GetAxis("Horizontal");
+		animator.SetFloat("speed", Mathf.Abs(hInput));
+
+		//animator.SetBool("isGrounded", false); //Animator Jump check by Omar
+		//animator.SetBool("isDash", false); //Animator Dash check by Omar
+
         #region TIMERS
         LastOnGroundTime += Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
@@ -104,18 +115,21 @@ public class REALplayerMovement : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
 			//transform.position = transform.position + new Vector3(0, 150, 0);
+			animator.SetBool("isGrounded", true); //Animator Jump check by Omar
 			OnJumpInput();
         }
 
 		if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
 		{
 			//transform.position = transform.position + new Vector3(0, 150, 0);
+			animator.SetBool("isGrounded", true); //Animator Jump check by Omar
 			OnJumpUpInput();
 		}
 
 		if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K))
 		{
 			//transform.position = transform.position + new Vector3(0, 150, 0);
+			animator.SetBool("isDash", true); //Animator Dash check by Omar
 			OnDashInput();
 		}
 		#endregion
@@ -126,6 +140,8 @@ public class REALplayerMovement : MonoBehaviour
 			//Ground Check
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
 			{
+				animator.SetBool("isGrounded", false); //Animator Jump check by Omar
+				animator.SetBool("isDash", false); //Animator Dash check by Omar
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
             }		
 
@@ -148,6 +164,7 @@ public class REALplayerMovement : MonoBehaviour
 		if (IsJumping && RB.velocity.y < 0)
 		{
 			IsJumping = false;
+			animator.SetBool("isGrounded", false); //Animator Jump check by Omar
 
 			if(!IsWallJumping)
 				_isJumpFalling = true;
@@ -484,6 +501,7 @@ public class REALplayerMovement : MonoBehaviour
 
 		//Dash over
 		IsDashing = false;
+		animator.SetBool("isDash", false); //Animator Dash check by Omar
 	}
 
 	//Short period before the player is able to dash again
