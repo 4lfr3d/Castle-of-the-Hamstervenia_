@@ -152,8 +152,8 @@ ModelImporter:
       name: Attack
       takeName: Scene
       internalID: 0
-      firstFrame: 76
-      lastFrame: 85
+      firstFrame: 176
+      lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -176,7 +176,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 156
     - serializedVersion: 16
       name: HookStart
       takeName: Scene
