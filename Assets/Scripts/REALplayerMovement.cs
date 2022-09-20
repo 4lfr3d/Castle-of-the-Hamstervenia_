@@ -82,6 +82,7 @@ public class REALplayerMovement : MonoBehaviour
 
 	private void Start()
 	{
+		IsJumping = false;
 		SetGravityScale(Data.gravityScale);
 		IsFacingRight = true;
 	}
@@ -96,7 +97,7 @@ public class REALplayerMovement : MonoBehaviour
 		//animator.SetBool("isDash", false); //Animator Dash check by Omar
 
         #region TIMERS
-        LastOnGroundTime += Time.deltaTime;
+        LastOnGroundTime -= Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
 		LastOnWallRightTime -= Time.deltaTime;
 		LastOnWallLeftTime -= Time.deltaTime;
@@ -112,21 +113,21 @@ public class REALplayerMovement : MonoBehaviour
 		if (_moveInput.x != 0)
 			CheckDirectionToFace(_moveInput.x > 0);
 
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+		if(Input.GetButtonDown("Jump"))
         {
 			//transform.position = transform.position + new Vector3(0, 150, 0);
 			animator.SetBool("isGrounded", true); //Animator Jump check by Omar
 			OnJumpInput();
         }
 
-		if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
+		if (Input.GetButtonUp("Jump"))
 		{
 			//transform.position = transform.position + new Vector3(0, 150, 0);
 			animator.SetBool("isGrounded", true); //Animator Jump check by Omar
 			OnJumpUpInput();
 		}
 
-		if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K))
+		if (Input.GetButtonDown("Fire3"))
 		{
 			//transform.position = transform.position + new Vector3(0, 150, 0);
 			animator.SetBool("isDash", true); //Animator Dash check by Omar
@@ -138,6 +139,7 @@ public class REALplayerMovement : MonoBehaviour
 		if (!IsDashing && !IsJumping)
 		{
 			//Ground Check
+			//Debug.Log(Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer));
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
 			{
 				animator.SetBool("isGrounded", false); //Animator Jump check by Omar
@@ -164,7 +166,7 @@ public class REALplayerMovement : MonoBehaviour
 		if (IsJumping && RB.velocity.y < 0)
 		{
 			IsJumping = false;
-			animator.SetBool("isGrounded", false); //Animator Jump check by Omar
+			animator.SetBool("isGrounded", true); //Animator Jump check by Omar
 
 			if(!IsWallJumping)
 				_isJumpFalling = true;
@@ -421,7 +423,7 @@ public class REALplayerMovement : MonoBehaviour
 	{
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;
-		//LastOnGroundTime = 0;
+		LastOnGroundTime = 0;
 
 		#region Perform Jump
 		//We increase the force applied if we are falling
@@ -540,6 +542,7 @@ public class REALplayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
+		//Debug.Log(LastOnGroundTime > 0 && !IsJumping);
 		return LastOnGroundTime > 0 && !IsJumping;
     }
 
