@@ -23,6 +23,74 @@ MonoBehaviour:
     m_Key: star
     m_Metadata:
       m_Items: []
+  - m_Id: 18170095398912
+    m_Key: Nuevo Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23435498811392
+    m_Key: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23646325501952
+    m_Key: Boss Rush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24194298736640
+    m_Key: Configuracion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24339006418944
+    m_Key: Creditos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24598226989056
+    m_Key: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40014752051200
+    m_Key: Resolucion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40072553754624
+    m_Key: Voumen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40124424712192
+    m_Key: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40221384437760
+    m_Key: Brillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40268108984320
+    m_Key: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40318629376000
+    m_Key: "Espa\xF1ol"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40391576711168
+    m_Key: Ingles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40447914602496
+    m_Key: Regresar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40493208891392
+    m_Key: Pantalla Completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41031740747776
+    m_Key: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41168974180352
+    m_Key: Graficas
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
