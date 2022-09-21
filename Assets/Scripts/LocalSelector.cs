@@ -8,7 +8,7 @@ public class LocalSelector : MonoBehaviour
 
 
     private void Start(){
-        int ID = PlayerPrefs.GetInt("LocaleKey", 1);
+        int ID = PlayerPrefs.GetInt("LocaleKey", 0);
         ChangeLocale(ID);
     }
 

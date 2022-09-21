@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40124424712192
-    m_Localized: Audio
+    m_Localized: Sonido
     m_Metadata:
       m_Items: []
   - m_Id: 40221384437760
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40318629376000
-    m_Localized: "Espa\xF1ol"
+    m_Localized: Espanol
     m_Metadata:
       m_Items: []
   - m_Id: 40391576711168
@@ -87,11 +87,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 41031740747776
-    m_Localized: Controles
+    m_Localized: Controles >>
     m_Metadata:
       m_Items: []
   - m_Id: 41168974180352
-    m_Localized: Graficas
+    m_Localized: Calidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94352149114880
+    m_Localized: "\xBFQuieres iniciar un nuevo juego?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97409436020736
+    m_Localized: Si
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98292433481728
+    m_Localized: "\xBFEstas seguro que quieres cargar un juego?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99482328166400
+    m_Localized: No se encontro un archivo guardado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111334193950720
+    m_Localized: Configuracion de Sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111468491370496
+    m_Localized: Configuracion de Graficas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113055565672448
+    m_Localized: Predeterminado
     m_Metadata:
       m_Items: []
   references:

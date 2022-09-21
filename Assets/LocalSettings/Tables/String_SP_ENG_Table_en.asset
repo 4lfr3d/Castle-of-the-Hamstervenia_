@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40124424712192
-    m_Localized: Audio
+    m_Localized: Sound
     m_Metadata:
       m_Items: []
   - m_Id: 40221384437760
@@ -87,11 +87,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 41031740747776
-    m_Localized: Controls
+    m_Localized: Controls >>
     m_Metadata:
       m_Items: []
   - m_Id: 41168974180352
-    m_Localized: Graphics
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94352149114880
+    m_Localized: Do you want to start a new game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97409436020736
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98292433481728
+    m_Localized: Are you sure you want to load?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99482328166400
+    m_Localized: No save file found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111334193950720
+    m_Localized: Audio Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111468491370496
+    m_Localized: Graphics Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113055565672448
+    m_Localized: Reset to default
     m_Metadata:
       m_Items: []
   references:
