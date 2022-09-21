@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40318629376000
-    m_Key: "Espa\xF1ol"
+    m_Key: Espanol
     m_Metadata:
       m_Items: []
   - m_Id: 40391576711168
@@ -88,7 +88,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 41168974180352
-    m_Key: Graficas
+    m_Key: Calidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94352149114880
+    m_Key: NuevoJuego_Popout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97409436020736
+    m_Key: si
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98292433481728
+    m_Key: CargarJuego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99482328166400
+    m_Key: No_File
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111334193950720
+    m_Key: Audio Conf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111468491370496
+    m_Key: Graficas Conf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113055565672448
+    m_Key: Default
     m_Metadata:
       m_Items: []
   m_Metadata:
