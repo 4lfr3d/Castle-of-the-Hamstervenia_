@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Audio;
 
 public class Menu : MonoBehaviour
 {
@@ -17,8 +18,10 @@ public class Menu : MonoBehaviour
     //Volume Settings
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTxtValue = null;
-    [SerializeField] private Slider volumeSlider = null;
+    
+    [SerializeField] private Slider volumeSlider = null;    
     [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private AudioMixer introMusic;
 
 
     //Gameplay Settings
@@ -56,16 +59,22 @@ public class Menu : MonoBehaviour
     [Header("Confirmation Box")]
     [SerializeField] private GameObject confirmationPrompt = null;
 
+    void Awake(){
+        volumeSlider.onValueChanged.AddListener(SetMusicIntro);
+    }
 
     //Start
     private void Start(){
+
+        //Language
         int ID = PlayerPrefs.GetInt("LocaleKey", 0);
         ChangeLocale(ID);
 
+        //Brightness
         brightNess.TryGetSettings(out exposure);
         AdjustBrightness(brightnessSlider.value);
 
-
+        //Resolution
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -85,6 +94,11 @@ public class Menu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+
+        //Audio
+        volumeSlider.value = PlayerPrefs.GetFloat("masterVolume", 1.0f);
+
     }   
 
 
@@ -113,22 +127,21 @@ public class Menu : MonoBehaviour
 
 
     //Volume
-    public void SetVolume(float volume){
-        AudioListener.volume = volume;
-        volumeTxtValue.text = volume.ToString("0");
+    public void SetMusicIntro(float volume){
+        introMusic.SetFloat("MusicIntro", Mathf.Log10(volume) * 20);
     }
 
     public void VolumeApply(){
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        PlayerPrefs.SetFloat("masterVolume", volumeSlider.value);
         StartCoroutine(Confirmation());
     }
 
     //Reset Btn
     public void ResetBtn(string MenuType){
         if(MenuType == "Audio"){
-            AudioListener.volume = defaultVolume;
+            introMusic.SetFloat("MusicIntro", Mathf.Log10(defaultVolume) * 20);            
             volumeSlider.value = defaultVolume;
-            volumeTxtValue.text = defaultVolume.ToString("0");
+            //volumeTxtValue.text = defaultVolume.ToString("0.0");
             VolumeApply();
         }
 
