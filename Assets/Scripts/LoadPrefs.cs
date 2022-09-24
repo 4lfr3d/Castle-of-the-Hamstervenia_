@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Audio;
 
 public class LoadPrefs : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class LoadPrefs : MonoBehaviour
 
     [SerializeField] private TMP_Text volumeTxtValue = null;
     [SerializeField] private Slider volumeSlider = null;
+    [SerializeField] private AudioMixer introMusic;
 
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTxtValue = null;
@@ -27,11 +29,13 @@ public class LoadPrefs : MonoBehaviour
     void Awake(){
         if(canUse){
             if(PlayerPrefs.HasKey("masterVolume")){
-                float localVolume = PlayerPrefs.GetFloat("masterVolume");
+                float localVolume = PlayerPrefs.GetFloat("masterVolume", 1.0f);
 
-                volumeTxtValue.text = localVolume.ToString("0");
-                volumeSlider.value = localVolume;
-                AudioListener.volume = localVolume;
+                introMusic.SetFloat("MusicIntro", Mathf.Log10(localVolume) * 20);
+
+               // volumeTxtValue.text = localVolume.ToString("0");
+               // volumeSlider.value = localVolume;
+               // AudioListener.volume = localVolume;
             }
             else {
                 menu.ResetBtn("Audio");
