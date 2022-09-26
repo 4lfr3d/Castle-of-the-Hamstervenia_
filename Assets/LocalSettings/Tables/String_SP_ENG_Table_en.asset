@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: String_SP_ENG_Table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: df22751de5d11e2419c02637d9716f47, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 39830482944
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2155374505984
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18170095398912
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23435498811392
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23646325501952
+    m_Localized: Boss Rush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24194298736640
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24339006418944
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24598226989056
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40014752051200
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40072553754624
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40124424712192
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40221384437760
+    m_Localized: Brightness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40268108984320
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40318629376000
+    m_Localized: Spanish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40391576711168
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40447914602496
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40493208891392
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41031740747776
+    m_Localized: Controls >>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41168974180352
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94352149114880
+    m_Localized: Do you want to start a new game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97409436020736
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98292433481728
+    m_Localized: Are you sure you want to load?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99482328166400
+    m_Localized: No save file found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111334193950720
+    m_Localized: Audio Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111468491370496
+    m_Localized: Graphics Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113055565672448
+    m_Localized: Reset to default
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
