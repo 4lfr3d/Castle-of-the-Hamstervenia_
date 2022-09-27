@@ -90,11 +90,13 @@ public class REALplayerMovement : MonoBehaviour
 	private void Update()
 	{
 		//Animation Walking Code
-		float hInput = Input.GetAxis("Horizontal");
-		animator.SetFloat("speed", Mathf.Abs(hInput));
+		/*float hInput = Input.GetAxis("Horizontal");
+		animator.SetFloat("speed", Mathf.Abs(hInput));*/
+		
 
 		//animator.SetBool("isGrounded", false); //Animator Jump check by Omar
 		//animator.SetBool("isDash", false); //Animator Dash check by Omar
+		//animator.SetBool("isRunning", false); //Animator Jump check by Omar
 
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
@@ -396,6 +398,9 @@ public class REALplayerMovement : MonoBehaviour
 		//Calculate force along x-axis to apply to thr player
 
 		float movement = speedDif * accelRate;
+
+		
+		animator.SetFloat("speed", movement);
 
 		//Convert this to a vector and apply to rigidbody
 		RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
