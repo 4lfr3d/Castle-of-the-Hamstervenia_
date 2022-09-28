@@ -122,6 +122,10 @@ MonoBehaviour:
     m_Localized: Reset to default
     m_Metadata:
       m_Items: []
+  - m_Id: 2332981068099584
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

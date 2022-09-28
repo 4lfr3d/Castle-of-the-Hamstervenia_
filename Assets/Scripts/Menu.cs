@@ -16,13 +16,22 @@ public class Menu : MonoBehaviour
 
 
     //Volume Settings
-    [Header("Volume Settings")]
-    [SerializeField] private TMP_Text volumeTxtValue = null;
-    
-    [SerializeField] private Slider volumeSlider = null;    
+    [Header("Audio Settings")]
     [SerializeField] private float defaultVolume = 1.0f;
-    [SerializeField] private AudioMixer introMusic;
+    [SerializeField] private AudioMixer mixer;
 
+    [SerializeField] private TMP_Text masterTxtValue = null;
+    [SerializeField] private TMP_Text musicTxtValue = null;
+    [SerializeField] private TMP_Text sfxTxtValue = null;
+    
+    [SerializeField] private Slider masterSlidder = null; 
+    [SerializeField] private Slider musicSlidder = null;
+    [SerializeField] private Slider sfxSlidder = null;
+
+    public const string MIXER_MASTER = "MasterVolume";
+    public const string MIXER_MUSIC = "MusicVolume";
+    public const string MIXER_SFX = "SFXVolume";
+   
 
     //Gameplay Settings
     [Header("Language Settings")]
@@ -41,40 +50,45 @@ public class Menu : MonoBehaviour
 
     //Brightness Slider
     [Header("Brightness Settings")]
-    [SerializeField] private TMP_Text brightnessTxtValue = null;
-    [SerializeField] private Slider brightnessSlider = null;
-    [SerializeField] private float defaultBright = 1;
     private float _brightnessLevel;
     public PostProcessProfile brightNess;
     public PostProcessLayer layer;
     AutoExposure exposure;
+
+    [SerializeField] private TMP_Text brightnessTxtValue = null;
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private float defaultBright = 1.0f;
 
     //Resolution Drpdn
     [Header("Resolution Settings")]
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
-
     //Confirmation Box for applying changes
     [Header("Confirmation Box")]
     [SerializeField] private GameObject confirmationPrompt = null;
 
     void Awake(){
-        volumeSlider.onValueChanged.AddListener(SetMusicIntro);
+        masterSlidder.onValueChanged.AddListener(SetMasterVolume);
+        musicSlidder.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlidder.onValueChanged.AddListener(SetSFXVolume);
     }
 
     //Start
     private void Start(){
 
         //Language
+
         int ID = PlayerPrefs.GetInt("LocaleKey", 0);
         ChangeLocale(ID);
 
         //Brightness
+
         brightNess.TryGetSettings(out exposure);
         AdjustBrightness(brightnessSlider.value);
 
         //Resolution
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -97,7 +111,9 @@ public class Menu : MonoBehaviour
 
 
         //Audio
-        volumeSlider.value = PlayerPrefs.GetFloat("masterVolume", 1.0f);
+        masterSlidder.value = PlayerPrefs.GetFloat(MIXER_MASTER, 1.0f);
+        musicSlidder.value = PlayerPrefs.GetFloat(MIXER_MUSIC, 1.0f);
+        sfxSlidder.value = PlayerPrefs.GetFloat(MIXER_SFX, 1.0f);
 
     }   
 
@@ -127,28 +143,54 @@ public class Menu : MonoBehaviour
 
 
     //Volume
-    public void SetMusicIntro(float volume){
-        introMusic.SetFloat("MusicIntro", Mathf.Log10(volume) * 20);
+    public void SetMasterVolume(float volume){
+        mixer.SetFloat(MIXER_MASTER, Mathf.Log10(volume) * 20);
+        int sliderMasterValue = (int)(masterSlidder.value * 100);
+        masterTxtValue.text =  sliderMasterValue + "/100"; 
+    }
+
+    public void SetMusicVolume(float volume){
+        mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(volume) * 20);
+        int sliderMusicValue = (int)(musicSlidder.value * 100);
+        musicTxtValue.text =  sliderMusicValue + "/100";
+    }
+
+    public void SetSFXVolume(float volume){
+        mixer.SetFloat(MIXER_SFX, Mathf.Log10(volume) * 20);
+        int sliderSfxValue = (int)(sfxSlidder.value * 100);
+        sfxTxtValue.text =  sliderSfxValue + "/100";
     }
 
     public void VolumeApply(){
-        PlayerPrefs.SetFloat("masterVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat("MasterVolume", masterSlidder.value);
+        PlayerPrefs.SetFloat("MusicVolume", musicSlidder.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlidder.value);
+
         StartCoroutine(Confirmation());
     }
 
     //Reset Btn
     public void ResetBtn(string MenuType){
         if(MenuType == "Audio"){
-            introMusic.SetFloat("MusicIntro", Mathf.Log10(defaultVolume) * 20);            
-            volumeSlider.value = defaultVolume;
-            //volumeTxtValue.text = defaultVolume.ToString("0.0");
+            mixer.SetFloat(MIXER_MASTER, Mathf.Log10(defaultVolume) * 20);
+            mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(defaultVolume) * 20); 
+            mixer.SetFloat(MIXER_SFX, Mathf.Log10(defaultVolume) * 20);  
+
+            masterSlidder.value = defaultVolume;
+            musicSlidder.value = defaultVolume;
+            sfxSlidder.value = defaultVolume;
+
+            masterTxtValue.text = defaultVolume + "/100";
+            musicTxtValue.text =  defaultVolume + "/100";
+            sfxTxtValue.text =  defaultVolume + "/100";
+            
             VolumeApply();
         }
 
         if(MenuType == "Graphics"){
             brightnessSlider.value = defaultBright;
             brightnessTxtValue.text = defaultBright.ToString("0.0");
-            exposure.keyValue.value = .5f;
+            exposure.keyValue.value = defaultBright;
 
             qualityDropdown.value = 1;
             QualitySettings.SetQualityLevel(1);
@@ -191,16 +233,10 @@ public class Menu : MonoBehaviour
         }
 
         _brightnessLevel = exposure.keyValue.value;
-        brightnessTxtValue.text = value.ToString("0.0");
+        int brightvalue = (int)(value * 20);
+        brightnessTxtValue.text = brightvalue + "/100";
 
     }
-
-/*
-    public void SetBrightness(float brightness){
-        _brightnessLevel = brightness;
-        brightnessTxtValue.text = brightness.ToString("0.0");
-    }
-*/
 
     public void SetFullScreen(bool isFullScreen){
         _isFullScreen = isFullScreen;
@@ -218,7 +254,6 @@ public class Menu : MonoBehaviour
 
     public void GraphicsApply(){
         PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
-        //later change w/ post processing
 
         PlayerPrefs.SetInt("masterQuality",_qualityLevel);
         QualitySettings.SetQualityLevel(_qualityLevel);

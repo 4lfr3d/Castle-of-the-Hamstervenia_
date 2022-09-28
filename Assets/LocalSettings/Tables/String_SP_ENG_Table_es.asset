@@ -122,6 +122,10 @@ MonoBehaviour:
     m_Localized: Predeterminado
     m_Metadata:
       m_Items: []
+  - m_Id: 2332981068099584
+    m_Localized: Sonido
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

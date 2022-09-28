@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: Default
     m_Metadata:
       m_Items: []
+  - m_Id: 2332981068099584
+    m_Key: Sonido
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
