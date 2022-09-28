@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -325,9 +325,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8696269}
   - component: {fileID: 8696268}
-  - component: {fileID: 8696276}
   - component: {fileID: 8696278}
   - component: {fileID: 8696277}
+  - component: {fileID: 8696279}
   m_Layer: 0
   m_Name: Protag
   m_TagString: Player
@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8696263}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4716.5, y: 1459.6, z: 252.89}
+  m_LocalPosition: {x: -4716.5, y: 432, z: 252.89}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -359,28 +359,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8696276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c8063c8550d384a91883ccea754fed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1288509551}
-  Data: {fileID: 11400000, guid: 70dd97100ffa0644188698d3b89134e5, type: 2}
-  _groundCheckPoint: {fileID: 8397930592353285408, guid: ecd9e6b2ed079ae43b5ea276a962f727, type: 3}
-  _groundCheckSize: {x: 56, y: 56}
-  _frontWallCheckPoint: {fileID: 7798861995524108573, guid: 30b2abc2eaa55134c9f6571349fb8499, type: 3}
-  _backWallCheckPoint: {fileID: 7798861995524108573, guid: 30b2abc2eaa55134c9f6571349fb8499, type: 3}
-  _wallCheckSize: {x: 60, y: 60}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!70 &8696277
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -418,6 +396,23 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &8696279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b7592b2405f1749a5a885bc0bc26ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: c72896c9e028245438cf9bcacb3e70b0, type: 2}
+  animator: {fileID: 1288509551}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &22426732
 PrefabInstance:
   m_ObjectHideFlags: 0
