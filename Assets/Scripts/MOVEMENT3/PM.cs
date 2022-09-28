@@ -25,8 +25,11 @@ public class PM : MonoBehaviour
         public float LastOnWallTime { get; private set; }
         public float LastOnWallRightTime { get; private set; }
         public float LastOnWallLeftTime { get; private set; }
+
         public float LastPressedJumpTime { get; private set; }
         public float LastPressedDashTime {get; private set; }
+
+        public float timeP { get; private set; }
     #endregion
 
     #region JUMP
@@ -75,6 +78,12 @@ public class PM : MonoBehaviour
 
             LastPressedJumpTime -= Time.deltaTime;
             LastPressedDashTime -= Time.deltaTime;
+
+            timeP += Time.deltaTime;
+            animator.SetFloat("isBoredTimer",timeP);
+            if(timeP > 35f){
+                timeP = 0;
+            }
         #endregion
 
         #region INPUT MANAGER
@@ -279,6 +288,12 @@ public class PM : MonoBehaviour
             RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
             animator.SetFloat("speed",Mathf.Abs(movement));
+            if(Mathf.Abs(movement)>0.1){
+                animator.SetBool("isRunning",true);
+            }
+            else{
+                animator.SetBool("isRunning",false);
+            }
 
         }
 
