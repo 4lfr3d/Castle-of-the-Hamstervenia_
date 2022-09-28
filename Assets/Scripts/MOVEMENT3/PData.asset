@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c9d3abcdda95e498e81bd1ee5c17c5, type: 3}
+  m_Name: PData
+  m_EditorClassIdentifier: 
+  gravityStrenght: -1200
+  gravityScale: 120
+  fallGravityMult: 2
+  maxFallSpeed: 150
+  fastFallGravityMult: 5
+  maxFastFallSpeed: 300
+  runMaxSpeed: 300
+  runAcceleration: 150
+  runAccelAmount: 25
+  runDecceleration: 150
+  runDeccelAmount: 25
+  accelInAir: 1
+  deccelInAir: 1
+  doConserveMomentum: 0
+  jumpHeight: 150
+  jumpTimeToApex: 0.5
+  jumpForce: 600
+  jumpCutGravityMult: 1
+  jumpHangGravityMult: 1
+  jumpHangTimeTreshold: 1
+  jumpHangAccelerationMult: 1
+  jumpHangMaxSpeedMult: 1
+  wallJumpForce: {x: 20, y: 20}
+  wallJumpRunLerp: 1
+  wallJumpTime: 1.5
+  coyoteTime: 0.5
+  jumpInputBufferTime: 0.5
+  dashAmount: 1
+  dashSpeed: 300
+  dashSleepTime: 1
+  dashAttackTime: 1
+  dashEndTime: 1
+  dashEndSpeed: {x: 150, y: 0}
+  dashEndRunLerp: 1
+  dashRefillTime: 1
+  dashInputBufferTime: 0.5
