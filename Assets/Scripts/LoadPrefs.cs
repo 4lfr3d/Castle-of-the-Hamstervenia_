@@ -9,12 +9,13 @@ using UnityEngine.Audio;
 
 public class LoadPrefs : MonoBehaviour
 {
-    [SerializeField] private bool canUse = false;
-    [SerializeField] private Menu menu;
 
-    [SerializeField] private TMP_Text volumeTxtValue = null;
-    [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private AudioMixer introMusic;
+    public static LoadPrefs instance;
+    public GameObject menu;
+
+    [SerializeField] private bool canUse = false;
+
+    [SerializeField] private AudioMixer mixer;
 
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTxtValue = null;
@@ -27,18 +28,41 @@ public class LoadPrefs : MonoBehaviour
 
 
     void Awake(){
+
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(menu);
+
+        LoadData();
+    }
+
+    public void LoadData(){
         if(canUse){
-            if(PlayerPrefs.HasKey("masterVolume")){
-                float localVolume = PlayerPrefs.GetFloat("masterVolume", 1.0f);
+            if(PlayerPrefs.HasKey("MasterVolume")){
+                float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
 
-                introMusic.SetFloat("MusicIntro", Mathf.Log10(localVolume) * 20);
+                mixer.SetFloat(Menu.MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
 
-               // volumeTxtValue.text = localVolume.ToString("0");
-               // volumeSlider.value = localVolume;
-               // AudioListener.volume = localVolume;
             }
-            else {
-                menu.ResetBtn("Audio");
+            
+            if(PlayerPrefs.HasKey("MusicVolume")){
+                float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+
+                mixer.SetFloat(Menu.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
+
+            }
+
+            if(PlayerPrefs.HasKey("SFXVolume")){
+                float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+
+                mixer.SetFloat(Menu.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
+
             }
 
             if(PlayerPrefs.HasKey("masterQuality")){
