@@ -8,6 +8,14 @@ TagManager:
   - Wall
   - Enemy
   - Destructible
+  - menu
+  - audio
+  - brillo
+  - calidad
+  - resolucion
+  - idioma
+  - pantallaCompleta
+  - confirmacion
   layers:
   - Default
   - TransparentFX
