@@ -17,16 +17,16 @@ public class Menu : MonoBehaviour
 
     //Volume Settings
     [Header("Audio Settings")]
-    [SerializeField] public float defaultVolume = 1.0f;
-    [SerializeField] public AudioMixer mixer;
+    [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private AudioMixer mixer;
 
-    [SerializeField] public TMP_Text masterTxtValue = null;
-    [SerializeField] public TMP_Text musicTxtValue = null;
-    [SerializeField] public TMP_Text sfxTxtValue = null;
+    [SerializeField] private TMP_Text masterTxtValue = null;
+    [SerializeField] private TMP_Text musicTxtValue = null;
+    [SerializeField] private TMP_Text sfxTxtValue = null;
     
-    [SerializeField] public Slider masterSlidder = null; 
-    [SerializeField] public Slider musicSlidder = null;
-    [SerializeField] public Slider sfxSlidder = null;
+    [SerializeField] private Slider masterSlidder = null; 
+    [SerializeField] private Slider musicSlidder = null;
+    [SerializeField] private Slider sfxSlidder = null;
 
     public const string MIXER_MASTER = "MasterVolume";
     public const string MIXER_MUSIC = "MusicVolume";
@@ -40,33 +40,33 @@ public class Menu : MonoBehaviour
 
     //Graphics Settings
     [Header("Quality Settings")]
-    [SerializeField] public TMP_Dropdown qualityDropdown;
-    public int _qualityLevel;
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    private int _qualityLevel;
 
     [Header("FullScreen Settings")]
-    [SerializeField] public Toggle fullScreenToggle;
-    public bool _isFullScreen;
+    [SerializeField] private Toggle fullScreenToggle;
+    private bool _isFullScreen;
 
 
     //Brightness Slider
     [Header("Brightness Settings")]
-    public float _brightnessLevel;
+    private float _brightnessLevel;
     public PostProcessProfile brightNess;
     public PostProcessLayer layer;
     AutoExposure exposure;
 
-    [SerializeField] public TMP_Text brightnessTxtValue = null;
-    [SerializeField] public Slider brightnessSlider = null;
-    [SerializeField] public float defaultBright = 1.0f;
+    [SerializeField] private TMP_Text brightnessTxtValue = null;
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private float defaultBright = 1.0f;
 
     //Resolution Drpdn
     [Header("Resolution Settings")]
     public TMP_Dropdown resolutionDropdown;
-    public Resolution[] resolutions;
+    private Resolution[] resolutions;
 
     //Confirmation Box for applying changes
     [Header("Confirmation Box")]
-    [SerializeField] public GameObject confirmationPrompt = null;
+    [SerializeField] private GameObject confirmationPrompt = null;
 
     void Awake(){
         masterSlidder.onValueChanged.AddListener(SetMasterVolume);
@@ -75,7 +75,7 @@ public class Menu : MonoBehaviour
     }
 
     //Start
-    public void Start(){
+    private void Start(){
 
         //Language
 
