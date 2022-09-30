@@ -75,7 +75,7 @@ public class Menu : MonoBehaviour
     }
 
     //Start
-    public void Start(){
+    private void Start(){
 
         //Language
 
@@ -189,7 +189,7 @@ public class Menu : MonoBehaviour
 
         if(MenuType == "Graphics"){
             brightnessSlider.value = defaultBright;
-            brightnessTxtValue.text = defaultBright.ToString("0.0");
+            brightnessTxtValue.text = defaultBright + "/100";
             exposure.keyValue.value = defaultBright;
 
             qualityDropdown.value = 1;

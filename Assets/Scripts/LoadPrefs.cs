@@ -12,8 +12,6 @@ public class LoadPrefs : MonoBehaviour
 
     public static LoadPrefs instance;
     public GameObject menu;
-    
-
 
     [SerializeField] public bool canUse = false;
 
@@ -41,7 +39,6 @@ public class LoadPrefs : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // DontDestroyOnLoad(menu);
 
         LoadData();
     }
@@ -51,7 +48,7 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("MasterVolume")){
                 float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
 
-                //Menu.SetMasterVolume(masterVolume);
+               // Menu.SetMasterVolume(masterVolume);
 
                 mixer.SetFloat(Menu.MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
 
@@ -60,6 +57,7 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("MusicVolume")){
                 float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
 
+                //Menu.SetMusicVolume(musicVolume);
                 mixer.SetFloat(Menu.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
 
             }
@@ -67,6 +65,8 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("SFXVolume")){
                 float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
 
+               // Menu.SetSFXVolume(sfxVolume);
+                
                 mixer.SetFloat(Menu.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
 
             }
@@ -97,7 +97,7 @@ public class LoadPrefs : MonoBehaviour
 
                 brightnessSlider.value = localBrightness;
 
-                brightnessTxtValue.text = localBrightness.ToString("0.0");
+                brightnessTxtValue.text = localBrightness + "/100";
             }
         }
     }

@@ -14,7 +14,7 @@ TagManager:
   - calidad
   - resolucion
   - idioma
-  - pantallaCompleta
+  - pantalla
   - confirmacion
   layers:
   - Default

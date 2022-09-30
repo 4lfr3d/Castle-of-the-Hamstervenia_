@@ -10591,7 +10591,7 @@ GameObject:
   - component: {fileID: 1353792795}
   m_Layer: 5
   m_Name: FullScnToggle
-  m_TagString: pantallaCompleta
+  m_TagString: pantalla
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17148,6 +17148,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: 03975640e15f7804eae1717fd2947f1e, type: 2}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: noSaveGame
       value: 
       objectReference: {fileID: 1133281066}
@@ -17163,6 +17167,10 @@ PrefabInstance:
       propertyPath: musicSlidder
       value: 
       objectReference: {fileID: 1213014742}
+    - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
+      propertyPath: _isFullScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: masterSlidder
       value: 
