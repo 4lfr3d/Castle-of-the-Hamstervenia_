@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 18752009}
   m_Layer: 5
   m_Name: BrightSlidder
-  m_TagString: Untagged
+  m_TagString: brillo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 241838340}
   m_Layer: 5
   m_Name: Lang_Eng (1)
-  m_TagString: Untagged
+  m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1924,7 +1924,7 @@ GameObject:
   - component: {fileID: 294678859}
   m_Layer: 5
   m_Name: Lang_Esp (1)
-  m_TagString: Untagged
+  m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 708082557}
   m_Layer: 5
   m_Name: ResolutionDpdn
-  m_TagString: Untagged
+  m_TagString: resolucion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6252,7 +6252,7 @@ GameObject:
   - component: {fileID: 874543467}
   m_Layer: 5
   m_Name: Confirmation
-  m_TagString: Untagged
+  m_TagString: confirmacion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9149,7 +9149,7 @@ GameObject:
   - component: {fileID: 1213014742}
   m_Layer: 5
   m_Name: MusicSlidder
-  m_TagString: Untagged
+  m_TagString: audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9644,7 +9644,7 @@ GameObject:
   - component: {fileID: 1264463474}
   m_Layer: 5
   m_Name: QualityDpdn
-  m_TagString: Untagged
+  m_TagString: calidad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10591,7 +10591,7 @@ GameObject:
   - component: {fileID: 1353792795}
   m_Layer: 5
   m_Name: FullScnToggle
-  m_TagString: Untagged
+  m_TagString: pantalla
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14488,7 +14488,7 @@ GameObject:
   - component: {fileID: 1797790113}
   m_Layer: 5
   m_Name: MasterSlidder
-  m_TagString: Untagged
+  m_TagString: audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16243,7 +16243,7 @@ GameObject:
   - component: {fileID: 2045236978}
   m_Layer: 5
   m_Name: SoundSlidder
-  m_TagString: Untagged
+  m_TagString: audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17148,6 +17148,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: 03975640e15f7804eae1717fd2947f1e, type: 2}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: noSaveGame
       value: 
       objectReference: {fileID: 1133281066}
@@ -17163,6 +17167,10 @@ PrefabInstance:
       propertyPath: musicSlidder
       value: 
       objectReference: {fileID: 1213014742}
+    - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
+      propertyPath: _isFullScreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: masterSlidder
       value: 

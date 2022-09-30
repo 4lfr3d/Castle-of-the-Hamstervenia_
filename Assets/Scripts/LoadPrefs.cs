@@ -13,18 +13,18 @@ public class LoadPrefs : MonoBehaviour
     public static LoadPrefs instance;
     public GameObject menu;
 
-    [SerializeField] private bool canUse = false;
+    [SerializeField] public bool canUse = false;
 
-    [SerializeField] private AudioMixer mixer;
+    [SerializeField] public AudioMixer mixer;
 
-    [SerializeField] private Slider brightnessSlider = null;
-    [SerializeField] private TMP_Text brightnessTxtValue = null;
+    [SerializeField] public Slider brightnessSlider = null;
+    [SerializeField] public TMP_Text brightnessTxtValue = null;
     public PostProcessProfile brightNess;
     public PostProcessLayer layer;
     AutoExposure exposure;
 
-    [SerializeField] private TMP_Dropdown qualityDropdown;
-    [SerializeField] private Toggle fullScreenToggle;
+    [SerializeField] public TMP_Dropdown qualityDropdown;
+    [SerializeField] public Toggle fullScreenToggle;
 
 
     void Awake(){
@@ -32,12 +32,13 @@ public class LoadPrefs : MonoBehaviour
         if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(menu);
+            DontDestroyOnLoad(brightnessSlider);
         }
         else{
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(menu);
 
         LoadData();
     }
@@ -47,6 +48,8 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("MasterVolume")){
                 float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
 
+               // Menu.SetMasterVolume(masterVolume);
+
                 mixer.SetFloat(Menu.MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
 
             }
@@ -54,6 +57,7 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("MusicVolume")){
                 float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
 
+                //Menu.SetMusicVolume(musicVolume);
                 mixer.SetFloat(Menu.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
 
             }
@@ -61,6 +65,8 @@ public class LoadPrefs : MonoBehaviour
             if(PlayerPrefs.HasKey("SFXVolume")){
                 float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
 
+               // Menu.SetSFXVolume(sfxVolume);
+                
                 mixer.SetFloat(Menu.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
 
             }
@@ -91,7 +97,7 @@ public class LoadPrefs : MonoBehaviour
 
                 brightnessSlider.value = localBrightness;
 
-                brightnessTxtValue.text = localBrightness.ToString("0.0");
+                brightnessTxtValue.text = localBrightness + "/100";
             }
         }
     }
