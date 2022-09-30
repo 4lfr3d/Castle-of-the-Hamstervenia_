@@ -12,21 +12,19 @@ public class LoadPrefs : MonoBehaviour
 
     public static LoadPrefs instance;
     public GameObject menu;
-    
 
+    [SerializeField] private bool canUse = false;
 
-    [SerializeField] public bool canUse = false;
+    [SerializeField] private AudioMixer mixer;
 
-    [SerializeField] public AudioMixer mixer;
-
-    [SerializeField] public Slider brightnessSlider = null;
-    [SerializeField] public TMP_Text brightnessTxtValue = null;
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private TMP_Text brightnessTxtValue = null;
     public PostProcessProfile brightNess;
     public PostProcessLayer layer;
     AutoExposure exposure;
 
-    [SerializeField] public TMP_Dropdown qualityDropdown;
-    [SerializeField] public Toggle fullScreenToggle;
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    [SerializeField] private Toggle fullScreenToggle;
 
 
     void Awake(){
@@ -34,14 +32,12 @@ public class LoadPrefs : MonoBehaviour
         if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(menu);
-            DontDestroyOnLoad(brightnessSlider);
         }
         else{
             Destroy(gameObject);
         }
 
-        // DontDestroyOnLoad(menu);
+        DontDestroyOnLoad(menu);
 
         LoadData();
     }
@@ -50,8 +46,6 @@ public class LoadPrefs : MonoBehaviour
         if(canUse){
             if(PlayerPrefs.HasKey("MasterVolume")){
                 float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
-
-                //Menu.SetMasterVolume(masterVolume);
 
                 mixer.SetFloat(Menu.MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
 
