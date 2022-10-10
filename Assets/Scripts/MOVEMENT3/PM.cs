@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PM : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PM : MonoBehaviour
     #region COMPONENTES
         public Rigidbody2D RB { get; private set; }
         public Animator animator;
+        private PlayerInputAction playerInputs;
+        private InputAction movement;
     #endregion
 
     #region STATE PARAMETERS
@@ -53,6 +56,7 @@ public class PM : MonoBehaviour
 
     private void Awake(){
         RB = GetComponent<Rigidbody2D>();
+        playerInputs = new PlayerInputAction();
     }
 
     private void Start()
@@ -72,26 +76,6 @@ public class PM : MonoBehaviour
             LastPressedJumpTime -= Time.deltaTime;
             LastPressedDashTime -= Time.deltaTime;
 
-        #endregion
-
-        #region INPUT MANAGER
-            _moveInput.x = Input.GetAxisRaw("Horizontal");
-            _moveInput.y = Input.GetAxisRaw("Vertical");
-
-            if(_moveInput.x != 0){
-                CheckDirectionToFace(_moveInput.x > 0);
-            }
-            if(Input.GetButtonDown("Jump")){
-                OnJumpInput();
-                animator.SetTrigger("isJumping");
-            }
-            if(Input.GetButtonUp("Jump")){
-                OnJumpUpInput();
-            }
-            if(Input.GetButtonDown("Fire3")){
-                OnDashInput();
-                animator.SetBool("isDash",true);
-            }
         #endregion
 
         #region COLLISION CHECK
@@ -133,14 +117,7 @@ public class PM : MonoBehaviour
             }
 
             if(!IsDashing){
-                if(CanJump() && LastPressedJumpTime > 0){
-                IsJumping = true;
-                IsWallJumping = false;
-                _isJumpCut = false;
-                _isJumpFalling = false;
-                Jump();
-                }
-                else if(CanWallJump() && LastPressedJumpTime > 0){
+                if(CanWallJump() && LastPressedJumpTime > 0){
                     IsWallJumping = true;
                     IsJumping = false;
                     _isJumpCut = false;
@@ -152,27 +129,6 @@ public class PM : MonoBehaviour
                 }
             }
         
-        #endregion
-
-        #region DASH CHECK
-            if(CanDash() && LastPressedDashTime > 0){
-                Sleep(data.dashSleepTime);
-
-                if(_moveInput != Vector2.zero){
-                    _lastDashDir = _moveInput;
-                }
-                else{
-                    _lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
-                }
-
-                IsDashing = true;
-                IsJumping = false;
-                IsWallJumping = false;
-                _isJumpCut = false;
-
-                StartCoroutine(nameof(StartDash), _lastDashDir);
-            }
-
         #endregion
 
         #region URAVITY
@@ -200,36 +156,77 @@ public class PM : MonoBehaviour
             
         #endregion
 
+    }    
+
+    private void OnEnable(){
+        movement = playerInputs.Player.Movement;
+        playerInputs.Enable();
+
+        playerInputs.Player.Jump.performed += DoJump;
+        playerInputs.Player.Jump.Enable();
+
+        playerInputs.Player.Dash.performed += DoDash;
+        playerInputs.Player.Dash.Enable();
+    }
+
+    private void OnDisable(){
+        movement.Disable();
+        playerInputs.Player.Jump.Disable();
+        playerInputs.Player.Dash.Disable();
     }
 
     private void FixedUpdate(){
+        Vector2 a=movement.ReadValue<Vector2>();
         if(!IsDashing){
             if(IsWallJumping){
-                Run(data.wallJumpRunLerp);
+                Run(data.wallJumpRunLerp, a);
             }
             else{
-                Run(1);
+                Run(1, a);
             }
         }
         else if(_isDashAttacking){
-            Run(data.dashEndRunLerp);
+            Run(data.dashEndRunLerp, a);
         }
         
     }
 
-    #region INPUT CALLBACKS
-        public void OnJumpInput(){
-            LastPressedJumpTime = data.jumpInputBufferTime;
+    private void DoJump(InputAction.CallbackContext context){
+        if(CanJump()){
+            IsJumping = true;
+            IsWallJumping = false;
+            _isJumpCut = false;
+            _isJumpFalling = false;
+            Jump();
         }
+    }
 
+    private void DoDash(InputAction.CallbackContext context){
+        if(CanDash()){
+            Debug.Log("DASH");
+            Sleep(data.dashSleepTime);
+
+            if(_moveInput != Vector2.zero){
+                _lastDashDir = _moveInput;
+            }
+            else{
+                _lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
+            }
+
+            IsDashing = true;
+            IsJumping = false;
+            IsWallJumping = false;
+            _isJumpCut = false;
+
+            StartCoroutine(nameof(StartDash), _lastDashDir);
+        }
+    }
+
+    #region INPUT CALLBACKS
         public void OnJumpUpInput(){
             if(CanJumpCut() || CanWallJumpCut()){
                 _isJumpCut = true;
             }
-        }
-
-        public void OnDashInput(){
-            LastPressedDashTime = data.dashInputBufferTime;
         }
     #endregion
 
@@ -248,8 +245,12 @@ public class PM : MonoBehaviour
     #endregion
 
     #region RUN METHODS
-        private void Run(float lerpAmount){
-            float targetSpeed = _moveInput.x * data.runMaxSpeed;
+        private void Run(float lerpAmount, Vector2 a){
+            float targetSpeed = a.x * data.runMaxSpeed;
+
+            if(a.x != 0){
+                CheckDirectionToFace(a.x > 0);
+            }
 
             targetSpeed = Mathf.Lerp(RB.velocity.x, targetSpeed, lerpAmount);
 
@@ -307,6 +308,14 @@ public class PM : MonoBehaviour
                 }
 
                 RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+                if(force > 0){
+                    animator.SetTrigger("isJumping");
+                }
+                else {
+                    animator.ResetTrigger("isJumping");
+                }
+
             #endregion
         }
 
@@ -358,6 +367,7 @@ public class PM : MonoBehaviour
 
             while(Time.time - startTime <= data.dashEndTime){
                 yield return null;
+                animator.SetBool("isDash",true);
             }
 
             IsDashing = false;
