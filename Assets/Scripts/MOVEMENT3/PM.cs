@@ -28,8 +28,6 @@ public class PM : MonoBehaviour
 
         public float LastPressedJumpTime { get; private set; }
         public float LastPressedDashTime {get; private set; }
-
-        public float timeP { get; private set; }
     #endregion
 
     #region JUMP
@@ -53,11 +51,6 @@ public class PM : MonoBehaviour
         private Vector2 _moveInput;
     #endregion
 
-    #region LAYERS & TAGS
-        [Header("Layers & Tags")]
-        [SerializeField] private LayerMask _groundLayer;
-    #endregion
-
     private void Awake(){
         RB = GetComponent<Rigidbody2D>();
     }
@@ -79,11 +72,6 @@ public class PM : MonoBehaviour
             LastPressedJumpTime -= Time.deltaTime;
             LastPressedDashTime -= Time.deltaTime;
 
-            timeP += Time.deltaTime;
-            animator.SetFloat("isBoredTimer",timeP);
-            if(timeP > 35f){
-                timeP = 0;
-            }
         #endregion
 
         #region INPUT MANAGER
