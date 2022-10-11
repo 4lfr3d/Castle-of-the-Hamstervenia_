@@ -212,6 +212,7 @@ public class PM : MonoBehaviour
             else{
                 _lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
             }
+            
 
             IsDashing = true;
             IsJumping = false;
@@ -343,6 +344,7 @@ public class PM : MonoBehaviour
 
     #region DASH METHODS
         private IEnumerator StartDash(Vector2 dir){
+            animator.SetBool("isDash", true);
             LastOnGroundTime = 0;
             LastPressedDashTime = 0;
 
@@ -365,13 +367,13 @@ public class PM : MonoBehaviour
             SetGravityScale(data.gravityScale);
             RB.velocity = data.dashEndSpeed * dir.normalized;
 
-            while(Time.time - startTime <= data.dashEndTime){
+            /*while(Time.time - startTime <= data.dashEndTime){
                 yield return null;
-                animator.SetBool("isDash",true);
-            }
+                animator.SetTrigger("isDash");
+            }*/
 
+            animator.SetBool("isDash", false);
             IsDashing = false;
-            animator.SetBool("isDash",false);
         }
 
         private IEnumerator RefillDash(int amount){

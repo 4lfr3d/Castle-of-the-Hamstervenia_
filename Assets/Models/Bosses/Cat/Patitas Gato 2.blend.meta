@@ -26,7 +26,7 @@ ModelImporter:
     second: Attack7
   - first:
       74: 706446144850546510
-    second: Attack8
+    second: Hit
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -265,7 +265,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Attack8
+      name: Hit
       takeName: Scene
       internalID: 0
       firstFrame: 136
