@@ -73,6 +73,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""DashAIM"",
+                    ""type"": ""Button"",
+                    ""id"": ""15e9d0c5-f829-4314-82a7-d249fa41b8c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Menu"",
                     ""type"": ""Button"",
                     ""id"": ""6403454a-d1e4-4381-8e6d-8be93337ad07"",
@@ -400,6 +409,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Gancho = m_Player.FindAction("Gancho", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_DashAIM = m_Player.FindAction("DashAIM", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // Menú
         m_Menú = asset.FindActionMap("Menú", throwIfNotFound: true);
@@ -470,6 +480,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Gancho;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_DashAIM;
     private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
@@ -480,6 +491,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Gancho => m_Wrapper.m_Player_Gancho;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @DashAIM => m_Wrapper.m_Player_DashAIM;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -505,6 +517,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @DashAIM.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
+                @DashAIM.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
+                @DashAIM.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
@@ -527,6 +542,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @DashAIM.started += instance.OnDashAIM;
+                @DashAIM.performed += instance.OnDashAIM;
+                @DashAIM.canceled += instance.OnDashAIM;
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
@@ -608,6 +626,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnGancho(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnDashAIM(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
     }
     public interface IMenúActions

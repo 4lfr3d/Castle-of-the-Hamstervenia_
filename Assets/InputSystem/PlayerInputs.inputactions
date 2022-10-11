@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "DashAIM",
+                    "type": "Button",
+                    "id": "15e9d0c5-f829-4314-82a7-d249fa41b8c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Menu",
                     "type": "Button",
                     "id": "6403454a-d1e4-4381-8e6d-8be93337ad07",

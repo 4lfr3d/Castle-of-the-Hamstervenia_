@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TaroAttack : MonoBehaviour
 {
     public Animator animator;
+    private PlayerInputAction playerInputs;
 
     private bool isTaroAttacking = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Awake(){
+        playerInputs = new PlayerInputAction();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -21,18 +21,26 @@ public class TaroAttack : MonoBehaviour
         //Weapon transform Taro
         this.transform.position=transform.parent.position;
 
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-			//transform.position = transform.position + new Vector3(0, 150, 0);
-			animator.SetBool("isAttacking", true); //Animator Attack check by Omar
-            attackingFun();
-        }
-
         if(!AnimatorIsPlaying()){
             animator.SetBool("isAttacking", false); //Animator Attack check by Omar
             isTaroAttacking = false; 
         }
 
+    }
+
+    private void OnEnable(){
+        playerInputs.Player.Attack.performed += DoAttack;
+        playerInputs.Player.Attack.Enable();
+    }
+
+    private void OnDisable(){
+        playerInputs.Player.Attack.Disable();
+    }
+
+    private void DoAttack(InputAction.CallbackContext context){
+        //transform.position = transform.position + new Vector3(0, 150, 0);
+        animator.SetBool("isAttacking", true); //Animator Attack check by Omar
+        attackingFun();
     }
 
     //Damage and hitbox stuff
