@@ -29,8 +29,6 @@ public class boringTaro : StateMachineBehaviour
             isBored = true;
 
             boredAnimation = Random.Range(1, 4);
-
-            Debug.Log(boredAnimation);
             
             idleTime = 0f;
         }
