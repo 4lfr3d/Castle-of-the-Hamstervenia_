@@ -123,11 +123,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2332981068099584
-    m_Localized: Sound
+    m_Localized: Sound >>
     m_Metadata:
       m_Items: []
   - m_Id: 3436897843343360
-    m_Localized: Graphics
+    m_Localized: Graphics >>
     m_Metadata:
       m_Items: []
   references:
