@@ -72,6 +72,9 @@ ModelImporter:
   - first:
       74: 5883112720225399447
     second: Bored2
+  - first:
+      74: 4348485665485846014
+    second: Death
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -111,7 +114,7 @@ ModelImporter:
       takeName: Scene
       internalID: 0
       firstFrame: 1
-      lastFrame: 45
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -139,8 +142,8 @@ ModelImporter:
       name: Run
       takeName: Scene
       internalID: 0
-      firstFrame: 46
-      lastFrame: 66
+      firstFrame: 40
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -634,6 +637,35 @@ ModelImporter:
       internalID: 0
       firstFrame: 321
       lastFrame: 365
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death
+      takeName: Scene
+      internalID: 0
+      firstFrame: 366
+      lastFrame: 375
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
