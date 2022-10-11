@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24194298736640
-    m_Localized: Configuracion
+    m_Localized: "Configuraci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 24339006418944
@@ -51,11 +51,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40014752051200
-    m_Localized: Resolucion
+    m_Localized: "Resoluci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 40072553754624
-    m_Localized: Musica
+    m_Localized: "M\xFAsica"
     m_Metadata:
       m_Items: []
   - m_Id: 40124424712192
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40318629376000
-    m_Localized: Espanol
+    m_Localized: "Espa\xF1ol"
     m_Metadata:
       m_Items: []
   - m_Id: 40391576711168
@@ -83,7 +83,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40493208891392
-    m_Localized: Pantalla Compelta
+    m_Localized: Pantalla Completa
     m_Metadata:
       m_Items: []
   - m_Id: 41031740747776
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 98292433481728
-    m_Localized: "\xBFEstas seguro que quieres cargar un juego?"
+    m_Localized: "\xBFEst\xE1s seguro que quieres cargar un juego?"
     m_Metadata:
       m_Items: []
   - m_Id: 99482328166400
@@ -111,11 +111,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 111334193950720
-    m_Localized: Configuracion de Sonido
+    m_Localized: "Configuraci\xF3n de Sonido"
     m_Metadata:
       m_Items: []
   - m_Id: 111468491370496
-    m_Localized: Configuracion de Graficas
+    m_Localized: "Configuraci\xF3n de Graf\xEDcas"
     m_Metadata:
       m_Items: []
   - m_Id: 113055565672448
@@ -124,6 +124,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2332981068099584
     m_Localized: Sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3436897843343360
+    m_Localized: "Graf\xEDcas"
     m_Metadata:
       m_Items: []
   references:
