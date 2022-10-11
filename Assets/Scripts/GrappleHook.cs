@@ -7,9 +7,9 @@ public class GrappleHook : MonoBehaviour
     LineRenderer line;
 
     [SerializeField] LayerMask grapplableMask;
-    [SerializeField] float maxDistance = 100f;
-    [SerializeField] float grappleSpeed = 10f;
-    [SerializeField] float grappleShootSpeed = 20f;
+    [SerializeField] float maxDistance = 10f;
+    [SerializeField] float grappleSpeed = 3f;
+    [SerializeField] float grappleShootSpeed = 5f;
 
     bool isGrappling = false;
     [HideInInspector] public bool retracting = false;
@@ -35,7 +35,7 @@ public class GrappleHook : MonoBehaviour
 
             line.SetPosition(0, transform.position);
 
-            if (Vector3.Distance(transform.position, target) < 0.5f)
+            if (Vector3.Distance(transform.position, target) < 25f)
             {
                 retracting = false;
                 isGrappling = false;
@@ -46,11 +46,10 @@ public class GrappleHook : MonoBehaviour
 
     private void StartGrapple()
     {
-
         Vector3 tempValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         tempValue.z = 0f;
-        Vector3 direction = tempValue - transform.position;
 
+        Vector3 direction = tempValue - transform.position;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance, grapplableMask);
 
         if (hit.collider != null)
