@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GrappleHook : MonoBehaviour
 {
     LineRenderer line;
+    private PlayerInputAction playerInputs;
 
     [SerializeField] LayerMask grapplableMask;
     [SerializeField] float maxDistance = 10f;
@@ -16,17 +18,13 @@ public class GrappleHook : MonoBehaviour
 
     Vector3 target;
 
-    private void Start(){
+    private void Awake(){
         line = GetComponent<LineRenderer>();
+        playerInputs = new PlayerInputAction();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isGrappling)
-        {
-            StartGrapple();
-        }
-
         if (retracting)
         {
             Vector3 grapplePos = Vector3.Lerp(transform.position, target, grappleSpeed * Time.deltaTime);
@@ -44,23 +42,34 @@ public class GrappleHook : MonoBehaviour
         }
     }
 
-    private void StartGrapple()
+    private void OnEnable(){
+        playerInputs.Player.Gancho.performed += StartGrapple;
+        playerInputs.Player.Gancho.Enable();
+    }
+
+    private void OnDisable(){
+        playerInputs.Player.Gancho.Disable();
+    }
+
+    private void StartGrapple(InputAction.CallbackContext context)
     {
-        Vector3 tempValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        tempValue.z = 0f;
+        if(!isGrappling){
+            Vector3 tempValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            tempValue.z = 0f;
+            Vector3 direction = tempValue - transform.position;
 
-        Vector3 direction = tempValue - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance, grapplableMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance, grapplableMask);
 
-        if (hit.collider != null)
-        {
-            isGrappling = true;
-            target = hit.point;
-            line.enabled = true;
-            line.positionCount = 2;
+            if (hit.collider != null)
+            {
+                isGrappling = true;
+                target = hit.point;
+                line.enabled = true;
+                line.positionCount = 2;
 
-            StartCoroutine(Grapple());
-        }
+                StartCoroutine(Grapple());
+            }
+        } 
     }
 
     IEnumerator Grapple(){
