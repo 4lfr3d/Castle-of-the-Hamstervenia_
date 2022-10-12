@@ -42,18 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "GanchoAIM",
                     "type": "Button",
-                    "id": "b2ee39af-6d50-4fa8-8c87-b7f9a1dece23",
+                    "id": "15e9d0c5-f829-4314-82a7-d249fa41b8c2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DashAIM",
+                    "name": "Dash",
                     "type": "Button",
-                    "id": "15e9d0c5-f829-4314-82a7-d249fa41b8c2",
+                    "id": "b2ee39af-6d50-4fa8-8c87-b7f9a1dece23",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
