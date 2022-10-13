@@ -8,7 +8,7 @@ public class InteractionSystem : MonoBehaviour
     //Detection : Point , Radius, Layer
     [Header("Detection Params")]
     public Transform detectionPoint;
-    public const float detectionRadius = 2f;
+    public const float detectionRadius = 3f;
     public LayerMask detectionLayer;
      
     public GameObject detectedObject;

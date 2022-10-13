@@ -17,20 +17,14 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-
     public List<InventoryItem> items = new List<InventoryItem>();
-
     public GameObject ui_Window;
     public GameObject ui_Description_window;
-
     public GameObject consume_item;
-
     public Image[] items_images;
     public TMP_Text[] items_counters;
-
     public Image description_image;
     public Image hud_item;
-
     public TMP_Text description_Title;
     public TMP_Text item_description;
 
@@ -42,7 +36,7 @@ public class InventorySystem : MonoBehaviour
 
             if(exisitingItem != null){
                 exisitingItem.stack++;
-
+                item.GetComponent<Item>().count++;
             }
             else{
                 InventoryItem inv = new InventoryItem(item);
@@ -73,6 +67,14 @@ public class InventorySystem : MonoBehaviour
         for (int i = 0; i < items.Count; i++)
         {
             items_images[i].sprite = items[i].obj.GetComponent<SpriteRenderer>().sprite;
+            //items_counters[i].text = items[i].obj.GetComponent<Item>().count.ToString();
+            if(items[i].stack == 1){
+                items_counters[i].text = " ";
+            }
+            else{
+                items_counters[i].text = items[i].stack.ToString();
+            }
+            items_counters[i].gameObject.SetActive(true);
             items_images[i].gameObject.SetActive(true);
         }
     }
@@ -88,9 +90,10 @@ public class InventorySystem : MonoBehaviour
             counter.gameObject.SetActive(false);
         }
 
-
         HideDescription();
     }
+
+    //mostrar info al hacer hover en inventario
 
     public void ShowDescription(int id){
 
@@ -104,6 +107,7 @@ public class InventorySystem : MonoBehaviour
         else
         {
             //counter.text = items[id].stack.ToString();
+            items_counters[id].text = items[id].stack.ToString();
             description_Title.text = items[id].obj.name + " x" + items[id].stack;
         }
 
@@ -117,6 +121,7 @@ public class InventorySystem : MonoBehaviour
 
     }
 
+//ocultar informacion descriptcion
     public void HideDescription(){
         description_image.gameObject.SetActive(false);
         description_Title.gameObject.SetActive(false);
@@ -130,6 +135,7 @@ public class InventorySystem : MonoBehaviour
             items[id].obj.GetComponent<Item>().consumeEvent.Invoke();
 
             items[id].stack--;
+            items_counters[id].text = items[id].stack.ToString();
             
             if(items[id].stack == 0){
                 Destroy(items[id].obj, 0.1f);
@@ -139,18 +145,6 @@ public class InventorySystem : MonoBehaviour
             Update_Ui();
         }
     }
-
-    // public void ShowItem(int id){
-
-    //     if(items[id].name == "Talps"){
-    //         hud_item.sprite = items_images[id].sprite;
-    //         consume_item.gameObject.SetActive(true);
-    //     }
-    //     else{
-    //         consume_item.gameObject.SetActive(false);
-    //     }
-    // }
-
     
 
 }

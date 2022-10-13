@@ -19,6 +19,7 @@ public class Item : MonoBehaviour
     public ItemType item_type;
     public string item_desc;
     public bool stackable = false;
+    public int count = 1;
 
     [Header("Custom Events")]
     public UnityEvent consumeEvent;
