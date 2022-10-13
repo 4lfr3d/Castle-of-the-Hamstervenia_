@@ -343,7 +343,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.75, y: 2.5}
   m_Direction: 0
 --- !u!50 &8696278
 Rigidbody2D:
@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ceaeb1f656197243bcb34823cd4d2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pb: {fileID: 0}
   grapplableMask:
     serializedVersion: 2
     m_Bits: 840
@@ -23143,7 +23142,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7053ef347cab34642be3ad53e7f46ea0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.88235295, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23165,8 +23164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb11a4e51def8342952955b2611a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivote: {fileID: 0}
-  hideDistance: 20
 --- !u!1 &1093418341
 GameObject:
   m_ObjectHideFlags: 0
