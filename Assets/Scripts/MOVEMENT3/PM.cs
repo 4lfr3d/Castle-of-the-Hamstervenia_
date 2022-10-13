@@ -57,6 +57,7 @@ public class PM : MonoBehaviour
     private void Awake(){
         RB = GetComponent<Rigidbody2D>();
         playerInputs = new PlayerInputAction();
+        _dashesLeft = data.dashAmount;
     }
 
     private void Start()
@@ -67,6 +68,8 @@ public class PM : MonoBehaviour
 
     private void Update()
     {
+        /* Debug.Log("Grounded: " + IsGrounded);
+        Debug.Log("Walled: " + IsWalled); */
         #region TIMERS
             LastOnGroundTime -= Time.deltaTime;
             LastOnWallTime -= Time.deltaTime;
@@ -129,6 +132,10 @@ public class PM : MonoBehaviour
                 }
             }
         
+        #endregion
+
+        #region DASH
+            CanDash();
         #endregion
 
         #region URAVITY
@@ -203,7 +210,6 @@ public class PM : MonoBehaviour
 
     private void DoDash(InputAction.CallbackContext context){
         if(CanDash()){
-            Debug.Log("DASH");
             Sleep(data.dashSleepTime);
 
             if(_moveInput != Vector2.zero){
