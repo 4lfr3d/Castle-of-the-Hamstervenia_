@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject settingsUI;
+    public GameObject inventoryUI;
     public GameObject canvasGameUI;
 
     void Awake(){
@@ -27,6 +28,15 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if(GameIsPaused){
+                Resume();
+            } else{
+                Inventory();
+            }
+        }
     }
 
     public void Resume(){
@@ -41,9 +51,17 @@ public class PauseMenu : MonoBehaviour
         settingsUI.SetActive(true);
     }
 
+    public void Inventory(){
+        Pause();
+        settingsUI.SetActive(false);
+        inventoryUI.SetActive(true);
+    }
+
     void Pause(){
         pauseMenuUI.SetActive(true);
         canvasGameUI.SetActive(false);
+        inventoryUI.SetActive(false);
+        settingsUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -56,4 +74,6 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame(){
         Application.Quit();
     }
+
+    
 }
