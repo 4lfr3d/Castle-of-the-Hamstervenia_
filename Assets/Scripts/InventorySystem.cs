@@ -28,6 +28,10 @@ public class InventorySystem : MonoBehaviour
     public TMP_Text description_Title;
     public TMP_Text item_description;
 
+    public Image equipedItemImg;
+    public TMP_Text equipedItemQty;
+    public TMP_Text idItem;
+
     public void PickUp(GameObject item){
 
         if(item.GetComponent<Item>().stackable){
@@ -128,21 +132,51 @@ public class InventorySystem : MonoBehaviour
         item_description.gameObject.SetActive(false);
     }
 
+    void Update(){
+        if(Input.GetKeyDown("f")){
+            Consume(int.Parse(idItem.text));
+        }
+    }
+
     public void Consume(int id){
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
-            Debug.Log($"Consumed {items[id].obj.name}");
-            
-            items[id].obj.GetComponent<Item>().consumeEvent.Invoke();
-
-            items[id].stack--;
-            items_counters[id].text = items[id].stack.ToString();
+            //Talps
+            TaroHealth taroHP = gameObject.GetComponent<TaroHealth>();
+            if(items[id].obj.name == "Talps"){
+                if(taroHP.health < taroHP.numOfSeeds){
+                    taroHP.health++;
+                    Debug.Log(taroHP.health);
+                    Debug.Log($"Consumed {items[id].obj.name}");
+                    
+                    items[id].stack--;
+                    items_counters[id].text = items[id].stack.ToString();
+                }
+            } else{
+                Debug.Log($"Consumed {items[id].obj.name}");
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
+            }
             
             if(items[id].stack == 0){
                 Destroy(items[id].obj, 0.1f);
+                equipedItemQty.text = null;
+                idItem.text = null;
+            equipedItemImg.enabled= false;
                 items.Remove(items[id]);
+            } else{        
+                EquipedItem(id);
             }
-            
+
             Update_Ui();
+        }
+    }
+
+    public void EquipedItem(int id){
+        if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
+            equipedItemQty.text = items[id].stack.ToString();
+            idItem.text = id.ToString();
+            equipedItemImg.sprite = items_images[id].sprite;
+            equipedItemImg.enabled= true;
         }
     }
     
