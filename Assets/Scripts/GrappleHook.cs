@@ -9,9 +9,9 @@ public class GrappleHook : MonoBehaviour
     private PlayerInputAction playerInputs;
 
     [SerializeField] LayerMask grapplableMask;
-    [SerializeField] float maxDistance = 10f;
-    [SerializeField] float grappleSpeed = 3f;
-    [SerializeField] float grappleShootSpeed = 5f;
+    [SerializeField] float maxDistance = 100f;
+    [SerializeField] float grappleSpeed = 10f;
+    [SerializeField] float grappleShootSpeed = 20f;
 
     bool isGrappling = false;
     [HideInInspector] public bool retracting = false;
@@ -33,7 +33,7 @@ public class GrappleHook : MonoBehaviour
 
             line.SetPosition(0, transform.position);
 
-            if (Vector3.Distance(transform.position, target) < 15f)
+            if (Vector3.Distance(transform.position, target) < 0.5f)
             {
                 retracting = false;
                 isGrappling = false;
