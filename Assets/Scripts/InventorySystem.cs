@@ -43,10 +43,12 @@ public class InventorySystem : MonoBehaviour
         if(item.GetComponent<Item>().stackable){
             //check if existing item, yes stack, no add
             InventoryItem exisitingItem = items.Find(x => x.obj.name == item.name);
-
             if(exisitingItem != null){
                 exisitingItem.stack++;
                 item.GetComponent<Item>().count++;
+                if(items.IndexOf(exisitingItem) == int.Parse(idItem.text)){
+                    equipedItemQty.text = exisitingItem.stack.ToString();
+                }
             }
             else{
                 InventoryItem inv = new InventoryItem(item);
@@ -161,7 +163,7 @@ public class InventorySystem : MonoBehaviour
                 Destroy(items[id].obj, 0.1f);
                 equipedItemQty.text = null;
                 idItem.text = null;
-            equipedItemImg.enabled= false;
+                equipedItemImg.enabled= false;
                 items.Remove(items[id]);
             } else{        
                 EquipedItem(id);
