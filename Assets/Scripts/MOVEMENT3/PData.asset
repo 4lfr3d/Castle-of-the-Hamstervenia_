@@ -41,7 +41,7 @@ MonoBehaviour:
   jumpInputBufferTime: 0.5
   dashAmount: 1
   dashSpeed: 300
-  dashSleepTime: 0.5
+  dashSleepTime: 0.01
   dashAttackTime: 1
   dashEndTime: 1
   dashEndSpeed: {x: 150, y: 0}
