@@ -64,18 +64,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""GanchoAIM"",
                     ""type"": ""Button"",
-                    ""id"": ""b2ee39af-6d50-4fa8-8c87-b7f9a1dece23"",
+                    ""id"": ""15e9d0c5-f829-4314-82a7-d249fa41b8c2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DashAIM"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
-                    ""id"": ""15e9d0c5-f829-4314-82a7-d249fa41b8c2"",
+                    ""id"": ""b2ee39af-6d50-4fa8-8c87-b7f9a1dece23"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -408,8 +408,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Gancho = m_Player.FindAction("Gancho", throwIfNotFound: true);
+        m_Player_GanchoAIM = m_Player.FindAction("GanchoAIM", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_DashAIM = m_Player.FindAction("DashAIM", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // Menú
         m_Menú = asset.FindActionMap("Menú", throwIfNotFound: true);
@@ -479,8 +479,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Gancho;
+    private readonly InputAction m_Player_GanchoAIM;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_DashAIM;
     private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
@@ -490,8 +490,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Gancho => m_Wrapper.m_Player_Gancho;
+        public InputAction @GanchoAIM => m_Wrapper.m_Player_GanchoAIM;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        public InputAction @DashAIM => m_Wrapper.m_Player_DashAIM;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -514,12 +514,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
+                @GanchoAIM.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
+                @GanchoAIM.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
+                @GanchoAIM.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @DashAIM.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
-                @DashAIM.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
-                @DashAIM.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashAIM;
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
@@ -539,12 +539,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started += instance.OnGancho;
                 @Gancho.performed += instance.OnGancho;
                 @Gancho.canceled += instance.OnGancho;
+                @GanchoAIM.started += instance.OnGanchoAIM;
+                @GanchoAIM.performed += instance.OnGanchoAIM;
+                @GanchoAIM.canceled += instance.OnGanchoAIM;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @DashAIM.started += instance.OnDashAIM;
-                @DashAIM.performed += instance.OnDashAIM;
-                @DashAIM.canceled += instance.OnDashAIM;
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
@@ -625,8 +625,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnGancho(InputAction.CallbackContext context);
+        void OnGanchoAIM(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnDashAIM(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
     }
     public interface IMenúActions
