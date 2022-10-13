@@ -75,10 +75,9 @@ GameObject:
   - component: {fileID: 791434427597575652}
   - component: {fileID: 6622371788291470}
   - component: {fileID: 896955520840308950}
-  - component: {fileID: -5112768642632791819}
   m_Layer: 0
   m_Name: Cockroach
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,23 +166,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-5112768642632791819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128313071616470634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dca5dde3e7613346b7fa548e3b9e233, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseRange: 300
-  attackRange: 50
-  speed: 50
-  enemyType: c
-  animator: {fileID: 896955520840308950}
 --- !u!1 &1474485131165973647
 GameObject:
   m_ObjectHideFlags: 0
