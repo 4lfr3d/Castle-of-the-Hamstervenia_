@@ -89,6 +89,24 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""8bd53bfe-9bfe-4931-be30-a4bcab6f40b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ConsumeTheCHILD"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7ac8877-24e4-4c5e-9c0f-223f7729521f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -267,6 +285,28 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae24d3e1-a78a-49b4-b85f-de58d092163b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f100dcfe-896e-4a10-91a3-65ef11d53c1a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ConsumeTheCHILD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -411,6 +451,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_GanchoAIM = m_Player.FindAction("GanchoAIM", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_ConsumeTheCHILD = m_Player.FindAction("ConsumeTheCHILD", throwIfNotFound: true);
         // Menú
         m_Menú = asset.FindActionMap("Menú", throwIfNotFound: true);
         m_Menú_Exit = m_Menú.FindAction("Exit", throwIfNotFound: true);
@@ -482,6 +524,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_GanchoAIM;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_ConsumeTheCHILD;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -493,6 +537,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @GanchoAIM => m_Wrapper.m_Player_GanchoAIM;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @ConsumeTheCHILD => m_Wrapper.m_Player_ConsumeTheCHILD;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -523,6 +569,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @ConsumeTheCHILD.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
+                @ConsumeTheCHILD.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
+                @ConsumeTheCHILD.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -548,6 +600,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
+                @ConsumeTheCHILD.started += instance.OnConsumeTheCHILD;
+                @ConsumeTheCHILD.performed += instance.OnConsumeTheCHILD;
+                @ConsumeTheCHILD.canceled += instance.OnConsumeTheCHILD;
             }
         }
     }
@@ -628,6 +686,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnGanchoAIM(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnConsumeTheCHILD(InputAction.CallbackContext context);
     }
     public interface IMenúActions
     {
