@@ -7,6 +7,7 @@ public class GrappleHook : MonoBehaviour
 {
     LineRenderer line;
     private PlayerInputAction playerInputs;
+    public PointerBehaviour pb;
 
     [SerializeField] LayerMask grapplableMask;
     [SerializeField] float maxDistance = 10f;
