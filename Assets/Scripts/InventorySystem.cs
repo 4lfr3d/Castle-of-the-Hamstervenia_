@@ -32,6 +32,12 @@ public class InventorySystem : MonoBehaviour
     public TMP_Text equipedItemQty;
     public TMP_Text idItem;
 
+    void Update(){
+        if(Input.GetKeyDown("q")){
+            Consume(int.Parse(idItem.text));
+        }
+    }
+
     public void PickUp(GameObject item){
 
         if(item.GetComponent<Item>().stackable){
@@ -130,12 +136,6 @@ public class InventorySystem : MonoBehaviour
         description_image.gameObject.SetActive(false);
         description_Title.gameObject.SetActive(false);
         item_description.gameObject.SetActive(false);
-    }
-
-    void Update(){
-        if(Input.GetKeyDown("f")){
-            Consume(int.Parse(idItem.text));
-        }
     }
 
     public void Consume(int id){
