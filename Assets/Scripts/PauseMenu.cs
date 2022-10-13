@@ -25,18 +25,18 @@ public class PauseMenu : MonoBehaviour
             if(GameIsPaused){
                 Resume();
             } else{
-                Pause();
+                Inventory();
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.I))
+        /*if(Input.GetKeyDown(KeyCode.I))
         {
             if(GameIsPaused){
                 Resume();
             } else{
                 Inventory();
             }
-        }
+        }*/
     }
 
     public void Resume(){
