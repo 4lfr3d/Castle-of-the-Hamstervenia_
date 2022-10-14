@@ -64,15 +64,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""GanchoAIM"",
-                    ""type"": ""Button"",
-                    ""id"": ""15e9d0c5-f829-4314-82a7-d249fa41b8c2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""b2ee39af-6d50-4fa8-8c87-b7f9a1dece23"",
@@ -100,7 +91,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ConsumeTheCHILD"",
+                    ""name"": ""CONSUMETHECHILD"",
                     ""type"": ""Button"",
                     ""id"": ""d7ac8877-24e4-4c5e-9c0f-223f7729521f"",
                     ""expectedControlType"": ""Button"",
@@ -146,7 +137,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a8144150-fcae-4c32-a08a-aff769ab47e4"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control"",
@@ -299,12 +290,34 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""db046f91-6ccc-43cd-a480-8efc2bfb1325"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f100dcfe-896e-4a10-91a3-65ef11d53c1a"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ConsumeTheCHILD"",
+                    ""action"": ""CONSUMETHECHILD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8b21fe4-e763-4b0a-b1f3-fd4018d9f2a5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""CONSUMETHECHILD"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -448,11 +461,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Gancho = m_Player.FindAction("Gancho", throwIfNotFound: true);
-        m_Player_GanchoAIM = m_Player.FindAction("GanchoAIM", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
-        m_Player_ConsumeTheCHILD = m_Player.FindAction("ConsumeTheCHILD", throwIfNotFound: true);
+        m_Player_CONSUMETHECHILD = m_Player.FindAction("CONSUMETHECHILD", throwIfNotFound: true);
         // Menú
         m_Menú = asset.FindActionMap("Menú", throwIfNotFound: true);
         m_Menú_Exit = m_Menú.FindAction("Exit", throwIfNotFound: true);
@@ -521,11 +533,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Gancho;
-    private readonly InputAction m_Player_GanchoAIM;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_Interaction;
-    private readonly InputAction m_Player_ConsumeTheCHILD;
+    private readonly InputAction m_Player_CONSUMETHECHILD;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -534,11 +545,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Gancho => m_Wrapper.m_Player_Gancho;
-        public InputAction @GanchoAIM => m_Wrapper.m_Player_GanchoAIM;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
-        public InputAction @ConsumeTheCHILD => m_Wrapper.m_Player_ConsumeTheCHILD;
+        public InputAction @CONSUMETHECHILD => m_Wrapper.m_Player_CONSUMETHECHILD;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -560,9 +570,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
-                @GanchoAIM.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
-                @GanchoAIM.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
-                @GanchoAIM.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
@@ -572,9 +579,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
-                @ConsumeTheCHILD.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
-                @ConsumeTheCHILD.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
-                @ConsumeTheCHILD.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumeTheCHILD;
+                @CONSUMETHECHILD.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -591,9 +598,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started += instance.OnGancho;
                 @Gancho.performed += instance.OnGancho;
                 @Gancho.canceled += instance.OnGancho;
-                @GanchoAIM.started += instance.OnGanchoAIM;
-                @GanchoAIM.performed += instance.OnGanchoAIM;
-                @GanchoAIM.canceled += instance.OnGanchoAIM;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -603,9 +607,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
-                @ConsumeTheCHILD.started += instance.OnConsumeTheCHILD;
-                @ConsumeTheCHILD.performed += instance.OnConsumeTheCHILD;
-                @ConsumeTheCHILD.canceled += instance.OnConsumeTheCHILD;
+                @CONSUMETHECHILD.started += instance.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.performed += instance.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.canceled += instance.OnCONSUMETHECHILD;
             }
         }
     }
@@ -683,11 +687,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnGancho(InputAction.CallbackContext context);
-        void OnGanchoAIM(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
-        void OnConsumeTheCHILD(InputAction.CallbackContext context);
+        void OnCONSUMETHECHILD(InputAction.CallbackContext context);
     }
     public interface IMenúActions
     {

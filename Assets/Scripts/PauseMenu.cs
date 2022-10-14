@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,31 +13,29 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsUI;
     public GameObject inventoryUI;
     public GameObject canvasGameUI;
+    private PlayerInputAction playerInputs;
 
     void Awake(){
         pauseMenuUI.SetActive(false);
+        playerInputs = new PlayerInputAction();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused){
-                Resume();
-            } else{
-                Inventory();
-            }
-        }
+    private void OnEnable(){
+        playerInputs.Player.Menu.performed += DoMenu;
+        playerInputs.Player.Menu.Enable();
+    }
 
-        /*if(Input.GetKeyDown(KeyCode.I))
-        {
-            if(GameIsPaused){
-                Resume();
-            } else{
-                Inventory();
-            }
-        }*/
+    private void OnDisable(){
+        playerInputs.Player.Menu.Disable();
+    }
+
+    public void DoMenu(InputAction.CallbackContext context){
+        if(GameIsPaused){
+            Resume();
+        }
+        else{
+            Inventory();
+        }
     }
 
     public void Resume(){

@@ -57,7 +57,6 @@ public class PM : MonoBehaviour
     private void Awake(){
         RB = GetComponent<Rigidbody2D>();
         playerInputs = new PlayerInputAction();
-        _dashesLeft = data.dashAmount;
     }
 
     private void Start()
