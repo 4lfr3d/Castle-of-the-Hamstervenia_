@@ -96,7 +96,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: InventorySystem, Assembly-CSharp
-          m_MethodName: Consume
+          m_MethodName: EquipedItem
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -366,8 +366,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49a72cfce267d504797f698a48dbe9d4, type: 2}
-  m_sharedMaterial: {fileID: 2703928298825828918, guid: 49a72cfce267d504797f698a48dbe9d4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81c9535234238dc4db41c55ebe22d7a1, type: 2}
+  m_sharedMaterial: {fileID: -6819040459553010310, guid: 81c9535234238dc4db41c55ebe22d7a1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.4
+  m_fontSize: 24
   m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 1
