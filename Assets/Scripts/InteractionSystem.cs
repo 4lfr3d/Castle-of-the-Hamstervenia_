@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -12,27 +13,28 @@ public class InteractionSystem : MonoBehaviour
     public LayerMask detectionLayer;
      
     public GameObject detectedObject;
+    private PlayerInputAction playerInputs;
 
+    private void Awake(){
+        playerInputs = new PlayerInputAction();
+    }
 
+    private void OnEnable(){
+        playerInputs.Player.Interaction.performed += InteractInput;
+        playerInputs.Player.Interaction.Enable();
+    }
 
+    private void OnDisable(){
+        playerInputs.Player.Interaction.Disable();
+    }
 
-    void Update()
-    {
+    void InteractInput(InputAction.CallbackContext context){
         if(DetectObject()){
-            if(InteractInput()){
-                detectedObject.GetComponent<Item>().Interact();
-            }
+            detectedObject.GetComponent<Item>().Interact();
         }
     }
 
-    bool InteractInput(){
-        // Para testing
-        return Input.GetKeyDown(KeyCode.E);
-    }
-
     bool DetectObject(){
-        
-
         Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position,
         detectionRadius, detectionLayer);
 

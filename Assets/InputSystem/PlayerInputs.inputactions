@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GanchoAIM",
-                    "type": "Button",
-                    "id": "15e9d0c5-f829-4314-82a7-d249fa41b8c2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "b2ee39af-6d50-4fa8-8c87-b7f9a1dece23",
@@ -78,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ConsumeTheCHILD",
+                    "name": "CONSUMETHECHILD",
                     "type": "Button",
                     "id": "d7ac8877-24e4-4c5e-9c0f-223f7729521f",
                     "expectedControlType": "Button",
@@ -124,7 +115,7 @@
                 {
                     "name": "",
                     "id": "a8144150-fcae-4c32-a08a-aff769ab47e4",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control",
@@ -277,12 +268,34 @@
                 },
                 {
                     "name": "",
+                    "id": "db046f91-6ccc-43cd-a480-8efc2bfb1325",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f100dcfe-896e-4a10-91a3-65ef11d53c1a",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ConsumeTheCHILD",
+                    "action": "CONSUMETHECHILD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8b21fe4-e763-4b0a-b1f3-fd4018d9f2a5",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control",
+                    "action": "CONSUMETHECHILD",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

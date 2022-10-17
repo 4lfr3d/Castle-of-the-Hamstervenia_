@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -32,10 +33,25 @@ public class InventorySystem : MonoBehaviour
     public TMP_Text equipedItemQty;
     public TMP_Text idItem;
 
+    private PlayerInputAction playerInputs;
+
+    public void Awake(){
+        playerInputs = new PlayerInputAction();
+    }
+
     void Update(){
-        if(Input.GetKeyDown("q")){
+        /* if(Input.GetKeyDown("q")){
             Consume(int.Parse(idItem.text));
-        }
+        } */
+    }
+
+    private void OnEnable(){
+        playerInputs.Player.CONSUMETHECHILD.performed += DoConsume;
+        playerInputs.Player.CONSUMETHECHILD.Enable();
+    }
+
+    private void OnDisable(){
+        playerInputs.Player.CONSUMETHECHILD.Disable();
     }
 
     public void PickUp(GameObject item){
@@ -138,6 +154,10 @@ public class InventorySystem : MonoBehaviour
         description_image.gameObject.SetActive(false);
         description_Title.gameObject.SetActive(false);
         item_description.gameObject.SetActive(false);
+    }
+
+    public void DoConsume(InputAction.CallbackContext context){
+            Consume(int.Parse(idItem.text));
     }
 
     public void Consume(int id){
