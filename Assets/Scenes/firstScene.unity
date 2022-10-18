@@ -633,9 +633,9 @@ MonoBehaviour:
   grapplableMask:
     serializedVersion: 2
     m_Bits: 72
-  maxDistance: 1000
-  grappleSpeed: 25
-  grappleShootSpeed: 50
+  maxDistance: 215
+  grappleSpeed: 10
+  grappleShootSpeed: 100
   retracting: 0
 --- !u!114 &8696282
 MonoBehaviour:
@@ -11644,7 +11644,7 @@ SpriteRenderer:
   m_Size: {x: 4.63, y: 3.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &490056911
@@ -12190,7 +12190,7 @@ SpriteRenderer:
   m_Size: {x: 4.63, y: 3.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &544678764
