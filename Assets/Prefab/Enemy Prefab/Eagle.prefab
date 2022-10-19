@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3622926413207764939}
   - component: {fileID: 8758862050055425715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eagle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,9 +116,93 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8058401293058537886, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7849918062980204596, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7085854221208544967, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6949115394978666230, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6724918826464413171, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5930326839590767028, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4958038249414501250, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3834212181131368925, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3596250726422664918, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3139446140202569764, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2060717335461632493, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
       propertyPath: m_Name
       value: "AguilaPeque\xF1a"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313274775072795798, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497560290859369487, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610332692893375591, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675110837593498574, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360719218003090797, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523413442568855065, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624747867360674923, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096365564891254193, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a722072eb26bb294ea51fb4584971e0b, type: 3}

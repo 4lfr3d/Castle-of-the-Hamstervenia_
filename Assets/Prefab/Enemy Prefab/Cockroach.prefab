@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5632744062823595143}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cuello
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134929853579061630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataMedia_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 6622371788291470}
   - component: {fileID: 896955520840308950}
   - component: {fileID: -5112768642632791819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cockroach
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8127721634083476210}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.CodoAtras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4300319688588240874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TorsoAlto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7978238322473703162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cabeza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846300387865722752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataDelante_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8750589477080397334}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Centro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2986116855302969537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cucaracha_Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371239795432179413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.CodoDelante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8745094376932833550}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataDelante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6270529028867014323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataDelante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7000428976906599601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataAtras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94620889183635306}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataMedia_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934096056854568117}
   - component: {fileID: 1779864923566047742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cucaracha V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,7 +651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 219283786262179504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataMedia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8332622950105424612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.CodoMedio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2152463893486503274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataAtras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230521273489574087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataAtras_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5613330566672316776}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cabeza_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7902409172959071484}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataMedia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5302785023031671771}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.PataDelante_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071361241734837320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.PataAtras_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4853442363922628393}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: L.CodoDelante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,7 +935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3567791838757805744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TorsoBajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6010423507015914483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.CodoMedio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3874541639005605729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: R.CodoAtras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
