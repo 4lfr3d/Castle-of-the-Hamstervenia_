@@ -67,10 +67,15 @@ public class InventorySystem : MonoBehaviour
                 croquetasQtyTxt.text = croquetasQty.ToString();
             }
             else if(exisitingItem != null){
+                bool resultParse;
+                int numberParse;
+                resultParse = int.TryParse(idItem.text, out numberParse);
                 exisitingItem.stack++;
                 item.GetComponent<Item>().count++;
-                if(items.IndexOf(exisitingItem) == int.Parse(idItem.text)){
-                    equipedItemQty.text = exisitingItem.stack.ToString();
+                if(resultParse){
+                    if(items.IndexOf(exisitingItem) == numberParse){
+                        equipedItemQty.text = exisitingItem.stack.ToString();
+                    }
                 }
             }
             else{
