@@ -33,8 +33,11 @@ public class InventorySystem : MonoBehaviour
     public TMP_Text equipedItemQty;
     public TMP_Text idItem;
 
-    private PlayerInputAction playerInputs;
+    public TMP_Text croquetasQtyTxt;
+    private int croquetasQty = 0;
 
+
+    private PlayerInputAction playerInputs;
     public void Awake(){
         playerInputs = new PlayerInputAction();
     }
@@ -59,11 +62,20 @@ public class InventorySystem : MonoBehaviour
         if(item.GetComponent<Item>().stackable){
             //check if existing item, yes stack, no add
             InventoryItem exisitingItem = items.Find(x => x.obj.name == item.name);
-            if(exisitingItem != null){
+            if(item.name == "Croquetas"){
+                croquetasQty++;
+                croquetasQtyTxt.text = croquetasQty.ToString();
+            }
+            else if(exisitingItem != null){
+                bool resultParse;
+                int numberParse;
+                resultParse = int.TryParse(idItem.text, out numberParse);
                 exisitingItem.stack++;
                 item.GetComponent<Item>().count++;
-                if(items.IndexOf(exisitingItem) == int.Parse(idItem.text)){
-                    equipedItemQty.text = exisitingItem.stack.ToString();
+                if(resultParse){
+                    if(items.IndexOf(exisitingItem) == numberParse){
+                        equipedItemQty.text = exisitingItem.stack.ToString();
+                    }
                 }
             }
             else{
@@ -76,7 +88,9 @@ public class InventorySystem : MonoBehaviour
             items.Add(inv);
         }
 
-        Update_Ui();
+        if(item.name != "Croquetas"){
+            Update_Ui();
+        }
     }
 
     public bool CanPickUp(){
