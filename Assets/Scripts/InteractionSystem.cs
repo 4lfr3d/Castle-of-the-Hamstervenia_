@@ -13,6 +13,7 @@ public class InteractionSystem : MonoBehaviour
     public LayerMask detectionLayer;
      
     public GameObject detectedObject;
+    
     private PlayerInputAction playerInputs;
 
     private void Awake(){

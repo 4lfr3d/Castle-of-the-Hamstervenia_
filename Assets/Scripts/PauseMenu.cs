@@ -9,10 +9,17 @@ public class PauseMenu : MonoBehaviour
     
     public static bool GameIsPaused = false;
 
+    public GameObject[] viewports; 
+    
+    public int pest = 0;
+
     public GameObject pauseMenuUI;
     public GameObject settingsUI;
     public GameObject inventoryUI;
     public GameObject canvasGameUI;
+    public GameObject gameplayUI;
+    public GameObject mapUI;
+
     private PlayerInputAction playerInputs;
 
     void Awake(){
@@ -23,18 +30,42 @@ public class PauseMenu : MonoBehaviour
     private void OnEnable(){
         playerInputs.Player.Menu.performed += DoMenu;
         playerInputs.Player.Menu.Enable();
+
+        playerInputs.Menú.PastPest.performed += PrevPest;
+        playerInputs.Menú.PastPest.Enable();
+
+        playerInputs.Menú.NextPest.performed += NexPest;
+        playerInputs.Menú.NextPest.Enable();
+
+    }
+
+    private void OnEnableUI(){
+        playerInputs.Menú.Exit.performed += DoMenu;
+        playerInputs.Menú.Exit.Enable();
+    }
+
+    private void OnDisableUI(){
+        playerInputs.Menú.Exit.Disable();
     }
 
     private void OnDisable(){
         playerInputs.Player.Menu.Disable();
+        playerInputs.Menú.NextPest.Disable();
+        playerInputs.Menú.PastPest.Disable();
     }
 
     public void DoMenu(InputAction.CallbackContext context){
         if(GameIsPaused){
             Resume();
+            playerInputs.Menú.Disable();
+            OnDisableUI();
+            playerInputs.Player.Enable();
         }
         else{
             Inventory();
+            playerInputs.Player.Disable();
+            playerInputs.Menú.Enable();
+            OnEnableUI();
         }
     }
 
@@ -52,17 +83,90 @@ public class PauseMenu : MonoBehaviour
 
     public void Inventory(){
         Pause();
-        settingsUI.SetActive(false);
         inventoryUI.SetActive(true);
     }
 
     void Pause(){
-        pauseMenuUI.SetActive(true);
         canvasGameUI.SetActive(false);
-        inventoryUI.SetActive(false);
-        settingsUI.SetActive(true);
+        pauseMenuUI.SetActive(true);        
+        settingsUI.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+
+    private void PrevPest(InputAction.CallbackContext context){
+
+        if(pest > 0){
+            pest--;
+        }
+
+        switch(pest){
+            case 0:
+                inventoryUI.SetActive(true);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(false);
+                break;
+            case 1:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(true);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(false);
+
+                break;
+
+            case 2:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(true);
+                settingsUI.SetActive(false);
+                break;
+            case 3:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(true);
+                break;
+        }
+
+    }
+
+    private void NexPest(InputAction.CallbackContext context){
+
+        if(pest < 3){
+            pest++;
+        }
+        
+        switch(pest){
+            case 0:
+                inventoryUI.SetActive(true);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(false);
+                break;
+            case 1:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(true);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(false);
+
+                break;
+
+            case 2:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(true);
+                settingsUI.SetActive(false);
+                break;
+            case 3:
+                inventoryUI.SetActive(false);
+                mapUI.SetActive(false);
+                gameplayUI.SetActive(false);
+                settingsUI.SetActive(true);
+                break;
+        }
+
     }
 
     public void LoadMenu(){
