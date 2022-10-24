@@ -179,7 +179,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     public void DoSelected(InputAction.CallbackContext context){
-        ShowDescription(int.Parse());
+       EquipedItem(int.Parse(idItem.text));
     }
 
     public void Consume(int id){
