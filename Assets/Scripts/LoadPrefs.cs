@@ -28,7 +28,6 @@ public class LoadPrefs : MonoBehaviour
 
 
     void Awake(){
-
         if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -38,7 +37,6 @@ public class LoadPrefs : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-
 
         LoadData();
     }
