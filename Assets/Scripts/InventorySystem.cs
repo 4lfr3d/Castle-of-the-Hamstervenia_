@@ -35,9 +35,8 @@ public class InventorySystem : MonoBehaviour
 
     public TMP_Text croquetasQtyTxt;
     private int croquetasQty = 0;
-
-
     private PlayerInputAction playerInputs;
+
     public void Awake(){
         playerInputs = new PlayerInputAction();
     }
@@ -51,10 +50,16 @@ public class InventorySystem : MonoBehaviour
     private void OnEnable(){
         playerInputs.Player.CONSUMETHECHILD.performed += DoConsume;
         playerInputs.Player.CONSUMETHECHILD.Enable();
+
+
+        /*playerInputs.Menú.Selected.performed += DoSelected;
+        playerInputs.Menú.Selected.Enable();*/
     }
 
     private void OnDisable(){
         playerInputs.Player.CONSUMETHECHILD.Disable();
+
+        playerInputs.Menú.Selected.Disable();
     }
 
     public void PickUp(GameObject item){
@@ -109,7 +114,6 @@ public class InventorySystem : MonoBehaviour
         for (int i = 0; i < items.Count; i++)
         {
             items_images[i].sprite = items[i].obj.GetComponent<SpriteRenderer>().sprite;
-            //items_counters[i].text = items[i].obj.GetComponent<Item>().count.ToString();
             if(items[i].stack == 1){
                 items_counters[i].text = " ";
             }
@@ -138,17 +142,15 @@ public class InventorySystem : MonoBehaviour
     //mostrar info al hacer hover en inventario
 
     public void ShowDescription(int id){
-
+        Debug.Log(id);
         description_image.sprite = items_images[id].sprite;
 
         if(items[id].stack == 1)
         {
             description_Title.text = items[id].obj.name;
-            //counter.text = " ";
         }
         else
         {
-            //counter.text = items[id].stack.ToString();
             items_counters[id].text = items[id].stack.ToString();
             description_Title.text = items[id].obj.name + " x" + items[id].stack;
         }
@@ -171,8 +173,12 @@ public class InventorySystem : MonoBehaviour
     }
 
     public void DoConsume(InputAction.CallbackContext context){
-            Consume(int.Parse(idItem.text));
+        Consume(int.Parse(idItem.text));
     }
+
+    /*public void DoSelected(InputAction.CallbackContext context){
+        ShowDescription(int.Parse());
+    }*/
 
     public void Consume(int id){
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
@@ -215,6 +221,4 @@ public class InventorySystem : MonoBehaviour
             equipedItemImg.enabled= true;
         }
     }
-    
-
 }
