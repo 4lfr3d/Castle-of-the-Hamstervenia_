@@ -12,6 +12,7 @@ public class GrappleHook : MonoBehaviour
     [SerializeField] float maxDistance = 100f;
     [SerializeField] float grappleSpeed = 10f;
     [SerializeField] float grappleShootSpeed = 20f;
+    [SerializeField] GameObject flecha;
 
     bool isGrappling = false;
     bool enemySmall = false;
@@ -57,7 +58,8 @@ public class GrappleHook : MonoBehaviour
     }
 
     private void OnEnable(){
-        playerInputs.Player.Gancho.performed += StartGrapple;
+        playerInputs.Player.Gancho.performed += EnabledFlecha;
+        playerInputs.Player.Gancho.canceled += StartGrapple;
         playerInputs.Player.Gancho.Enable();
     }
 
@@ -65,8 +67,14 @@ public class GrappleHook : MonoBehaviour
         playerInputs.Player.Gancho.Disable();
     }
 
+    private void EnabledFlecha(InputAction.CallbackContext context){
+        flecha.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     private void StartGrapple(InputAction.CallbackContext context)
     {
+        flecha.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
         if(!isGrappling){
             Vector3 tempValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tempValue.z = 0f;
@@ -123,8 +131,6 @@ public class GrappleHook : MonoBehaviour
 
         line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position);
-
-        Vector3 newPos;
 
         for(; t < time; t += grappleShootSpeed * Time.deltaTime){
             line.SetPosition(0, transform.position);
