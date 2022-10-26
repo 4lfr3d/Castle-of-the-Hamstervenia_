@@ -342,8 +342,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NavegationUI",
-                    "type": "Value",
+                    "name": "Navigate",
+                    "type": "PassThrough",
                     "id": "020f97bc-14dc-4ada-8325-aa168a810d4b",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -432,7 +432,18 @@
                 {
                     "name": "",
                     "id": "298ac965-301b-477e-b27d-fdf846f889d5",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control",
+                    "action": "Selected",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c898b666-0e90-4a0d-bc4f-c06ea5d20d61",
+                    "path": "<VirtualMouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Control",
@@ -447,7 +458,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -458,7 +469,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -469,7 +480,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -480,7 +491,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -491,7 +502,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -502,7 +513,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Control",
-                    "action": "NavegationUI",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3accdda-084f-484a-b269-a96880f9476c",
+                    "path": "<VirtualMouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Control",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -533,6 +555,11 @@
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<VirtualMouse>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
