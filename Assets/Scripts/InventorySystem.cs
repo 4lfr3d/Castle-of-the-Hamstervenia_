@@ -39,8 +39,8 @@ public class InventorySystem : MonoBehaviour
         playerInputs.Player.CONSUMETHECHILD.Enable();
 
 
-        /*playerInputs.Menú.Selected.performed += DoSelected;
-        playerInputs.Menú.Selected.Enable();*/
+        playerInputs.Menú.Selected.performed += DoSelected;
+        playerInputs.Menú.Selected.Enable();
     }
 
     private void OnDisable(){
@@ -164,9 +164,9 @@ public class InventorySystem : MonoBehaviour
         Consume(int.Parse(idItem.text));
     }
 
-    /*public void DoSelected(InputAction.CallbackContext context){
-        ShowDescription(int.Parse());
-    }*/
+    public void DoSelected(InputAction.CallbackContext context){
+        EquipedItem(int.Parse(idItem.text));
+    }
 
     public void Consume(int id){
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
