@@ -22,6 +22,7 @@ public class GamepadCursor : MonoBehaviour
 
     private bool contorlSchema = false;
 
+    public PauseMenu menu;
 
     private bool previousMouseState;
     private Mouse virtualMouse;
@@ -48,7 +49,9 @@ public class GamepadCursor : MonoBehaviour
             InputSystem.AddDevice(virtualMouse);
         }
 
-        //InputUser.PerformPairingWithDevice(virtualMouse, playerInputs.user);
+        InputUser user = default(InputUser);
+
+        InputUser.PerformPairingWithDevice(virtualMouse, user);
 
         if(cursorTransform != null){
             Vector2 position = cursorTransform.anchoredPosition;
@@ -101,20 +104,20 @@ Navigate action. */
         InputState.Change(virtualMouse.position, newPosition);
         InputState.Change(virtualMouse.delta, deltaValue);
 
-        //clic button
+        cursorTransform.transform.position = newPosition;
 
-        bool aButtonIsPressed = Gamepad.current.aButton.IsPressed();
+        //clic button
+        bool aButtonIsPressed = Gamepad.current.xButton.IsPressed();
 
         if(previousMouseState !=  aButtonIsPressed){
-            virtualMouse.CopyState<MouseState>(out var mouseState);
+            Mouse.current.CopyState<MouseState>(out var mouseState);
 
-            mouseState.WithButton(MouseButton.Left,aButtonIsPressed);
-            InputState.Change(virtualMouse, mouseState);
+            mouseState = mouseState.WithButton(MouseButton.Left,aButtonIsPressed);
+            InputState.Change(Mouse.current, mouseState);
 
             previousMouseState = aButtonIsPressed;
 
         }
-
         AnchorCursor(newPosition);
 
     }
@@ -133,22 +136,11 @@ Navigate action. */
 /// and disable the mouse cursor
 /// <param name="context">The context of the callback.</param>
     private void onControlsChange(InputAction.CallbackContext context){
-        if(contorlSchema && previousControlScheme != mouseScheme){
-            cursorTransform.gameObject.SetActive(false);
-            Cursor.visible = false;
-            InputState.Change(virtualMouse.position, currentMouse.position.ReadValue());
-            AnchorCursor(currentMouse.position.ReadValue());
-            previousControlScheme = gamepascheme;
-            contorlSchema = true;
-        }
-        else if(!contorlSchema && previousControlScheme != gamepascheme){
             cursorTransform.gameObject.SetActive(true);
             Cursor.visible = true;
             currentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
             previousControlScheme = mouseScheme;
             contorlSchema = false;
-            //playerInputs.currentControlScheme == gamepascheme
-        }
     }
 
 }

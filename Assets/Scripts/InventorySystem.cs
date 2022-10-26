@@ -39,8 +39,8 @@ public class InventorySystem : MonoBehaviour
         playerInputs.Player.CONSUMETHECHILD.Enable();
 
 
-        playerInputs.Menú.Selected.performed += DoSelected;
-        playerInputs.Menú.Selected.Enable();
+        /*playerInputs.Menú.Selected.performed += DoSelected;
+        playerInputs.Menú.Selected.Enable();*/
     }
 
     private void OnDisable(){
@@ -161,11 +161,30 @@ public class InventorySystem : MonoBehaviour
     }
 
     public void DoConsume(InputAction.CallbackContext context){
-        Consume(int.Parse(idItem.text));
+        //Consume(int.Parse(idItem.text));
+        bool resultParse;
+        int numberParse;
+        resultParse = int.TryParse(idItem.text, out numberParse);
+        if(resultParse){
+            Consume(numberParse);
+        }
     }
 
     public void DoSelected(InputAction.CallbackContext context){
-        EquipedItem(int.Parse(idItem.text));
+        //EquipedItem(int.Parse(idItem.text));
+        //string gameobjectFinder = "InventorySlot";
+        //GameObject.Find("InventorySlot"+i.ToString())
+        /*for(int i = 0; i < 6 ; i++){
+            inventorySlots.Add(GameObject.Find("InventorySlot"+i.ToString()));
+        }*/
+
+        /*bool resultParse;
+        int numberParse;
+        resultParse = int.TryParse(idItem.text, out numberParse);
+        if(resultParse){
+            EquipedItem(numberParse);
+        }
+        Debug.Log(idItem.text);*/
     }
 
     public void Consume(int id){
@@ -176,17 +195,20 @@ public class InventorySystem : MonoBehaviour
                 if(taroHP.health < taroHP.numOfSeeds){
                     taroHP.health++;
                     Debug.Log($"Consumed {items[id].obj.name}");
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
                 }
             } else if(items[id].obj.name == "Bendicion"){
                 taroHP.numOfSeeds++;
                 taroHP.health = taroHP.numOfSeeds;
                 Debug.Log($"Consumed {items[id].obj.name}");
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
             }else{
                 Debug.Log($"Consumed {items[id].obj.name}");
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
             }
-
-            items[id].stack--;
-            items_counters[id].text = items[id].stack.ToString();
             
             if(items[id].stack == 0){
                 Destroy(items[id].obj, 0.1f);
