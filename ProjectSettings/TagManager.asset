@@ -16,6 +16,7 @@ TagManager:
   - idioma
   - pantalla
   - confirmacion
+  - SaveZone
   layers:
   - Default
   - TransparentFX
