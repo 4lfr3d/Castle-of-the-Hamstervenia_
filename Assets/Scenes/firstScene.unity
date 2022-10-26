@@ -737,7 +737,9 @@ MonoBehaviour:
   equipedItemImg: {fileID: 1931930531}
   equipedItemQty: {fileID: 297796226}
   idItem: {fileID: 1505144519}
+  idSaver: -1
   croquetasQtyTxt: {fileID: 976160712}
+  croquetasQty: 0
 --- !u!114 &8696286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,17 +799,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeSave:
-    saveName: mysave1
     respawnPoint: {x: 0, y: 0, z: 0}
     health: 0
     numOfSeeds: 0
+    idEquipableItem: 0
+    croquetasQty: 0
+    sceneName: 
   hasLoaded: 0
   respawnPoint: {x: -4600, y: 382, z: -5}
-  health: 4
-  numOfSeeds: 4
-  inventorySystem: {fileID: 8696285}
-  inventoryLoaded: {fileID: 0}
   healthTaro: {fileID: 8696286}
+  inventoryTaro: {fileID: 8696285}
 --- !u!1 &14629673
 GameObject:
   m_ObjectHideFlags: 0
@@ -15639,7 +15640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invsys: {fileID: 8696285}
   type: 1
-  item_type: 0
+  item_type: 1
   item_desc: Bendicion de HamsterCoatl
   stackable: 0
   count: 1
@@ -26980,7 +26981,7 @@ SpriteRenderer:
   m_Size: {x: 4.7, y: 4.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1274608374
@@ -35587,7 +35588,7 @@ SpriteRenderer:
   m_Size: {x: 4.7, y: 4.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1733155513

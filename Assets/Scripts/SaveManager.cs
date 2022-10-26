@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class SaveManager : MonoBehaviour
     public bool hasLoaded;
 
     public Vector3 respawnPoint;
-    public int health, numOfSeeds;
-    public InventorySystem inventorySystem, inventoryLoaded;
     public TaroHealth healthTaro;
+    public InventorySystem inventoryTaro;
 
     private bool saveZoneTrigger;
 
@@ -44,18 +44,33 @@ public class SaveManager : MonoBehaviour
     void Start()
     {
         if(gameObject.tag == "Player"){
-            activeSave.respawnPoint = this.transform.position;
             if(hasLoaded){
-                respawnPoint = activeSave.respawnPoint;
-                health = activeSave.health;
-                numOfSeeds = activeSave.numOfSeeds;
+                this.transform.position = activeSave.respawnPoint;
+                this.healthTaro.numOfSeeds = activeSave.numOfSeeds;
+                this.healthTaro.health = activeSave.health;
+                this.inventoryTaro.idSaver = activeSave.idEquipableItem;
+                this.inventoryTaro.croquetasQty = activeSave.croquetasQty;
+                
+                for(int i = 0; i<activeSave.infoList.Count; i++){
 
-                this.transform.position = respawnPoint;
-                this.healthTaro.numOfSeeds = numOfSeeds;
-                this.healthTaro.health = health;
+                    GameObject invObject = GameObject.Find(activeSave.infoList[i].name);
+                    InventoryItem inv = new InventoryItem(invObject);
+
+                    inventoryTaro.items.Add(inv);
+                    inventoryTaro.items[i].stack = activeSave.infoList[i].stack;
+                }
+
+                inventoryTaro.Update_Ui();
+                inventoryTaro.EquipedItem(activeSave.idEquipableItem);
             } else{
+                activeSave.respawnPoint = this.transform.position;
                 activeSave.health = this.healthTaro.health;
                 activeSave.numOfSeeds = this.healthTaro.numOfSeeds;
+                activeSave.idEquipableItem = this.inventoryTaro.idSaver;
+                activeSave.croquetasQty = this.inventoryTaro.croquetasQty;
+                activeSave.sceneName =  SceneManager.GetActiveScene().name;
+                
+                activeSave.infoList.Clear();
             }
         }
 
@@ -65,6 +80,21 @@ public class SaveManager : MonoBehaviour
         activeSave.health = this.healthTaro.health;
         activeSave.numOfSeeds = this.healthTaro.numOfSeeds;
         activeSave.respawnPoint = this.transform.position;
+        activeSave.idEquipableItem = this.inventoryTaro.idSaver;
+        activeSave.croquetasQty = this.inventoryTaro.croquetasQty;
+
+        activeSave.infoList.Clear();
+
+        for(int i = 0; i<inventoryTaro.items.Count; i++){
+            InventoryInfo info = new InventoryInfo();
+
+            info.name = inventoryTaro.items[i].obj.name;
+            info.stack = inventoryTaro.items[i].stack;
+
+            activeSave.infoList.Add(info);
+        }
+
+        //activeSave.itemSave = this.inventoryTaro.items;
 
         string dataPath = Application.persistentDataPath;
 
@@ -118,9 +148,16 @@ public class SaveManager : MonoBehaviour
 
 [System.Serializable]
 public class SaveData {
-
     public Vector3 respawnPoint;
 
-    public int health, numOfSeeds;
+    public int health, numOfSeeds, idEquipableItem, croquetasQty;
 
+    public string sceneName;
+
+    public List<InventoryInfo> infoList = new List<InventoryInfo>();
+}
+
+public class InventoryInfo {
+    public string name;
+    public int stack;
 }
