@@ -20,7 +20,7 @@ public class GamepadCursor : MonoBehaviour
 
     private Mouse currentMouse;
 
-    private bool contorlSchema = false;
+    private bool controlSchema = false;
 
     public PauseMenu menu;
 
@@ -30,6 +30,11 @@ public class GamepadCursor : MonoBehaviour
 
     void Awake(){
         playerInputs = new PlayerInputAction();
+    }
+
+    private void Update() {
+        playerInputs.Menú.Navigate.performed += onControlsChange;
+        playerInputs.Menú.Navigate.Enable();
     }
 
 /// It enables the virtual mouse, sets the main camera, sets the current mouse, adds the virtual mouse
@@ -60,8 +65,7 @@ public class GamepadCursor : MonoBehaviour
 
         InputSystem.onAfterUpdate += UpdateMotion;
         //playerInput.controlsChangedEvent.AddListener(onControlsChange);
-        playerInputs.Menú.Navigate.performed += onControlsChange;
-        playerInputs.Menú.Navigate.Enable();
+
     }
 
 
@@ -131,16 +135,37 @@ Navigate action. */
     }
 
 
-/// If the current control scheme is the mouse scheme, then disable the cursor transform and enable the
-/// mouse cursor. If the current control scheme is the gamepad scheme, then enable the cursor transform
-/// and disable the mouse cursor
-/// <param name="context">The context of the callback.</param>
+
+/// <summary>
+/// If the controlSchema is true, then the cursorTransform is set to false, the cursor is set to
+/// visible, and the controlSchema is set to false. 
+/// 
+/// If the controlSchema is false, then the cursorTransform is set to true, the cursor is set to
+/// invisible, and the controlSchema is set to true. 
+/// 
+/// The last line of the function is a bit more complicated. 
+/// 
+/// The currentMouse is set to the virtualMouse.position.ReadValue(). 
+/// 
+/// The previousControlScheme is set to the mouseScheme.
+/// </summary>
+/// <param name="context">The context of the action.</param>
     private void onControlsChange(InputAction.CallbackContext context){
+
+        if(controlSchema){
+            Debug.Log("pausa");
             cursorTransform.gameObject.SetActive(true);
+            Cursor.visible = false;
+            controlSchema = false;
+        }
+        else{
+            Debug.Log("juego");
+            cursorTransform.gameObject.SetActive(false);
             Cursor.visible = true;
+            controlSchema = true;
+        }
             currentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
-            previousControlScheme = mouseScheme;
-            contorlSchema = false;
+            //previousControlScheme = mouseScheme;
     }
 
 }

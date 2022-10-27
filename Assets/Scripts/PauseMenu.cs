@@ -90,7 +90,7 @@ public class PauseMenu : MonoBehaviour
         inventoryUI.SetActive(true);
     }
 
-    void Pause(){
+    public void Pause(){
         canvasGameUI.SetActive(false);
         pauseMenuUI.SetActive(true);        
         settingsUI.SetActive(false);
