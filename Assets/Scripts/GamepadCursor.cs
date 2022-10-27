@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.SceneManagement;
 
 public class GamepadCursor : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class GamepadCursor : MonoBehaviour
 
     void Awake(){
         playerInputs = new PlayerInputAction();
+        Cursor.visible = false;
     }
 
     private void Update() {
@@ -136,36 +138,28 @@ Navigate action. */
 
 
 
-/// <summary>
-/// If the controlSchema is true, then the cursorTransform is set to false, the cursor is set to
-/// visible, and the controlSchema is set to false. 
-/// 
-/// If the controlSchema is false, then the cursorTransform is set to true, the cursor is set to
-/// invisible, and the controlSchema is set to true. 
-/// 
-/// The last line of the function is a bit more complicated. 
-/// 
-/// The currentMouse is set to the virtualMouse.position.ReadValue(). 
-/// 
-/// The previousControlScheme is set to the mouseScheme.
-/// </summary>
+
 /// <param name="context">The context of the action.</param>
     private void onControlsChange(InputAction.CallbackContext context){
 
-        if(controlSchema){
+    if(SceneManager.GetActiveScene().name != "StartMenu" ){
+        if(menu.GameIsPaused){
+            Cursor.visible = false;
             Debug.Log("pausa");
             cursorTransform.gameObject.SetActive(true);
-            Cursor.visible = false;
-            controlSchema = false;
+            previousControlScheme = gamepascheme;
         }
         else{
-            Debug.Log("juego");
+            Cursor.visible = true;            
             cursorTransform.gameObject.SetActive(false);
-            Cursor.visible = true;
-            controlSchema = true;
+            previousControlScheme = mouseScheme;
         }
-            currentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
-            //previousControlScheme = mouseScheme;
+    }
+    else{
+        Cursor.visible = true;
+        cursorTransform.gameObject.SetActive(false);
+    }
+        currentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
     }
 
 }
