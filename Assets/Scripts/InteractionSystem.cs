@@ -13,7 +13,10 @@ public class InteractionSystem : MonoBehaviour
     public LayerMask detectionLayer;
      
     public GameObject detectedObject;
-    
+    public GameObject interactionButton;
+
+    private bool detectObject = false;
+
     private PlayerInputAction playerInputs;
 
     private void Awake(){
@@ -30,23 +33,26 @@ public class InteractionSystem : MonoBehaviour
     }
 
     void InteractInput(InputAction.CallbackContext context){
-        if(DetectObject()){
+        if(detectObject){
             detectedObject.GetComponent<Item>().Interact();
         }
     }
 
-    bool DetectObject(){
+    void Update(){
         Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position,
         detectionRadius, detectionLayer);
-
-        if(obj == null){
-            detectedObject = null;
-            return false;
+        if (obj != null)
+        {
+            detectedObject = obj.gameObject;
+            detectObject = true;
+            interactionButton.gameObject.transform.position = obj.gameObject.transform.position + new Vector3(0, 25, 0);
+            interactionButton.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            detectedObject = obj.gameObject;
-            return true;
+            detectedObject = null;
+            detectObject = false;
+            interactionButton.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
