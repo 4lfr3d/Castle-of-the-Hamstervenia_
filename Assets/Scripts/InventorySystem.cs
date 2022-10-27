@@ -7,17 +7,6 @@ using UnityEngine.InputSystem;
 
 public class InventorySystem : MonoBehaviour
 {
-    [System.Serializable]
-    public class InventoryItem{
-        public GameObject obj;
-        public int stack = 1;
-
-        public InventoryItem(GameObject o, int s = 1){
-            obj = o;
-            stack = s;
-        }
-    }
-
     public List<InventoryItem> items = new List<InventoryItem>();
     public GameObject ui_Window;
     public GameObject ui_Description_window;
@@ -32,9 +21,10 @@ public class InventorySystem : MonoBehaviour
     public Image equipedItemImg;
     public TMP_Text equipedItemQty;
     public TMP_Text idItem;
+    public int idSaver = -1;
 
     public TMP_Text croquetasQtyTxt;
-    private int croquetasQty = 0;
+    public int croquetasQty = 0;
     private PlayerInputAction playerInputs;
 
     public void Awake(){
@@ -42,9 +32,6 @@ public class InventorySystem : MonoBehaviour
     }
 
     void Update(){
-        /* if(Input.GetKeyDown("q")){
-            Consume(int.Parse(idItem.text));
-        } */
     }
 
     private void OnEnable(){
@@ -107,7 +94,7 @@ public class InventorySystem : MonoBehaviour
     }
 
 
-    void Update_Ui(){
+    public void Update_Ui(){
 
         HideAll();
         
@@ -123,6 +110,8 @@ public class InventorySystem : MonoBehaviour
             items_counters[i].gameObject.SetActive(true);
             items_images[i].gameObject.SetActive(true);
         }
+
+        croquetasQtyTxt.text = croquetasQty.ToString();
     }
 
     void HideAll(){
@@ -142,7 +131,6 @@ public class InventorySystem : MonoBehaviour
     //mostrar info al hacer hover en inventario
 
     public void ShowDescription(int id){
-        Debug.Log(id);
         description_image.sprite = items_images[id].sprite;
 
         if(items[id].stack == 1)
@@ -173,12 +161,31 @@ public class InventorySystem : MonoBehaviour
     }
 
     public void DoConsume(InputAction.CallbackContext context){
-        Consume(int.Parse(idItem.text));
+        //Consume(int.Parse(idItem.text));
+        bool resultParse;
+        int numberParse;
+        resultParse = int.TryParse(idItem.text, out numberParse);
+        if(resultParse){
+            Consume(numberParse);
+        }
     }
 
-    /*public void DoSelected(InputAction.CallbackContext context){
-        ShowDescription(int.Parse());
-    }*/
+    public void DoSelected(InputAction.CallbackContext context){
+        //EquipedItem(int.Parse(idItem.text));
+        //string gameobjectFinder = "InventorySlot";
+        //GameObject.Find("InventorySlot"+i.ToString())
+        /*for(int i = 0; i < 6 ; i++){
+            inventorySlots.Add(GameObject.Find("InventorySlot"+i.ToString()));
+        }*/
+
+        /*bool resultParse;
+        int numberParse;
+        resultParse = int.TryParse(idItem.text, out numberParse);
+        if(resultParse){
+            EquipedItem(numberParse);
+        }
+        Debug.Log(idItem.text);*/
+    }
 
     public void Consume(int id){
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
@@ -187,13 +194,17 @@ public class InventorySystem : MonoBehaviour
             if(items[id].obj.name == "Talps"){
                 if(taroHP.health < taroHP.numOfSeeds){
                     taroHP.health++;
-                    Debug.Log(taroHP.health);
                     Debug.Log($"Consumed {items[id].obj.name}");
-                    
-                    items[id].stack--;
-                    items_counters[id].text = items[id].stack.ToString();
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
                 }
-            } else{
+            } else if(items[id].obj.name == "Bendicion"){
+                taroHP.numOfSeeds++;
+                taroHP.health = taroHP.numOfSeeds;
+                Debug.Log($"Consumed {items[id].obj.name}");
+                items[id].stack--;
+                items_counters[id].text = items[id].stack.ToString();
+            }else{
                 Debug.Log($"Consumed {items[id].obj.name}");
                 items[id].stack--;
                 items_counters[id].text = items[id].stack.ToString();
@@ -205,6 +216,7 @@ public class InventorySystem : MonoBehaviour
                 idItem.text = null;
                 equipedItemImg.enabled= false;
                 items.Remove(items[id]);
+                idSaver = -1;
             } else{        
                 EquipedItem(id);
             }
@@ -214,11 +226,22 @@ public class InventorySystem : MonoBehaviour
     }
 
     public void EquipedItem(int id){
+        idSaver = id;
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
             equipedItemQty.text = items[id].stack.ToString();
             idItem.text = id.ToString();
             equipedItemImg.sprite = items_images[id].sprite;
             equipedItemImg.enabled= true;
         }
+    }
+}
+
+[System.Serializable]
+public class InventoryItem{
+    public GameObject obj;
+    public int stack = 1;
+    public InventoryItem(GameObject o, int s = 1){
+        obj = o;
+        stack = s;
     }
 }

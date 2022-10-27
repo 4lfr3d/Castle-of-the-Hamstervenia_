@@ -14,7 +14,6 @@ public class Menu : MonoBehaviour
     [Header("General Settings")]
     [SerializeField] private GameObject noSaveGame = null;
 
-
     //Volume Settings
     [Header("Audio Settings")]
     [SerializeField] public float defaultVolume = 1.0f;
@@ -120,6 +119,7 @@ public class Menu : MonoBehaviour
 
     //New Game
     public void StartGame(){
+        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().DeleteSaveData();
         SceneManager.LoadScene("firstScene");
     }
 
@@ -129,9 +129,15 @@ public class Menu : MonoBehaviour
         //view players loaded data (level/zone/checkpoint)
 
         //load player's scene
-
-        //no loaded data
-        noSaveGame.SetActive(true);
+        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().Load();
+        if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
+            Debug.Log("GAME LOADED");
+            SceneManager.LoadScene("firstScene");
+        } else{
+            noSaveGame.SetActive(true);
+            
+            Debug.Log("GAME NOT LOADED");
+        }
     }
 
 

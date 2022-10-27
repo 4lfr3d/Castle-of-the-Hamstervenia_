@@ -10861,6 +10861,7 @@ GameObject:
   - component: {fileID: 1441112321}
   - component: {fileID: 1441112320}
   - component: {fileID: 1441112319}
+  - component: {fileID: 1441112322}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -10913,7 +10914,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441112318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2094098, y: 1.2033, z: 1.2033}
   m_ConstrainProportionsScale: 0
@@ -10931,6 +10932,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1441112322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441112318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a88cb23a3373b44afd3971a0b02c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeSave:
+    respawnPoint: {x: 0, y: 0, z: 0}
+    health: 0
+    numOfSeeds: 0
+  hasLoaded: 0
+  respawnPoint: {x: 0, y: 0, z: 0}
+  health: 0
+  numOfSeeds: 0
+  inventorySystem: {fileID: 0}
+  inventoryLoaded: {fileID: 0}
+  healthTaro: {fileID: 0}
 --- !u!1 &1442893863
 GameObject:
   m_ObjectHideFlags: 0
@@ -16818,6 +16842,10 @@ PrefabInstance:
       propertyPath: sfxSlidder
       value: 
       objectReference: {fileID: 2045236978}
+    - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
+      propertyPath: savemanager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: sfxTxtValue
       value: 

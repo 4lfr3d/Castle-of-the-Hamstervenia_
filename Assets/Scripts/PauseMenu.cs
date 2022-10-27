@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
     
-    public static bool GameIsPaused = false;
+    public bool GameIsPaused = false;
 
     public GameObject[] viewports; 
     
@@ -24,12 +24,22 @@ public class PauseMenu : MonoBehaviour
 
     void Awake(){
         pauseMenuUI.SetActive(false);
+
         playerInputs = new PlayerInputAction();
+        playerInputs.Menú.Disable();
     }
 
     private void OnEnable(){
         playerInputs.Player.Menu.performed += DoMenu;
         playerInputs.Player.Menu.Enable();
+
+
+    }
+
+    private void OnEnableUI(){
+        playerInputs.Menú.Exit.performed += DoMenu;
+        playerInputs.Menú.Exit.Enable();
+
 
         playerInputs.Menú.PastPest.performed += PrevPest;
         playerInputs.Menú.PastPest.Enable();
@@ -39,27 +49,22 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    private void OnEnableUI(){
-        playerInputs.Menú.Exit.performed += DoMenu;
-        playerInputs.Menú.Exit.Enable();
-    }
-
     private void OnDisableUI(){
         playerInputs.Menú.Exit.Disable();
+        playerInputs.Menú.NextPest.Disable();
+        playerInputs.Menú.PastPest.Disable();
     }
 
     private void OnDisable(){
         playerInputs.Player.Menu.Disable();
-        playerInputs.Menú.NextPest.Disable();
-        playerInputs.Menú.PastPest.Disable();
     }
 
     public void DoMenu(InputAction.CallbackContext context){
         if(GameIsPaused){
             Resume();
             playerInputs.Menú.Disable();
-            OnDisableUI();
             playerInputs.Player.Enable();
+            OnDisableUI();
         }
         else{
             Inventory();
@@ -73,7 +78,6 @@ public class PauseMenu : MonoBehaviour
         settingsUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         canvasGameUI.SetActive(true);
-        Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
@@ -86,11 +90,10 @@ public class PauseMenu : MonoBehaviour
         inventoryUI.SetActive(true);
     }
 
-    void Pause(){
+    public void Pause(){
         canvasGameUI.SetActive(false);
         pauseMenuUI.SetActive(true);        
         settingsUI.SetActive(false);
-        Time.timeScale = 0f;
         GameIsPaused = true;
     }
 

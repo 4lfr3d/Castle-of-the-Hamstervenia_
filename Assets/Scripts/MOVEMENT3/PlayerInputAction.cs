@@ -149,7 +149,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6d5525d9-f945-438c-b36c-b6ffce3cd351"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Gancho"",
@@ -364,8 +364,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NavegationUI"",
-                    ""type"": ""Value"",
+                    ""name"": ""Navigate"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""020f97bc-14dc-4ada-8325-aa168a810d4b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -454,7 +454,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""298ac965-301b-477e-b27d-fdf846f889d5"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Selected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c898b666-0e90-4a0d-bc4f-c06ea5d20d61"",
+                    ""path"": ""<VirtualMouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control"",
@@ -469,7 +480,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -480,7 +491,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -491,7 +502,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -502,7 +513,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -513,7 +524,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -524,7 +535,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control"",
-                    ""action"": ""NavegationUI"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3accdda-084f-484a-b269-a96880f9476c"",
+                    ""path"": ""<VirtualMouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -556,6 +578,11 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""devicePath"": ""<Gamepad>"",
                     ""isOptional"": false,
                     ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<VirtualMouse>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
                 }
             ]
         }
@@ -577,7 +604,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Menú_PastPest = m_Menú.FindAction("PastPest", throwIfNotFound: true);
         m_Menú_NextPest = m_Menú.FindAction("NextPest", throwIfNotFound: true);
         m_Menú_Selected = m_Menú.FindAction("Selected", throwIfNotFound: true);
-        m_Menú_NavegationUI = m_Menú.FindAction("NavegationUI", throwIfNotFound: true);
+        m_Menú_Navigate = m_Menú.FindAction("Navigate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -730,7 +757,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Menú_PastPest;
     private readonly InputAction m_Menú_NextPest;
     private readonly InputAction m_Menú_Selected;
-    private readonly InputAction m_Menú_NavegationUI;
+    private readonly InputAction m_Menú_Navigate;
     public struct MenúActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -739,7 +766,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @PastPest => m_Wrapper.m_Menú_PastPest;
         public InputAction @NextPest => m_Wrapper.m_Menú_NextPest;
         public InputAction @Selected => m_Wrapper.m_Menú_Selected;
-        public InputAction @NavegationUI => m_Wrapper.m_Menú_NavegationUI;
+        public InputAction @Navigate => m_Wrapper.m_Menú_Navigate;
         public InputActionMap Get() { return m_Wrapper.m_Menú; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -761,9 +788,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Selected.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
                 @Selected.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
                 @Selected.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
-                @NavegationUI.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavegationUI;
-                @NavegationUI.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavegationUI;
-                @NavegationUI.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavegationUI;
+                @Navigate.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
+                @Navigate.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
+                @Navigate.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
             }
             m_Wrapper.m_MenúActionsCallbackInterface = instance;
             if (instance != null)
@@ -780,9 +807,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Selected.started += instance.OnSelected;
                 @Selected.performed += instance.OnSelected;
                 @Selected.canceled += instance.OnSelected;
-                @NavegationUI.started += instance.OnNavegationUI;
-                @NavegationUI.performed += instance.OnNavegationUI;
-                @NavegationUI.canceled += instance.OnNavegationUI;
+                @Navigate.started += instance.OnNavigate;
+                @Navigate.performed += instance.OnNavigate;
+                @Navigate.canceled += instance.OnNavigate;
             }
         }
     }
@@ -822,6 +849,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnPastPest(InputAction.CallbackContext context);
         void OnNextPest(InputAction.CallbackContext context);
         void OnSelected(InputAction.CallbackContext context);
-        void OnNavegationUI(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
     }
 }
