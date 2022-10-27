@@ -46,6 +46,7 @@ public class SaveManager : MonoBehaviour
         if(gameObject.tag == "Player"){
             if(hasLoaded){
                 this.transform.position = activeSave.respawnPoint;
+                this.healthTaro.respawnPoint = activeSave.respawnPoint;
                 this.healthTaro.numOfSeeds = activeSave.numOfSeeds;
                 this.healthTaro.health = activeSave.health;
                 this.inventoryTaro.idSaver = activeSave.idEquipableItem;
@@ -82,6 +83,7 @@ public class SaveManager : MonoBehaviour
         activeSave.respawnPoint = this.transform.position;
         activeSave.idEquipableItem = this.inventoryTaro.idSaver;
         activeSave.croquetasQty = this.inventoryTaro.croquetasQty;
+        this.healthTaro.respawnPoint = activeSave.respawnPoint;
 
         activeSave.infoList.Clear();
 
