@@ -49,6 +49,10 @@ public class InventorySystem : MonoBehaviour
         playerInputs.Menú.Selected.Disable();
     }
 
+    public void StartInventory(){
+
+    }
+
     public void PickUp(GameObject item){
 
         if(item.GetComponent<Item>().stackable){
@@ -195,8 +199,8 @@ public class InventorySystem : MonoBehaviour
                 if(taroHP.health < taroHP.numOfSeeds){
                     taroHP.health++;
                     Debug.Log($"Consumed {items[id].obj.name}");
-                items[id].stack--;
-                items_counters[id].text = items[id].stack.ToString();
+                    items[id].stack--;
+                    items_counters[id].text = items[id].stack.ToString();
                 }
             } else if(items[id].obj.name == "Bendicion"){
                 taroHP.numOfSeeds++;
@@ -211,7 +215,7 @@ public class InventorySystem : MonoBehaviour
             }
             
             if(items[id].stack == 0){
-                Destroy(items[id].obj, 0.1f);
+                items[id].obj.SetActive(false);
                 equipedItemQty.text = null;
                 idItem.text = null;
                 equipedItemImg.enabled= false;

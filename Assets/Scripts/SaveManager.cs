@@ -6,6 +6,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class SaveManager : MonoBehaviour
 {
@@ -16,7 +18,14 @@ public class SaveManager : MonoBehaviour
     public TaroHealth healthTaro;
     public InventorySystem inventoryTaro;
 
+    public Animator animationSaver;
+    public TMP_Text textSaver;
+
+    private string[] phraseSaver = {"Seedable", "Bowl-ing", "Bowl Lit", "I seed a bowl"};
+
     private bool saveZoneTrigger;
+    
+    public GameObject interactionButton;
 
     private PlayerInputAction playerInputs;
 
@@ -38,11 +47,13 @@ public class SaveManager : MonoBehaviour
     private void Awake(){
         playerInputs = new PlayerInputAction();
 
+
         Load();
     }
 
     void Start()
     {
+        textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
         if(gameObject.tag == "Player"){
             if(hasLoaded){
                 this.transform.position = activeSave.respawnPoint;
@@ -57,12 +68,15 @@ public class SaveManager : MonoBehaviour
                     GameObject invObject = GameObject.Find(activeSave.infoList[i].name);
                     InventoryItem inv = new InventoryItem(invObject);
 
+                    if(invObject.name == "Bendicion") invObject.SetActive(false);
+
                     inventoryTaro.items.Add(inv);
                     inventoryTaro.items[i].stack = activeSave.infoList[i].stack;
                 }
 
                 inventoryTaro.Update_Ui();
                 inventoryTaro.EquipedItem(activeSave.idEquipableItem);
+                inventoryTaro.StartInventory();
             } else{
                 activeSave.respawnPoint = this.transform.position;
                 activeSave.health = this.healthTaro.health;
@@ -106,6 +120,10 @@ public class SaveManager : MonoBehaviour
         stream.Close();
 
         Debug.Log("Saved");
+        
+        textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
+    
+        animationSaver.SetTrigger("Saver");
     }
 
     public void Load(){
@@ -141,8 +159,11 @@ public class SaveManager : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.tag == "SaveZone"){
             saveZoneTrigger = true;
+            interactionButton.gameObject.transform.position = other.gameObject.transform.position + new Vector3(70, 5, 0);
+            interactionButton.SetActive(true);
         } else{
             saveZoneTrigger = false;
+            interactionButton.SetActive(false);
         }
     }
 
