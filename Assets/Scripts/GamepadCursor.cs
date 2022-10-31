@@ -82,11 +82,11 @@ Navigate action. */
         //playerInput.controlsChangedEvent.RemoveListener(onControlsChange);
     }
 
-/// We read the left stick value, multiply it by the cursor speed and the delta time, and then add it to
+/// We read the right stick value, multiply it by the cursor speed and the delta time, and then add it to
 /// the current position of the virtual mouse. We then clamp the new position to the screen, and update
 /// the position and delta values of the virtual mouse.
 /// 
-/// We also check if the A button is pressed, and if it is, we update the virtual mouse state to reflect
+/// We also check if the West button is pressed, and if it is, we update the virtual mouse state to reflect
 /// that.
 /// 
 /// Finally, we call the AnchorCursor function, which we'll look at next.
@@ -96,7 +96,7 @@ Navigate action. */
         }
 
         //movement
-        Vector2 deltaValue = Gamepad.current.leftStick.ReadValue();
+        Vector2 deltaValue = Gamepad.current.rightStick.ReadValue();
         deltaValue *= cursorSpeed * Time.deltaTime;
 
 
