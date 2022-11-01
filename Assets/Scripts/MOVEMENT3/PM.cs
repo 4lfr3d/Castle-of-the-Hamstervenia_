@@ -353,6 +353,7 @@ public class PM : MonoBehaviour
     #region DASH METHODS
         private IEnumerator StartDash(Vector2 dir){
             animator.SetBool("isDash", true);
+            Menu.instance.TaroDash();
             LastOnGroundTime = 0;
             LastPressedDashTime = 0;
 
