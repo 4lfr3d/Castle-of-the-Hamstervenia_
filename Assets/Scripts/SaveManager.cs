@@ -159,6 +159,7 @@ public class SaveManager : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.tag == "SaveZone"){
             saveZoneTrigger = true;
+            Menu.instance.WaterDropSFX();
             interactionButton.gameObject.transform.position = other.gameObject.transform.position + new Vector3(70, 5, 0);
             interactionButton.SetActive(true);
         } else{

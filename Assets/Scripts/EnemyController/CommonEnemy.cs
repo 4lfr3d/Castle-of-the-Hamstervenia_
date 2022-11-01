@@ -51,6 +51,7 @@ public class CommonEnemy : MonoBehaviour
                 }
             } else if(currentState == "AttackState"){
                 animator.SetBool("isAttacking", true);
+                Menu.instance.RatonAtaque();
                 if(distance>attackRange){
                     currentState = "ChaseState";
                 }
