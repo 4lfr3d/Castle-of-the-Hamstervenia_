@@ -11,7 +11,7 @@ public class LoadPrefs : MonoBehaviour
 {
 
     public static LoadPrefs instance;
-    public GameObject menu;
+    //public GameObject menu;
 
     [SerializeField] public bool canUse = false;
 
@@ -31,8 +31,6 @@ public class LoadPrefs : MonoBehaviour
         if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(menu);
-            DontDestroyOnLoad(brightnessSlider);
         }
         else{
             Destroy(gameObject);

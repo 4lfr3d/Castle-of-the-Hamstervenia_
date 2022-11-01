@@ -284,6 +284,7 @@ public class PM : MonoBehaviour
 
             animator.SetFloat("speed",Mathf.Abs(movement));
             if(Mathf.Abs(movement)>0.1){
+                Menu.instance.MovementSFX();
                 animator.SetBool("isRunning",true);
             }
             else{
@@ -315,7 +316,9 @@ public class PM : MonoBehaviour
 
                 RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 
+
                 if(force > 0){
+                    Menu.instance.JumpSFX();
                     animator.SetTrigger("isJumping");
                 }
                 else {
