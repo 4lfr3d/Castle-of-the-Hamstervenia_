@@ -43,6 +43,12 @@ public class InteractionSystem : MonoBehaviour
         detectionRadius, detectionLayer);
         if (obj != null)
         {
+            //Debug.Log(obj.name);
+            if(obj.name == "Croquetas"){
+                Debug.Log(obj.name);
+                this.gameObject.GetComponent<InventorySystem>().PickUp(obj.gameObject);
+                obj.gameObject.SetActive(false);
+            }
             detectedObject = obj.gameObject;
             detectObject = true;
             interactionButton.gameObject.transform.position = obj.gameObject.transform.position + new Vector3(0, 25, 0);
