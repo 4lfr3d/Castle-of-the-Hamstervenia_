@@ -50,6 +50,12 @@ public class Menu : MonoBehaviour
     [SerializeField] public AudioSource ratonAtaque;
     [SerializeField] public AudioClip ratonAttkSonido;
 
+    [SerializeField] public AudioSource taroAtaque;
+    [SerializeField] public AudioClip taroAtaqueSound;
+
+    [SerializeField] public AudioSource taroDash;
+    [SerializeField] public AudioClip taroDashSonido;
+
     //Gameplay Settings
     [Header("Language Settings")]
     private bool active = false;
@@ -203,6 +209,7 @@ public class Menu : MonoBehaviour
         StartCoroutine(Confirmation());
     }
 
+    //Primera version, mejorar codigo en siguentes versiones
 
     public void JumpSFX(){
         jump.PlayOneShot(jumpsound);
@@ -222,6 +229,14 @@ public class Menu : MonoBehaviour
 
     public void RatonAtaque(){
         ratonAtaque.PlayOneShot(ratonAttkSonido);
+    }
+
+    public void TaroAtaque(){
+        taroAtaque.PlayOneShot(taroAtaqueSound);
+    }
+
+    public void TaroDash(){
+        taroDash.PlayOneShot(taroDashSonido);
     }
 
     //Reset Btn
