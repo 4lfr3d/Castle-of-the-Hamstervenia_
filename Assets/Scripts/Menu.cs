@@ -13,9 +13,6 @@ public class Menu : MonoBehaviour
 
     public static Menu instance;
 
-    [Header("General Settings")]
-    [SerializeField] private GameObject noSaveGame = null;
-
     //Volume Settings
     [Header("Audio Settings")]
     [SerializeField] public float defaultVolume = 1.0f;
@@ -127,37 +124,6 @@ public class Menu : MonoBehaviour
         sfxSlidder.value = PlayerPrefs.GetFloat(MIXER_SFX, 1.0f);
 
     }   
-
-
-    //New Game
-    public void StartGame(){
-        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().DeleteSaveData();
-        SceneManager.LoadScene("firstScene");
-    }
-
-
-    //Load Game
-    public void LoadGame(){
-        //view players loaded data (level/zone/checkpoint)
-
-        //load player's scene
-        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().Load();
-        if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
-            Debug.Log("GAME LOADED");
-            SceneManager.LoadScene("firstScene");
-        } else{
-            noSaveGame.SetActive(true);
-            
-            Debug.Log("GAME NOT LOADED");
-        }
-    }
-
-
-    //Quit Game
-    public void QuitGame(){
-        //Debug.Log("Afuera pana");
-        Application.Quit();
-    }
 
 
     //Volume

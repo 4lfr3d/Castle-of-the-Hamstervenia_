@@ -53,8 +53,8 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
         if(gameObject.tag == "Player"){
+            textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
             if(hasLoaded){
                 this.transform.position = activeSave.respawnPoint;
                 this.healthTaro.respawnPoint = activeSave.respawnPoint;
