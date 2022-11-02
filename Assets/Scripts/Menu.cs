@@ -33,28 +33,6 @@ public class Menu : MonoBehaviour
     public const string MIXER_MASTER = "MasterVolume";
     public const string MIXER_MUSIC = "MusicVolume";
     public const string MIXER_SFX = "SFXVolume";
-   
-    [Header("SFXs")]
-    [SerializeField] public AudioSource jump;
-    [SerializeField] public AudioClip jumpsound;
-
-    [SerializeField] public AudioSource move;
-    [SerializeField] public AudioClip movesound;
-
-    [SerializeField] public AudioSource waterdrop;
-    [SerializeField] public AudioClip waterdropsound;
-
-    [SerializeField] public AudioSource gancho;
-    [SerializeField] public AudioClip ganchoSound;
-
-    [SerializeField] public AudioSource ratonAtaque;
-    [SerializeField] public AudioClip ratonAttkSonido;
-
-    [SerializeField] public AudioSource taroAtaque;
-    [SerializeField] public AudioClip taroAtaqueSound;
-
-    [SerializeField] public AudioSource taroDash;
-    [SerializeField] public AudioClip taroDashSonido;
 
     //Gameplay Settings
     [Header("Language Settings")]
@@ -207,36 +185,6 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", sfxSlidder.value);
 
         StartCoroutine(Confirmation());
-    }
-
-    //Primera version, mejorar codigo en siguentes versiones
-
-    public void JumpSFX(){
-        jump.PlayOneShot(jumpsound);
-    }
-
-    public void MovementSFX(){
-        move.PlayOneShot(movesound);
-    }
-
-    public void WaterDropSFX(){
-        waterdrop.PlayOneShot(waterdropsound);
-    }
-
-    public void GanchoSFX(){
-        gancho.PlayOneShot(ganchoSound);
-    }
-
-    public void RatonAtaque(){
-        ratonAtaque.PlayOneShot(ratonAttkSonido);
-    }
-
-    public void TaroAtaque(){
-        taroAtaque.PlayOneShot(taroAtaqueSound);
-    }
-
-    public void TaroDash(){
-        taroDash.PlayOneShot(taroDashSonido);
     }
 
     //Reset Btn

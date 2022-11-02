@@ -84,7 +84,7 @@ public class GrappleHook : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Menu.instance.GanchoSFX();
+                SoundManager.instance.GanchoSFX();
                 if(hit.transform.gameObject.layer == LayerMask.NameToLayer("EnemySmall")){
                     isGrappling = true;
                     target = hit.point;
