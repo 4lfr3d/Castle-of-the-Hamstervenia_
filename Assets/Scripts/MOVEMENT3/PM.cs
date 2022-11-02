@@ -285,7 +285,7 @@ public class PM : MonoBehaviour
 
             animator.SetFloat("speed",Mathf.Abs(movement));
             if(Mathf.Abs(movement)>0.1){
-                Menu.instance.MovementSFX();
+                SoundManager.instance.MovementSFX();
                 animator.SetBool("isRunning",true);
             }
             else{
@@ -319,7 +319,7 @@ public class PM : MonoBehaviour
 
 
                 if(force > 0){
-                    Menu.instance.JumpSFX();
+                    SoundManager.instance.JumpSFX();
                     animator.SetTrigger("isJumping");
                 }
                 else {
@@ -354,7 +354,7 @@ public class PM : MonoBehaviour
     #region DASH METHODS
         private IEnumerator StartDash(Vector2 dir){
             animator.SetBool("isDash", true);
-            Menu.instance.TaroDash();
+            SoundManager.instance.TaroDash();
             LastOnGroundTime = 0;
             LastPressedDashTime = 0;
 
