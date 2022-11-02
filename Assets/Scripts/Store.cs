@@ -60,10 +60,6 @@ public class Store : MonoBehaviour
 
     void Start()
     {
-        croquetas.text =  "x " + inventoryTaro.croquetasQty.ToString();
-
-        // bendicionText.transform.GetChild(1).gameObject.SetActive(true);
-
         storePanel.SetActive(false);
         UpdateStore();
     }
@@ -102,6 +98,8 @@ public class Store : MonoBehaviour
 
     void UpdateStore()
     {
+        croquetas.text =  "x " + inventoryTaro.croquetasQty.ToString();
+        
         talpsText.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>().text = items[0].obj.name;
         talpsText.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TMP_Text>().text = items[0].obj.GetComponent<Item>().item_desc;
         talpsText.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TMP_Text>().text = items[0].cost.ToString();
