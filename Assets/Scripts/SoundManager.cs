@@ -52,7 +52,7 @@ public class SoundManager : MonoBehaviour
     public GameObject detectedObject;
 
     private bool detectMusic = false;
-    private AudioSource music01;
+    public AudioSource music01;
     private int track;
 
     private AudioClip prevClip;
@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
         }
         else{
             Destroy(gameObject);
-        } 
+        }
     }
 
     //Primera version, mejorar codigo en siguentes versiones
@@ -123,19 +123,17 @@ public class SoundManager : MonoBehaviour
     }
 
     public void InteractMusic(){
-
-        music01 = detectedObject.GetComponent<AudioSource>();
-
-        if(detectMusic && music01.isPlaying){
-            music01.Stop();
-            music01.clip = musicZones[detectedObject.GetComponent<Music>().musicTrack];
-        }else{
-            music01.clip = musicZones[detectedObject.GetComponent<Music>().musicTrack];
+        if(detectMusic){
+            if(music01.clip != musicZones[detectedObject.GetComponent<Music>().musicTrack]){
+                music01.Stop();
+                music01.clip = musicZones[detectedObject.GetComponent<Music>().musicTrack];
+                music01.Play();
+            }
+            else{
+                music01.clip = musicZones[detectedObject.GetComponent<Music>().musicTrack];
+                if(!music01.isPlaying) music01.Play();
+            }
         }
-
-        
-        music01.loop = true;
-        music01.Play();
     }
     
     #endregion
