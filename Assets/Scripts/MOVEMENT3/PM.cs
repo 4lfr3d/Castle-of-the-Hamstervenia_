@@ -69,6 +69,7 @@ public class PM : MonoBehaviour
     {
         /* Debug.Log("Grounded: " + IsGrounded);
         Debug.Log("Walled: " + IsWalled); */
+        Vector2 a=movement.ReadValue<Vector2>();
         #region TIMERS
             LastOnGroundTime -= Time.deltaTime;
             LastOnWallTime -= Time.deltaTime;
@@ -139,7 +140,7 @@ public class PM : MonoBehaviour
 
         #region URAVITY
             if(!_isDashAttacking){
-                if(RB.velocity.y < 0 && _moveInput.y < 0 ){
+                if(RB.velocity.y < 0 && a.y < 0 ){
                 SetGravityScale(data.gravityScale * data.fastFallGravityMult);
 
                 RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -data.maxFastFallSpeed));
@@ -353,6 +354,7 @@ public class PM : MonoBehaviour
     #region DASH METHODS
         private IEnumerator StartDash(Vector2 dir){
             animator.SetBool("isDash", true);
+            Menu.instance.TaroDash();
             LastOnGroundTime = 0;
             LastPressedDashTime = 0;
 
