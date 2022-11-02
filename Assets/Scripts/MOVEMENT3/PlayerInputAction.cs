@@ -64,15 +64,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""GanchoAIM"",
-                    ""type"": ""Button"",
-                    ""id"": ""15e9d0c5-f829-4314-82a7-d249fa41b8c2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""b2ee39af-6d50-4fa8-8c87-b7f9a1dece23"",
@@ -85,6 +76,24 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""name"": ""Menu"",
                     ""type"": ""Button"",
                     ""id"": ""6403454a-d1e4-4381-8e6d-8be93337ad07"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""8bd53bfe-9bfe-4931-be30-a4bcab6f40b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CONSUMETHECHILD"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7ac8877-24e4-4c5e-9c0f-223f7729521f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -128,7 +137,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a8144150-fcae-4c32-a08a-aff769ab47e4"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Control"",
@@ -140,7 +149,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6d5525d9-f945-438c-b36c-b6ffce3cd351"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.1)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Gancho"",
@@ -267,6 +276,50 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae24d3e1-a78a-49b4-b85f-de58d092163b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db046f91-6ccc-43cd-a480-8efc2bfb1325"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f100dcfe-896e-4a10-91a3-65ef11d53c1a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CONSUMETHECHILD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8b21fe4-e763-4b0a-b1f3-fd4018d9f2a5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""CONSUMETHECHILD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -300,6 +353,24 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Selected"",
+                    ""type"": ""Button"",
+                    ""id"": ""e44e9b35-9d47-441f-a964-66a4d149bb5d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Navigate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""020f97bc-14dc-4ada-8325-aa168a810d4b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -328,7 +399,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""97a2d665-9ed2-4a4e-bdcd-ec621dd60cc0"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -350,7 +421,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""591271f7-71ac-40d4-bb97-8bb7208cd0b6"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -366,6 +437,61 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Control"",
                     ""action"": ""NextPest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f861ae20-1ac8-4041-aa4b-e37886611edc"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Selected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""298ac965-301b-477e-b27d-fdf846f889d5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Selected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c898b666-0e90-4a0d-bc4f-c06ea5d20d61"",
+                    ""path"": ""<VirtualMouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Selected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""325c11cd-4276-4849-b42f-a472ea19315f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3accdda-084f-484a-b269-a96880f9476c"",
+                    ""path"": ""<VirtualMouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Control"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -397,6 +523,11 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""devicePath"": ""<Gamepad>"",
                     ""isOptional"": false,
                     ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<VirtualMouse>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
                 }
             ]
         }
@@ -408,14 +539,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Gancho = m_Player.FindAction("Gancho", throwIfNotFound: true);
-        m_Player_GanchoAIM = m_Player.FindAction("GanchoAIM", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_CONSUMETHECHILD = m_Player.FindAction("CONSUMETHECHILD", throwIfNotFound: true);
         // Menú
         m_Menú = asset.FindActionMap("Menú", throwIfNotFound: true);
         m_Menú_Exit = m_Menú.FindAction("Exit", throwIfNotFound: true);
         m_Menú_PastPest = m_Menú.FindAction("PastPest", throwIfNotFound: true);
         m_Menú_NextPest = m_Menú.FindAction("NextPest", throwIfNotFound: true);
+        m_Menú_Selected = m_Menú.FindAction("Selected", throwIfNotFound: true);
+        m_Menú_Navigate = m_Menú.FindAction("Navigate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -479,9 +613,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Gancho;
-    private readonly InputAction m_Player_GanchoAIM;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_CONSUMETHECHILD;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -490,9 +625,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Gancho => m_Wrapper.m_Player_Gancho;
-        public InputAction @GanchoAIM => m_Wrapper.m_Player_GanchoAIM;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @CONSUMETHECHILD => m_Wrapper.m_Player_CONSUMETHECHILD;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -514,15 +650,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
                 @Gancho.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGancho;
-                @GanchoAIM.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
-                @GanchoAIM.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
-                @GanchoAIM.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGanchoAIM;
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @CONSUMETHECHILD.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCONSUMETHECHILD;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -539,15 +678,18 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Gancho.started += instance.OnGancho;
                 @Gancho.performed += instance.OnGancho;
                 @Gancho.canceled += instance.OnGancho;
-                @GanchoAIM.started += instance.OnGanchoAIM;
-                @GanchoAIM.performed += instance.OnGanchoAIM;
-                @GanchoAIM.canceled += instance.OnGanchoAIM;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
+                @CONSUMETHECHILD.started += instance.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.performed += instance.OnCONSUMETHECHILD;
+                @CONSUMETHECHILD.canceled += instance.OnCONSUMETHECHILD;
             }
         }
     }
@@ -559,6 +701,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Menú_Exit;
     private readonly InputAction m_Menú_PastPest;
     private readonly InputAction m_Menú_NextPest;
+    private readonly InputAction m_Menú_Selected;
+    private readonly InputAction m_Menú_Navigate;
     public struct MenúActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -566,6 +710,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Exit => m_Wrapper.m_Menú_Exit;
         public InputAction @PastPest => m_Wrapper.m_Menú_PastPest;
         public InputAction @NextPest => m_Wrapper.m_Menú_NextPest;
+        public InputAction @Selected => m_Wrapper.m_Menú_Selected;
+        public InputAction @Navigate => m_Wrapper.m_Menú_Navigate;
         public InputActionMap Get() { return m_Wrapper.m_Menú; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -584,6 +730,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @NextPest.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnNextPest;
                 @NextPest.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnNextPest;
                 @NextPest.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnNextPest;
+                @Selected.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
+                @Selected.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
+                @Selected.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnSelected;
+                @Navigate.started -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
+                @Navigate.performed -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
+                @Navigate.canceled -= m_Wrapper.m_MenúActionsCallbackInterface.OnNavigate;
             }
             m_Wrapper.m_MenúActionsCallbackInterface = instance;
             if (instance != null)
@@ -597,6 +749,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @NextPest.started += instance.OnNextPest;
                 @NextPest.performed += instance.OnNextPest;
                 @NextPest.canceled += instance.OnNextPest;
+                @Selected.started += instance.OnSelected;
+                @Selected.performed += instance.OnSelected;
+                @Selected.canceled += instance.OnSelected;
+                @Navigate.started += instance.OnNavigate;
+                @Navigate.performed += instance.OnNavigate;
+                @Navigate.canceled += instance.OnNavigate;
             }
         }
     }
@@ -625,14 +783,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnGancho(InputAction.CallbackContext context);
-        void OnGanchoAIM(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnCONSUMETHECHILD(InputAction.CallbackContext context);
     }
     public interface IMenúActions
     {
         void OnExit(InputAction.CallbackContext context);
         void OnPastPest(InputAction.CallbackContext context);
         void OnNextPest(InputAction.CallbackContext context);
+        void OnSelected(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
     }
 }

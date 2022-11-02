@@ -16,6 +16,7 @@ TagManager:
   - idioma
   - pantalla
   - confirmacion
+  - SaveZone
   layers:
   - Default
   - TransparentFX
@@ -26,9 +27,9 @@ TagManager:
   - Wall
   - PostProcessing
   - Item
-  - 
-  - 
-  - 
+  - Crystal
+  - EnemySmall
+  - EnemyBig
   - 
   - 
   - 

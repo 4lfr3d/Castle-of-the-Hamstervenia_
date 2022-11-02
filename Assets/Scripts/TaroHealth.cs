@@ -16,7 +16,7 @@ public class TaroHealth : MonoBehaviour
 
     private float timeInmmunity;
 
-    public Transform respawnPoint;
+    public Vector3 respawnPoint;
 
     public GameObject deathPanel;
 
@@ -83,7 +83,7 @@ public class TaroHealth : MonoBehaviour
     public void Respawn(){
         this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         anim.SetTrigger("isRespawned");
-        this.transform.position = respawnPoint.transform.position;
+        this.transform.position = respawnPoint;
         health = numOfSeeds;
         deathPanel.SetActive(false);
         Time.timeScale = 1f;

@@ -11,14 +11,16 @@ using UnityEngine.Audio;
 public class Menu : MonoBehaviour
 {
 
+    public static Menu instance;
+
     [Header("General Settings")]
     [SerializeField] private GameObject noSaveGame = null;
-
 
     //Volume Settings
     [Header("Audio Settings")]
     [SerializeField] public float defaultVolume = 1.0f;
     [SerializeField] public AudioMixer mixer;
+
 
     [SerializeField] public TMP_Text masterTxtValue = null;
     [SerializeField] public TMP_Text musicTxtValue = null;
@@ -32,6 +34,21 @@ public class Menu : MonoBehaviour
     public const string MIXER_MUSIC = "MusicVolume";
     public const string MIXER_SFX = "SFXVolume";
    
+    [Header("SFXs")]
+    [SerializeField] public AudioSource jump;
+    [SerializeField] public AudioClip jumpsound;
+
+    [SerializeField] public AudioSource move;
+    [SerializeField] public AudioClip movesound;
+
+    [SerializeField] public AudioSource waterdrop;
+    [SerializeField] public AudioClip waterdropsound;
+
+    [SerializeField] public AudioSource gancho;
+    [SerializeField] public AudioClip ganchoSound;
+
+    [SerializeField] public AudioSource ratonAtaque;
+    [SerializeField] public AudioClip ratonAttkSonido;
 
     //Gameplay Settings
     [Header("Language Settings")]
@@ -69,6 +86,16 @@ public class Menu : MonoBehaviour
     [SerializeField] public GameObject confirmationPrompt = null;
 
     void Awake(){
+
+
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
+
         masterSlidder.onValueChanged.AddListener(SetMasterVolume);
         musicSlidder.onValueChanged.AddListener(SetMusicVolume);
         sfxSlidder.onValueChanged.AddListener(SetSFXVolume);
@@ -120,6 +147,7 @@ public class Menu : MonoBehaviour
 
     //New Game
     public void StartGame(){
+        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().DeleteSaveData();
         SceneManager.LoadScene("firstScene");
     }
 
@@ -129,9 +157,15 @@ public class Menu : MonoBehaviour
         //view players loaded data (level/zone/checkpoint)
 
         //load player's scene
-
-        //no loaded data
-        noSaveGame.SetActive(true);
+        GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().Load();
+        if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
+            Debug.Log("GAME LOADED");
+            SceneManager.LoadScene("firstScene");
+        } else{
+            noSaveGame.SetActive(true);
+            
+            Debug.Log("GAME NOT LOADED");
+        }
     }
 
 
@@ -167,6 +201,27 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", sfxSlidder.value);
 
         StartCoroutine(Confirmation());
+    }
+
+
+    public void JumpSFX(){
+        jump.PlayOneShot(jumpsound);
+    }
+
+    public void MovementSFX(){
+        move.PlayOneShot(movesound);
+    }
+
+    public void WaterDropSFX(){
+        waterdrop.PlayOneShot(waterdropsound);
+    }
+
+    public void GanchoSFX(){
+        gancho.PlayOneShot(ganchoSound);
+    }
+
+    public void RatonAtaque(){
+        ratonAtaque.PlayOneShot(ratonAttkSonido);
     }
 
     //Reset Btn
