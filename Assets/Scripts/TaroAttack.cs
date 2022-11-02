@@ -40,7 +40,7 @@ public class TaroAttack : MonoBehaviour
     private void DoAttack(InputAction.CallbackContext context){
         //transform.position = transform.position + new Vector3(0, 150, 0);
         animator.SetBool("isAttacking", true); //Animator Attack check by Omar
-        Menu.instance.TaroAtaque();
+        SoundManager.instance.TaroAtaque();
         attackingFun();
     }
 

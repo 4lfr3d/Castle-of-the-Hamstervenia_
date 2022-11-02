@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 8696287}
   - component: {fileID: 8696288}
   - component: {fileID: 8696289}
-  - component: {fileID: 8696290}
+  - component: {fileID: 8696290}  
   m_Layer: 0
   m_Name: Protag
   m_TagString: Player
@@ -484,6 +484,7 @@ Transform:
   - {fileID: 1288509550}
   - {fileID: 155546916}
   - {fileID: 1348917761}
+  - {fileID: 1865658772}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
