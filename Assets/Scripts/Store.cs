@@ -15,10 +15,11 @@ public class Store : MonoBehaviour
     public GameObject bendicionText;
     public TMP_Text croquetas;
     public GameObject storePanel;
-    public GameObject PanelUI;
+    public GameObject panelUI;
+
+    public GameObject interactionIcon;
 
     private bool talpaTrigger;
-
     private PlayerInputAction playerInputs;
 
     private void OnEnable()
@@ -48,13 +49,13 @@ public class Store : MonoBehaviour
     void displayStore()
     {
         storePanel.SetActive(true);
-        PanelUI.SetActive(false);
+        panelUI.SetActive(false);
     }
 
     public void ExitStore()
     {
         storePanel.SetActive(false);
-        PanelUI.SetActive(true);
+        panelUI.SetActive(true);
     }
 
     void Start()
@@ -77,9 +78,13 @@ public class Store : MonoBehaviour
         if (other.gameObject.name == "Talpa")
         {
             talpaTrigger = true;
+            interactionIcon.gameObject.transform.position = other.gameObject.transform.position + new Vector3(0, 75, 0);
+            interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
         } else
         {
             talpaTrigger = false;
+            interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

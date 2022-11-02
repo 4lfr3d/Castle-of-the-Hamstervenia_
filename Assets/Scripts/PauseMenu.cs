@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject canvasGameUI;
     public GameObject gameplayUI;
     public GameObject mapUI;
+    public GameObject storePanel;
 
     private PlayerInputAction playerInputs;
 
@@ -77,7 +78,10 @@ public class PauseMenu : MonoBehaviour
     public void Resume(){
         settingsUI.SetActive(false);
         pauseMenuUI.SetActive(false);
-        canvasGameUI.SetActive(true);
+        if (!storePanel.active)
+        {
+            canvasGameUI.SetActive(true);
+        }
         GameIsPaused = false;
     }
 
