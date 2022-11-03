@@ -495,9 +495,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180336269059349181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4097, y: 391, z: -10}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 1.3333333, y: 1.3333333, z: 1.3333333}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1180336268676997693}
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRange: 300
-  attackRange: 50
+  attackRange: 40
   speed: 50
   enemyType: r
   animator: {fileID: 1180336268676998083}
@@ -645,6 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180336269187924444}
+  - component: {fileID: 1867960700}
   m_Layer: 10
   m_Name: R.Antebrazo
   m_TagString: Untagged
@@ -668,6 +669,22 @@ Transform:
   m_Father: {fileID: 1180336269029756466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1867960700
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180336269187924447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05, y: 0.45}
+  m_Size: {x: 0.8, y: 2}
+  m_Direction: 0
 --- !u!1 &1180336269230917899
 GameObject:
   m_ObjectHideFlags: 0
