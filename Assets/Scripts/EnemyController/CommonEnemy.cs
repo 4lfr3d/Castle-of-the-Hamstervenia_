@@ -36,7 +36,7 @@ public class CommonEnemy : MonoBehaviour
                 animator.SetTrigger("chase");
                 animator.SetBool("isAttacking", false);
 
-                if(distance<attackRange){
+                if(distance < attackRange){
                     currentState = "AttackState";
                 }
 

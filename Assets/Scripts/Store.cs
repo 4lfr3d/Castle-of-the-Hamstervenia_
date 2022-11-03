@@ -42,6 +42,7 @@ public class Store : MonoBehaviour
     {
         if (talpaTrigger)
         {
+            UpdateStore();
             displayStore();
         }
     }
