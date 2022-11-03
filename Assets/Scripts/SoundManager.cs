@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     void Awake(){
+        
         if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -107,18 +109,23 @@ public class SoundManager : MonoBehaviour
     #region MUSIC_FUNC
 
     void Update(){
+        if(SceneManager.GetActiveScene().name != "StartMenu"){ 
+            detectionPoint = GameObject.Find("Interactable").transform;
+            music01 = GameObject.Find("Taroaudio").GetComponent<AudioSource>();
+        }
 /* Detecting the object that is in the radius of the detection point. */
-        Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position,
-        detectionRadius, detectionLayer);
+        if(SceneManager.GetActiveScene().name != "StartMenu"){ 
+            Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position,detectionRadius, detectionLayer);
 
-        if(obj != null){
-            detectedObject = obj.gameObject;
-            detectMusic = true;
-            InteractMusic();
+            if(obj != null){
+                detectedObject = obj.gameObject;
+                detectMusic = true;
+                InteractMusic();
 
-        } else {
-            detectedObject = null;
-            detectMusic = false;
+            } else {
+                detectedObject = null;
+                detectMusic = false;
+            }
         }
     }
 
