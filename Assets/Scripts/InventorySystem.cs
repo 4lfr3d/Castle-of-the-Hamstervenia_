@@ -49,10 +49,6 @@ public class InventorySystem : MonoBehaviour
         playerInputs.Menú.Selected.Disable();
     }
 
-    public void StartInventory(){
-
-    }
-
     public void PickUp(GameObject item){
 
         if(item.GetComponent<Item>().stackable){
