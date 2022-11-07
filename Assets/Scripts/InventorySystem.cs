@@ -25,7 +25,9 @@ public class InventorySystem : MonoBehaviour
 
     public TMP_Text croquetasQtyTxt;
     public int croquetasQty = 0;
+
     private PlayerInputAction playerInputs;
+    public CoinsManager cm;
 
     public void Awake(){
         playerInputs = new PlayerInputAction();
@@ -60,6 +62,8 @@ public class InventorySystem : MonoBehaviour
             InventoryItem exisitingItem = items.Find(x => x.obj.name == item.name);
             if(item.name == "Croquetas"){
                 croquetasQty++;
+                cm.coinsToAdd++;
+                cm.addCoins();
                 croquetasQtyTxt.text = croquetasQty.ToString();
             }
             else if(exisitingItem != null){

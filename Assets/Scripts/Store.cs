@@ -36,6 +36,7 @@ public class Store : MonoBehaviour
     private void Awake()
     {
         playerInputs = new PlayerInputAction();
+        storePanel.SetActive(false);
     }
 
     void StoreInput(InputAction.CallbackContext context)
@@ -57,17 +58,6 @@ public class Store : MonoBehaviour
     {
         storePanel.SetActive(false);
         panelUI.SetActive(true);
-    }
-
-    void Start()
-    {
-        storePanel.SetActive(false);
-        UpdateStore();
-    }
-
-    void Update()
-    {
-
     }
 
     void OnTriggerStay2D(Collider2D other)
