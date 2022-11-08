@@ -191,6 +191,17 @@ public class InventorySystem : MonoBehaviour
         Debug.Log(idItem.text);*/
     }
 
+    public int FindIDMineral(){
+        for(int i = 0; i < items.Count; i++){
+            if(items[i].obj.name == "Mineral"){
+                return i;
+            } else{
+                return -1;
+            }
+        }
+        return -1;
+    }
+
     public void Consume(int id){
         if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
             //Talps

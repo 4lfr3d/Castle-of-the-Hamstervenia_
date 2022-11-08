@@ -12,6 +12,8 @@ public class CommonEnemy : MonoBehaviour
     public float chaseRange = 300;
     public float attackRange = 50;
     public float speed = 50;
+    public int lifes;
+    public int coinsToAdd;
 
     public string enemyType;
 

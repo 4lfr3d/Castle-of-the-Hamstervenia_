@@ -15,6 +15,7 @@ public class CoinsManager : MonoBehaviour
     }
 
     public void addCoins(){
+        StopAllCoroutines();
         StartCoroutine(ShowCoinsAdd());
     }
 
