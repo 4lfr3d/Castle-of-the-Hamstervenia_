@@ -7,6 +7,8 @@ public class TaroAttack : MonoBehaviour
 {
     public Animator animator;
     private PlayerInputAction playerInputs;
+    public InventorySystem inv;
+    public CoinsManager cm;
 
     private bool isTaroAttacking = false;
 
@@ -19,7 +21,7 @@ public class TaroAttack : MonoBehaviour
     {
         //Debug.Log(isTaroAttacking);
         //Weapon transform Taro
-        this.transform.position=transform.parent.position;
+        this.transform.position = transform.parent.position;
 
         if(!AnimatorIsPlaying()){
             animator.SetBool("isAttacking", false); //Animator Attack check by Omar
@@ -50,21 +52,13 @@ public class TaroAttack : MonoBehaviour
         isTaroAttacking = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D col) {
-        if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            Destroy(col.gameObject);
-            isTaroAttacking = false; 
-        }
-    }
     private void OnTriggerStay2D(Collider2D col) {
         if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
             Destroy(col.gameObject);
-            isTaroAttacking = false; 
-        }
-    }
-    private void OnTriggerExit2D(Collider2D col) {
-        if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            Destroy(col.gameObject);
+            inv.croquetasQty = inv.croquetasQty + 5;
+            cm.coinsToAdd = cm.coinsToAdd + 5;
+            cm.addCoins();
+            inv.Update_Ui();
             isTaroAttacking = false; 
         }
     }

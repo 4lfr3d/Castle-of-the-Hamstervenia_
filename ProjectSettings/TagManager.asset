@@ -17,6 +17,8 @@ TagManager:
   - pantalla
   - confirmacion
   - SaveZone
+  - NPCs
+  - NPCVendor
   layers:
   - Default
   - TransparentFX

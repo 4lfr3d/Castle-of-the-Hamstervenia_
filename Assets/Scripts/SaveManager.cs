@@ -76,7 +76,7 @@ public class SaveManager : MonoBehaviour
 
                 inventoryTaro.Update_Ui();
                 inventoryTaro.EquipedItem(activeSave.idEquipableItem);
-                inventoryTaro.StartInventory();
+               
             } else{
                 activeSave.respawnPoint = this.transform.position;
                 activeSave.health = this.healthTaro.health;
