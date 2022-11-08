@@ -5,8 +5,12 @@ using UnityEngine.InputSystem;
 
 public class TaroAttack : MonoBehaviour
 {
+    // Cuca 3 Rata 5
     public Animator animator;
     private PlayerInputAction playerInputs;
+    public InventorySystem inv;
+    public CoinsManager cm;
+    public int damage = 1;
 
     private bool isTaroAttacking = false;
 
@@ -19,7 +23,7 @@ public class TaroAttack : MonoBehaviour
     {
         //Debug.Log(isTaroAttacking);
         //Weapon transform Taro
-        this.transform.position=transform.parent.position;
+        this.transform.position = transform.parent.position;
 
         if(!AnimatorIsPlaying()){
             animator.SetBool("isAttacking", false); //Animator Attack check by Omar
@@ -50,22 +54,21 @@ public class TaroAttack : MonoBehaviour
         isTaroAttacking = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D col) {
-        if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            Destroy(col.gameObject);
-            isTaroAttacking = false; 
-        }
-    }
     private void OnTriggerStay2D(Collider2D col) {
         if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            Destroy(col.gameObject);
-            isTaroAttacking = false; 
-        }
-    }
-    private void OnTriggerExit2D(Collider2D col) {
-        if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            Destroy(col.gameObject);
-            isTaroAttacking = false; 
+            col.gameObject.GetComponent<CommonEnemy>().lifes--;
+            if(col.gameObject.GetComponent<CommonEnemy>().lifes <= 0){
+                Destroy(col.gameObject);
+                inv.croquetasQty = inv.croquetasQty + col.gameObject.GetComponent<CommonEnemy>().coinsToAdd;
+                cm.coinsToAdd = cm.coinsToAdd + col.gameObject.GetComponent<CommonEnemy>().coinsToAdd;
+                cm.addCoins();
+                inv.Update_Ui();
+            }
+            Vector2 hitVector = (col.transform.position - transform.position).normalized;
+            hitVector.y = 0;
+            hitVector = hitVector.normalized;
+            col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000); 
+            isTaroAttacking = false;
         }
     }
 

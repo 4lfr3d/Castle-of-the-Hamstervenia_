@@ -25,7 +25,9 @@ public class InventorySystem : MonoBehaviour
 
     public TMP_Text croquetasQtyTxt;
     public int croquetasQty = 0;
+
     private PlayerInputAction playerInputs;
+    public CoinsManager cm;
 
     public void Awake(){
         playerInputs = new PlayerInputAction();
@@ -49,10 +51,6 @@ public class InventorySystem : MonoBehaviour
         playerInputs.Menú.Selected.Disable();
     }
 
-    public void StartInventory(){
-
-    }
-
     public void PickUp(GameObject item){
 
         if(item.GetComponent<Item>().stackable){
@@ -60,6 +58,8 @@ public class InventorySystem : MonoBehaviour
             InventoryItem exisitingItem = items.Find(x => x.obj.name == item.name);
             if(item.name == "Croquetas"){
                 croquetasQty++;
+                cm.coinsToAdd++;
+                cm.addCoins();
                 croquetasQtyTxt.text = croquetasQty.ToString();
             }
             else if(exisitingItem != null){
@@ -189,6 +189,17 @@ public class InventorySystem : MonoBehaviour
             EquipedItem(numberParse);
         }
         Debug.Log(idItem.text);*/
+    }
+
+    public int FindIDMineral(){
+        for(int i = 0; i < items.Count; i++){
+            if(items[i].obj.name == "Mineral"){
+                return i;
+            } else{
+                return -1;
+            }
+        }
+        return -1;
     }
 
     public void Consume(int id){

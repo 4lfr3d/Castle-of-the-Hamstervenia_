@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5427849660277004276}
   m_Layer: 0
   m_Name: Talpa
-  m_TagString: Untagged
+  m_TagString: NPCs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0391235, y: 9.622147}
+  m_Offset: {x: -5.0115967, y: 36.436462}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 77.660645, y: 86.1893}
+  m_Size: {x: 141.22046, y: 139.81793}
   m_EdgeRadius: 0
 --- !u!1001 &8367436369946732320
 PrefabInstance:
