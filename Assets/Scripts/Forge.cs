@@ -62,7 +62,6 @@ public class Forge : MonoBehaviour
         if (other.gameObject.name == "Sasha")
         {
             sashaTrigger = true;
-
         } else
         {
             sashaTrigger = false;

@@ -56,7 +56,7 @@ public class TaroAttack : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col) {
         if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
-            col.gameObject.GetComponent<CommonEnemy>().lifes--;
+            col.gameObject.GetComponent<CommonEnemy>().lifes = col.gameObject.GetComponent<CommonEnemy>().lifes - damage;
             if(col.gameObject.GetComponent<CommonEnemy>().lifes <= 0){
                 Destroy(col.gameObject);
                 inv.croquetasQty = inv.croquetasQty + col.gameObject.GetComponent<CommonEnemy>().coinsToAdd;
