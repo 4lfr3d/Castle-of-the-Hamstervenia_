@@ -10,6 +10,8 @@ public class Dialogue
 
     public int cont;
 
+    
+
     [TextArea(3, 10)]
     public string[] sentences;
 

@@ -41,16 +41,17 @@ public class Store : MonoBehaviour
     void StoreInput(InputAction.CallbackContext context)
     {
         if (talpaTrigger)
+
         {
             UpdateStore();
-            displayStore();
+            //displayStore();
         }
     }
 
-    void displayStore()
+    public void displayStore()
     {
         storePanel.SetActive(true);
-        panelUI.SetActive(false);
+       // panelUI.SetActive(false);
     }
 
     public void ExitStore()
