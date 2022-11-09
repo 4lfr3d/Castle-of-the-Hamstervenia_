@@ -13,7 +13,7 @@ public class GameController : MonoBehaviourPunCallbacks
     public string playerPrefab; //Prefab de la carpeta de recursos
 
     public Transform[] spawnPlayerPositions; //Posiciones donde se puede colocar los players
-    // public PlayerController[] players; //controlador de player
+    public PM[] players; //controlador de player
 
     private int playerInGame; //Numero de players en el room
 
@@ -24,7 +24,7 @@ public class GameController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        //players = new PlayerController[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
+        players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
         photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
     }
 
@@ -40,10 +40,10 @@ public class GameController : MonoBehaviourPunCallbacks
         int randomPosition = Random.Range(0, spawnPlayerPositions.Length); //Obtener una posicion random de lista de posiciones
         GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab, spawnPlayerPositions[randomPosition].position, Quaternion.identity); //Instanciar el player en una posicion aleatoria
 
-        /*
-        PlayerController playScript = playerObj.GetComponent<PlayerController>(); //Obtener script que controla al jugador
-        playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork,LocalPlayer); //Mandar ejecutar funcion de inicializador de player
-        */
+        
+        PM playScript = playerObj.GetComponent<PM>(); //Obtener script que controla al jugador
+        playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer); //Mandar ejecutar funcion de inicializador de player
+        
     }
 
 }
