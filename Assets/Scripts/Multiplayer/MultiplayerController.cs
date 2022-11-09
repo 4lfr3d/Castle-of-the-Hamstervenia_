@@ -20,7 +20,8 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
+        //Debug.LogError("Iniciar Connection");
+        //PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
     }
 
     /*
@@ -40,6 +41,15 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     */
     public override void OnCreatedRoom(){
         Debug.Log("Se creo room: " + PhotonNetwork.CurrentRoom.Name);
+    }
+
+    // <summary>
+    // Unirse a room ya existente
+    // </summary>
+    // <param name="_name">Nombre del room al que se quiere unir</param>
+    public void JoinRoom(string _name)
+    {
+        PhotonNetwork.JoinRoom(_name);
     }
 
     /*

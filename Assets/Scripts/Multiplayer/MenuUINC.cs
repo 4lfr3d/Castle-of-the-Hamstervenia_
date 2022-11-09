@@ -20,6 +20,10 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     public Button startGameBtn; //Boton iniciar partida
     public TextMeshProUGUI playerTextList; //Texto para imprimir jugadores en room
 
+    void Start(){
+        PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
+    }
+
     /*
         <summary>
             Verificar si se establecio la conexion
@@ -28,6 +32,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster(){
         createRoomBtn.interactable = true; //Activar boton de crear room
         joinRoomBtn.interactable = true; //Activar boton de unirse a un room
+        Debug.Log("Connected");
     }
 
     /*
@@ -41,12 +46,19 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     }
 
     /*
+
+    */
+    public void CreateRoom(TMP_InputField _roomName){
+        MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+    }
+
+    /*
         <summary>
             Permite unirse a un room Existente
         </summary>
     */
     public void JoinRoom(TMP_InputField _roomName){
-        MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        MultiplayerController.instance.JoinRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
     }
 
     /*
