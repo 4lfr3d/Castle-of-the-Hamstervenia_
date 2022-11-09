@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23646325501952
-    m_Localized: Boss Rush
+    m_Localized: Multiplayer
     m_Metadata:
       m_Items: []
   - m_Id: 24194298736640
@@ -128,6 +128,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3436897843343360
     m_Localized: Graphics >>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17882875296018432
+    m_Localized: Player Info
     m_Metadata:
       m_Items: []
   references:

@@ -13,6 +13,8 @@ public class DialogueTrigger : MonoBehaviour
 
     public Store store;
 
+    public Forge forge;
+
     public GameObject conversationIcon;
 
     private PlayerInputAction playerInputs;
@@ -47,6 +49,7 @@ public class DialogueTrigger : MonoBehaviour
     public void showtienda(){
         Debug.Log("Display store");
         if(nombreVendedor == "Talpa") store.displayStore();
+        if(nombreVendedor == "Sasha") forge.displayForge();
     }
 
     public void showDialogo(){

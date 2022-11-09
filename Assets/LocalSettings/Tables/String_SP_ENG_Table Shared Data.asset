@@ -32,7 +32,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23646325501952
-    m_Key: Boss Rush
+    m_Key: Multijugador
     m_Metadata:
       m_Items: []
   - m_Id: 24194298736640
@@ -125,6 +125,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3436897843343360
     m_Key: Graficas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17882875296018432
+    m_Key: Player Info
     m_Metadata:
       m_Items: []
   m_Metadata:

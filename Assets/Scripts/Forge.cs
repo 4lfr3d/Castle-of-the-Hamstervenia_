@@ -41,11 +41,11 @@ public class Forge : MonoBehaviour
         if (sashaTrigger)
         {
             UpdateForge();
-            displayForge();
+            //displayForge();
         }
     }
 
-    void displayForge()
+    public void displayForge()
     {
         forgePanel.SetActive(true);
         panelUI.SetActive(false);

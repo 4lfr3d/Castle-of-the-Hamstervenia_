@@ -52,7 +52,7 @@ public class Store : MonoBehaviour
     public void displayStore()
     {
         storePanel.SetActive(true);
-       // panelUI.SetActive(false);
+        panelUI.SetActive(false);
     }
 
     public void ExitStore()
