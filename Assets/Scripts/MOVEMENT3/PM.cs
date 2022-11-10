@@ -1,17 +1,23 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PM : MonoBehaviour
+public class PM : MonoBehaviourPunCallbacks
 {
     
     public DATA data;
 
     #region COMPONENTES
+        [HideInInspector]
         public Rigidbody2D RB { get; private set; }
         public Animator animator;
         private PlayerInputAction playerInputs;
         private InputAction movement;
+        public Player photonPlayer;
+        public int id;
+        [HideInInspector]
     #endregion
 
     #region STATE PARAMETERS
@@ -445,6 +451,24 @@ public class PM : MonoBehaviour
             if(other.collider.CompareTag("Wall")){
                 IsWalled = false;
                 animator.SetBool("isWalled",false);
+            }
+        }
+    #endregion
+
+    #region MULTIPLAYER
+        /*
+            <summary>
+                Inicializar la informacion del player actual
+            </summary>
+            <param name="player">Data de player</param>
+        */
+        public void Init(Player player){
+            photonPlayer = player; //Asignar el player actual
+            id = player.ActorNumber; //Guardar el id del player
+            GameController.instance.players[id-1] = this; //Asignarlo a la lista de player dentro del game controller
+
+            if(!photonView.IsMine){
+                RB.isKinematic = true;
             }
         }
     #endregion
