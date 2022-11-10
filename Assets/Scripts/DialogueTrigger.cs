@@ -32,6 +32,9 @@ public class DialogueTrigger : MonoBehaviour
     private string tagNpc;
 
     private void Awake(){
+        conversationIcon = GameObject.Find("ConversationTrigger");
+        dialogoptions = GameObject.Find("DialogOptions");
+
         playerInputs = new PlayerInputAction();
         chat = false;
         dialogoptions.SetActive(false);

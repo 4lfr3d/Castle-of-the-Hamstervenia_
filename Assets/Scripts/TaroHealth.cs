@@ -20,6 +20,14 @@ public class TaroHealth : MonoBehaviour
 
     public GameObject deathPanel;
 
+    void Awake(){
+        deathPanel = GameObject.Find("DeathScene");
+
+        for(int i = 0; i < 6; i++){
+            seeds[i] = GameObject.Find("HamsterLife" + i.ToString()).GetComponent<RawImage>();
+        }
+    }
+
     void Start(){
         timeInmmunity = 0f;
     }

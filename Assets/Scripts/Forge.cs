@@ -9,6 +9,7 @@ public class Forge : MonoBehaviour
 {
     public InventorySystem inventoryTaro;
     public TaroAttack taroAttack;
+
     public ForgeInfo[] weapons;
     public GameObject forgePanel;
     public GameObject panelUI;
@@ -32,6 +33,14 @@ public class Forge : MonoBehaviour
 
     private void Awake()
     {
+        foreach(ForgeInfo item in weapons){
+            item.button = GameObject.Find("NeedleForge");
+        }
+
+        forgePanel = GameObject.Find("Forge");
+        panelUI = GameObject.Find("UIPlayer");
+        mineralQtyText = GameObject.Find("QtyForge");
+        
         playerInputs = new PlayerInputAction();
         forgePanel.SetActive(false);
     }
