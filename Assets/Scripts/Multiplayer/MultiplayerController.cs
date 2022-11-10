@@ -69,6 +69,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     */
     [PunRPC]
     public void LoadScene(string _nameScene){
+        Debug.Log("Entro");
         PhotonNetwork.LoadLevel(_nameScene);
     }
 }

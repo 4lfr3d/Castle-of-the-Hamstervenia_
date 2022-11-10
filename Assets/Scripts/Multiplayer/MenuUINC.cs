@@ -24,6 +24,10 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
     }
 
+    void Update(){
+        UpdatePlayerInfo();
+    }
+
     /*
         <summary>
             Verificar si se establecio la conexion
@@ -49,7 +53,6 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     */
     public void CreateRoom(TMP_InputField _roomName){
         MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
-        photonView.RPC("UpdatePlayerInfo",RpcTarget.All);
     }
 
     /*
@@ -59,7 +62,6 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     */
     public void JoinRoom(TMP_InputField _roomName){
         MultiplayerController.instance.JoinRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
-        photonView.RPC("UpdatePlayerInfo",RpcTarget.All);
     }
 
     /*
@@ -70,7 +72,6 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom(){
         lobbyWindow.SetActive(true);
         mainWindow.SetActive(false);
-        photonView.RPC("UpdatePlayerInfo", RpcTarget.All);
     }
 
     /*
@@ -111,6 +112,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         </summary>
     */
     public void StartGame(){
-        MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "SceneGameplay");
+        Debug.Log("Entro");
+        MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "firstScene");
     }
 }

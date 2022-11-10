@@ -19,6 +19,7 @@ TagManager:
   - SaveZone
   - NPCs
   - NPCVendor
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
