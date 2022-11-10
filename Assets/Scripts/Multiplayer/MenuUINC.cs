@@ -24,10 +24,6 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
     }
 
-    void Update(){
-        UpdatePlayerInfo();
-    }
-
     /*
         <summary>
             Verificar si se establecio la conexion
@@ -53,6 +49,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     */
     public void CreateRoom(TMP_InputField _roomName){
         MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        photonView.RPC("UpdatePlayerInfo",RpcTarget.All);
     }
 
     /*
@@ -62,6 +59,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     */
     public void JoinRoom(TMP_InputField _roomName){
         MultiplayerController.instance.JoinRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        photonView.RPC("UpdatePlayerInfo",RpcTarget.All);
     }
 
     /*
