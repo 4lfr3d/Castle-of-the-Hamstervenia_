@@ -24,6 +24,10 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
     }
 
+    void Update(){
+        UpdatePlayerInfo();
+    }
+
     /*
         <summary>
             Verificar si se establecio la conexion
