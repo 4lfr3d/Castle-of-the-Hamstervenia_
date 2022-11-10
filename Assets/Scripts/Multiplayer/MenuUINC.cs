@@ -32,7 +32,6 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster(){
         createRoomBtn.interactable = true; //Activar boton de crear room
         joinRoomBtn.interactable = true; //Activar boton de unirse a un room
-        Debug.Log("Connected");
     }
 
     /*
