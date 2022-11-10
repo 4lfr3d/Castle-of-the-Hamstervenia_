@@ -4,25 +4,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CommonEnemy : MonoBehaviour
 {
-    private string currentState = "IdleState";
-    private Transform target;
     public float chaseRange = 300;
     public float attackRange = 50;
-    public float speed = 50;
     public int lifes;
     public int coinsToAdd;
-
     public string enemyType;
-
     public Animator animator;
+
+    private string currentState = "IdleState";
+    private NavMeshAgent agent;
+    private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Awake(){
+        target = GameObject.Find("Protag").transform;
     }
 
     // Update is called once per frame
@@ -33,7 +37,14 @@ public class CommonEnemy : MonoBehaviour
         //r for Rat, c for cockroach
         if(enemyType == "r"){
             if(currentState == "IdleState"){
-                if(distance < chaseRange) currentState = "ChaseState";
+                if(distance < chaseRange){
+                    currentState = "ChaseState";
+                    agent.isStopped = false;
+                    agent.destination = target.position;
+                }
+                else{
+                    agent.isStopped = true;
+                }
             } else if(currentState == "ChaseState"){
                 animator.SetTrigger("chase");
                 animator.SetBool("isAttacking", false);
@@ -44,31 +55,33 @@ public class CommonEnemy : MonoBehaviour
 
                 if(target.position.x > transform.position.x){
                     //Move right
-                    transform.Translate(transform.right*speed*Time.deltaTime);
                     transform.rotation = Quaternion.Euler(0,180,0);
                 } else{
                     //Move left
-                    transform.Translate(-transform.right*speed*Time.deltaTime);
                     transform.rotation = Quaternion.Euler(0,0,0);
                 }
             } else if(currentState == "AttackState"){
                 animator.SetBool("isAttacking", true);
                 SoundManager.instance.RatonAtaque();
-                if(distance>attackRange){
+                if(distance > attackRange){
                     currentState = "ChaseState";
                 }
             }
         } else if(enemyType == "c"){
             if(distance < chaseRange){
+                agent.isStopped = false;
+                agent.destination = target.position;
+
                 if(target.position.x > transform.position.x){
                     //Move right
-                    transform.Translate(transform.right*speed*Time.deltaTime);
                     transform.rotation = Quaternion.Euler(0,0,0);
                 } else{
                     //Move left
-                    transform.Translate(-transform.right*speed*Time.deltaTime);
                     transform.rotation = Quaternion.Euler(0,180,0);
                 }
+            }
+            else{
+                agent.isStopped = true;
             }
         }
     }
