@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: c52935f9922d36f41ad8e0fb77cdcb58, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ac2722c71fb101746bd4917190e28014, type: 2}
 --- !u!1001 &1351463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c72896c9e028245438cf9bcacb3e70b0, type: 2}
   animator: {fileID: 1288509551}
+  id: 0
 --- !u!114 &8696283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6290,6 +6291,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: -5112768642632791819, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8696269}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6898,6 +6903,7 @@ MonoBehaviour:
   inv: {fileID: 8696285}
   cm: {fileID: 1428353360}
   damage: 1
+  damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
 --- !u!70 &284352328
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -26978,21 +26984,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: -5112768642632791819, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8696269}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27130,6 +27128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: -5112768642632791819, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8696269}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -30611,6 +30613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1180336269059349062, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8696269}
     - target: {fileID: 1180336269059349181, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_Name
       value: Rat (1)
@@ -31457,6 +31463,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 404719614, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: m_Speed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 404719614, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: m_Acceleration
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -31501,6 +31515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1180336269059349062, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8696269}
     - target: {fileID: 1180336269059349181, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_Name
       value: Rat
