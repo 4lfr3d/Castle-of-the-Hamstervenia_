@@ -19,6 +19,8 @@ TagManager:
   - SaveZone
   - NPCs
   - NPCVendor
+  - CatBoss
+  - BossHit
   layers:
   - Default
   - TransparentFX

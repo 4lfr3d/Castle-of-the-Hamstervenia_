@@ -69,6 +69,17 @@ public class TaroAttack : MonoBehaviour
             hitVector = hitVector.normalized;
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000); 
             isTaroAttacking = false;
+        } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
+            col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes = col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes - damage;
+            col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().animator.SetTrigger("Hit");
+            if(col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes <= 0){
+                Destroy(col.gameObject.transform.parent.parent.gameObject);
+                inv.croquetasQty = inv.croquetasQty + col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().coinsToAdd;
+                cm.coinsToAdd = cm.coinsToAdd + col.gameObject.GetComponent<CatBossIA>().coinsToAdd;
+                cm.addCoins();
+                inv.Update_Ui();
+            }
+            isTaroAttacking = false;
         }
     }
 
