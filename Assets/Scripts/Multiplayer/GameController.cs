@@ -46,4 +46,14 @@ public class GameController : MonoBehaviourPunCallbacks
         
     }
 
+    public void WinGame(){
+        Invoke("GoBackToMenu", 3f);
+    }
+
+    void GoBackToMenu(){
+        Destroy(MultiplayerController.instance.gameObject);
+        PhotonNetwork.LeaveRoom();
+        MultiplayerController.instance.LoadScene("StartMenu");
+    }
+
 }

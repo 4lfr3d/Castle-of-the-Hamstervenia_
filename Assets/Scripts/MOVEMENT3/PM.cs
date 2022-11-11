@@ -441,6 +441,9 @@ public class PM : MonoBehaviourPunCallbacks
                 IsWalled = true;
                 animator.SetBool("isWalled",true);
             }
+            if(other.collider.CompareTag("WinPoint")){
+                photonView.RPC("Winner", RpcTarget.All, other.gameObject.GetComponent<PhotonView>().ViewID);
+            }
         }
 
         private void OnCollisionExit2D(Collision2D other){
@@ -452,6 +455,7 @@ public class PM : MonoBehaviourPunCallbacks
                 IsWalled = false;
                 animator.SetBool("isWalled",false);
             }
+
         }
     #endregion
 
@@ -470,6 +474,13 @@ public class PM : MonoBehaviourPunCallbacks
             if(!photonView.IsMine){
                 RB.isKinematic = true;
             }
+        }
+
+        [PunRPC]
+        void Winner(int _id){
+            GameObject obj = PhotonNetwork.GetPhotonView(_id).gameObject;
+            obj.gameObject.SetActive(false);
+            GameController.instance.WinGame();
         }
     #endregion
 
