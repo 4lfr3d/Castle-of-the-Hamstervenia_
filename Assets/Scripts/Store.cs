@@ -35,9 +35,10 @@ public class Store : MonoBehaviour
 
     private void Awake()
     {
-        items[0].obj = GameObject.Find("TalpsStore");
-        items[1].obj = GameObject.Find("MineralStore");
-        items[2].obj = GameObject.Find("BendicionStore");
+        GameObject listItems = GameObject.Find("StoreItems");
+        items[0].obj = listItems.transform.GetChild(0).gameObject;
+        items[1].obj = listItems.transform.GetChild(1).gameObject;
+        items[2].obj = listItems.transform.GetChild(2).gameObject;
 
         talpsText = GameObject.Find("TalpsButton");
         mineralText = GameObject.Find("MineralButton");

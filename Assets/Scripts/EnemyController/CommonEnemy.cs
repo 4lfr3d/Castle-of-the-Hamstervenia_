@@ -8,7 +8,7 @@ using UnityEngine;
 public class CommonEnemy : MonoBehaviour
 {
     private string currentState = "IdleState";
-    private Transform target;
+    public Transform target;
     public float chaseRange = 300;
     public float attackRange = 50;
     public float speed = 50;
@@ -22,12 +22,15 @@ public class CommonEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(target == null){
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         float distance = Vector3.Distance(transform.position, target.position);
 
         //r for Rat, c for cockroach

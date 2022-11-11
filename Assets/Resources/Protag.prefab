@@ -376,7 +376,7 @@ MonoBehaviour:
   equipedItemImg: {fileID: 0}
   equipedItemQty: {fileID: 0}
   idItem: {fileID: 0}
-  idSaver: -1
+  idSaver: 0
   croquetasQtyTxt: {fileID: 0}
   croquetasQty: 0
   cm: {fileID: 0}

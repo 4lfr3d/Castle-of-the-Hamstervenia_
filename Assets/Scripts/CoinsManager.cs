@@ -9,8 +9,15 @@ public class CoinsManager : MonoBehaviour
     public InventorySystem inventoryTaro;
     public int coinsToAdd;
 
+    void Start(){
+        //inventoryTaro = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+    }
+
     void Update()
     {
+        if(inventoryTaro == null){
+            inventoryTaro = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+        }
         this.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = inventoryTaro.croquetasQty.ToString();
     }
 

@@ -35,10 +35,10 @@ public class InventorySystem : MonoBehaviour
         
         for(int i = 0; i < 6; i++){
             items_images[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
-            items_counters[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+            items_counters[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
         }
 
-        description_image = GameObject.Find("Description").GetComponent<Image>();
+        description_image = GameObject.Find("DescriptionImage").GetComponent<Image>();
         hud_item = GameObject.Find("ConsumableItem").GetComponent<Image>();
         description_Title = GameObject.Find("Infotitle").GetComponent<TMP_Text>();
         item_description = GameObject.Find("ItemDescription").GetComponent<TMP_Text>();
@@ -51,7 +51,10 @@ public class InventorySystem : MonoBehaviour
         playerInputs = new PlayerInputAction();
     }
 
-    void Update(){
+    void Start(){
+        description_image.gameObject.SetActive(false);
+        description_Title.gameObject.SetActive(false);
+        item_description.gameObject.SetActive(false);
     }
 
     private void OnEnable(){

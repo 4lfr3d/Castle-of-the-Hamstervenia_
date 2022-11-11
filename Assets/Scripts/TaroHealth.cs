@@ -30,6 +30,8 @@ public class TaroHealth : MonoBehaviour
 
     void Start(){
         timeInmmunity = 0f;
+
+        deathPanel.SetActive(false);
     }
 
     // Update is called once per frame
