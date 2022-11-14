@@ -26,7 +26,7 @@ public class CommonEnemy : MonoBehaviour
     }
 
     void Awake(){
-        target = GameObject.Find("Protag").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
