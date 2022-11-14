@@ -30,7 +30,7 @@ public class CommonEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(target == null){
             target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -42,16 +42,18 @@ public class CommonEnemy : MonoBehaviour
             if(currentState == "IdleState"){
                 if(distance < chaseRange){
                     currentState = "ChaseState";
+                    animator.SetBool("isIdle", false);
                     agent.isStopped = false;
-                    agent.destination = target.position;
-                }
-                else{
-                    agent.isStopped = true;
                 }
             } else if(currentState == "ChaseState"){
+                agent.destination = target.position;
                 animator.SetTrigger("chase");
                 animator.SetBool("isAttacking", false);
-
+                if(distance > chaseRange){
+                    currentState = "IdleState";
+                    animator.SetBool("isIdle", true);
+                    agent.isStopped = true;
+                }
                 if(distance < attackRange){
                     currentState = "AttackState";
                 }
@@ -63,7 +65,9 @@ public class CommonEnemy : MonoBehaviour
                     //Move left
                     transform.rotation = Quaternion.Euler(0,0,0);
                 }
+
             } else if(currentState == "AttackState"){
+                agent.destination = target.position;
                 animator.SetBool("isAttacking", true);
                 SoundManager.instance.RatonAtaque();
                 if(distance > attackRange){
