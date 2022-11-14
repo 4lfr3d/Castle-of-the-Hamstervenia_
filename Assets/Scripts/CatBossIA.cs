@@ -9,7 +9,7 @@ public class CatBossIA : MonoBehaviour
 
     public Animator animator;
     public Transform center;
-    public Transform target;
+    private Transform target;
 
     private float distance;
 
@@ -22,8 +22,9 @@ public class CatBossIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(target.position.x - center.position.x);
-        Debug.Log(lifes);
+        if(target == null){
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
         distance = target.position.x - center.position.x;
         if(distance <= -750 || distance >= 750){
