@@ -20,6 +20,9 @@ public class TaroHealth : MonoBehaviour
 
     public GameObject deathPanel;
 
+    public Material damageColor;
+    private Material taroMaterial;
+
     void Awake(){
         deathPanel = GameObject.Find("DeathScene");
 
@@ -74,6 +77,7 @@ public class TaroHealth : MonoBehaviour
                     this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     StartCoroutine(DeathTaro());
                 }else{
+                    StartCoroutine(DamageToTaro());
                     this.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector*150000);
                     anim.SetTrigger("Damaged");
                     health--;
@@ -97,5 +101,14 @@ public class TaroHealth : MonoBehaviour
         health = numOfSeeds;
         deathPanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    IEnumerator DamageToTaro(){
+        taroMaterial = this.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material;
+        this.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material = damageColor;
+
+        yield return new WaitForSeconds(0.25f);
+
+        this.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material = taroMaterial;
     }
 }

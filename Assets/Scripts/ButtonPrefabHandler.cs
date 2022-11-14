@@ -8,6 +8,7 @@ public class ButtonPrefabHandler : MonoBehaviour
     private Store taroStore;
     private Forge taroForge;
     private DialogueTrigger taroDialogue;
+    private TaroHealth taroHealth;
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +23,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         }
         if(taroDialogue == null){
             taroDialogue = GameObject.FindGameObjectWithTag("Player").GetComponent<DialogueTrigger>();
+        }
+        if(taroHealth == null){
+            taroHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<TaroHealth>();
         }
     }
 
@@ -58,5 +62,10 @@ public class ButtonPrefabHandler : MonoBehaviour
     }
     public void Mejora(int id){
         taroForge.Mejora(id);
+    }
+
+    //Respawn
+    public void Respawn(){
+        taroHealth.Respawn();
     }
 }
