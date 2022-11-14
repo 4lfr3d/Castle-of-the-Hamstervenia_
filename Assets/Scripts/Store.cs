@@ -46,7 +46,7 @@ public class Store : MonoBehaviour
         croquetas = GameObject.Find("CroquetasText").GetComponent<TMP_Text>();
         storePanel = GameObject.Find("Store");
         panelUI = GameObject.Find("UIPlayer");
-        interactionIcon = GameObject.Find("SaleIcon");
+        //interactionIcon = GameObject.Find("SaleIcon");
 
         playerInputs = new PlayerInputAction();
         storePanel.SetActive(false);
@@ -79,13 +79,13 @@ public class Store : MonoBehaviour
         if (other.gameObject.name == "Talpa")
         {
             talpaTrigger = true;
-            interactionIcon.gameObject.transform.position = other.gameObject.transform.position + new Vector3(0, 75, 0);
-            interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            //interactionIcon.gameObject.transform.position = other.gameObject.transform.position + new Vector3(0, 75, 0);
+            //interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
         } else
         {
             talpaTrigger = false;
-            interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+           // interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

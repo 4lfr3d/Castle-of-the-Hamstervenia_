@@ -35,6 +35,7 @@ public class InventorySystem : MonoBehaviour
         
         for(int i = 0; i < 6; i++){
             items_images[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
+            items_images[i].color = new Color(items_images[i].color.r, items_images[i].color.g, items_images[i].color.b, 0f);
             items_counters[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
         }
 
@@ -133,6 +134,7 @@ public class InventorySystem : MonoBehaviour
                 items_counters[i].text = items[i].stack.ToString();
             }
             items_counters[i].gameObject.SetActive(true);
+            items_images[i].color = new Color(items_images[i].color.r, items_images[i].color.g, items_images[i].color.b, 255f);
             items_images[i].gameObject.SetActive(true);
         }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44334614, g: 0.4926141, b: 0.5722537, a: 1}
+  m_IndirectSpecularColor: {r: 0.44334638, g: 0.49261445, b: 0.5722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -31883,6 +31883,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 384646505, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 173.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 384646505, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.766
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013072, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 176.5164
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013072, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013072, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.341309
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013072, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013073, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_margin.x
+      value: -1.1525879
+      objectReference: {fileID: 0}
+    - target: {fileID: 697013073, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_margin.z
+      value: -0.07434082
+      objectReference: {fileID: 0}
     - target: {fileID: 857415618, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_Name
       value: ConsumableText
@@ -31947,6 +31979,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1428353359, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 214.5074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428353359, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 827
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428353359, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -309
+      objectReference: {fileID: 0}
     - target: {fileID: 1428353360, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: inventoryTaro
       value: 
@@ -31974,6 +32018,26 @@ PrefabInstance:
     - target: {fileID: 1774313289, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030148198, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 33.7975
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030148198, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73674
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030148198, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.98232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030148198, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.98232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030148198, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 16.6536
       objectReference: {fileID: 0}
     - target: {fileID: 43208986320049838, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
