@@ -24,6 +24,14 @@ public class PauseMenu : MonoBehaviour
     private PlayerInputAction playerInputs;
 
     void Awake(){
+        pauseMenuUI = GameObject.Find("PauseMenu");
+        settingsUI = GameObject.Find("Settings");
+        inventoryUI = GameObject.Find("Inventario");
+        canvasGameUI = GameObject.Find("UIPlayer");
+        gameplayUI = GameObject.Find("Controls");
+        mapUI = GameObject.Find("Map");
+        storePanel = GameObject.Find("Store");
+
         pauseMenuUI.SetActive(false);
 
         playerInputs = new PlayerInputAction();

@@ -32,6 +32,9 @@ public class CommonEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(target == null){
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         float distance = Vector3.Distance(transform.position, target.position);
 
         //r for Rat, c for cockroach

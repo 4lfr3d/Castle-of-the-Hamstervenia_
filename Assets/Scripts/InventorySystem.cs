@@ -30,10 +30,31 @@ public class InventorySystem : MonoBehaviour
     public CoinsManager cm;
 
     public void Awake(){
+        ui_Window = GameObject.Find("Inventario");
+        ui_Description_window = GameObject.Find("Info");
+        
+        for(int i = 0; i < 6; i++){
+            items_images[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
+            items_counters[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
+        }
+
+        description_image = GameObject.Find("DescriptionImage").GetComponent<Image>();
+        hud_item = GameObject.Find("ConsumableItem").GetComponent<Image>();
+        description_Title = GameObject.Find("Infotitle").GetComponent<TMP_Text>();
+        item_description = GameObject.Find("ItemDescription").GetComponent<TMP_Text>();
+        equipedItemImg = GameObject.Find("ConsumableItem").GetComponent<Image>();
+        equipedItemQty = GameObject.Find("ConsumableText").GetComponent<TMP_Text>();
+        idItem = GameObject.Find("idHolderInvisible").GetComponent<TMP_Text>();
+        croquetasQtyTxt = GameObject.Find("CroquetasQty").GetComponent<TMP_Text>();
+        cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
+
         playerInputs = new PlayerInputAction();
     }
 
-    void Update(){
+    void Start(){
+        description_image.gameObject.SetActive(false);
+        description_Title.gameObject.SetActive(false);
+        item_description.gameObject.SetActive(false);
     }
 
     private void OnEnable(){

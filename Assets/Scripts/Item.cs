@@ -24,7 +24,11 @@ public class Item : MonoBehaviour
     [Header("Custom Events")]
     public UnityEvent consumeEvent;
 
-
+    void Update(){
+        if(invsys == null){
+            invsys = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+        }
+    }
     
     private void Reset(){
         GetComponent<Collider2D>().isTrigger = true;

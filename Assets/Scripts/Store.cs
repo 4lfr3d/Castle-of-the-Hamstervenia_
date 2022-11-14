@@ -35,6 +35,19 @@ public class Store : MonoBehaviour
 
     private void Awake()
     {
+        GameObject listItems = GameObject.Find("StoreItems");
+        items[0].obj = listItems.transform.GetChild(0).gameObject;
+        items[1].obj = listItems.transform.GetChild(1).gameObject;
+        items[2].obj = listItems.transform.GetChild(2).gameObject;
+
+        talpsText = GameObject.Find("TalpsButton");
+        mineralText = GameObject.Find("MineralButton");
+        bendicionText = GameObject.Find("BendicionButton");
+        croquetas = GameObject.Find("CroquetasText").GetComponent<TMP_Text>();
+        storePanel = GameObject.Find("Store");
+        panelUI = GameObject.Find("UIPlayer");
+        interactionIcon = GameObject.Find("SaleIcon");
+
         playerInputs = new PlayerInputAction();
         storePanel.SetActive(false);
     }

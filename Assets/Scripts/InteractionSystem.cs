@@ -20,6 +20,8 @@ public class InteractionSystem : MonoBehaviour
     private PlayerInputAction playerInputs;
 
     private void Awake(){
+        interactionButton = GameObject.Find("manoAgarrar");
+
         playerInputs = new PlayerInputAction();
     }
 
