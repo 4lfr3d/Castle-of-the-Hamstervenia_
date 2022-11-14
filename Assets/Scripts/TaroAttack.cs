@@ -18,6 +18,7 @@ public class TaroAttack : MonoBehaviour
 
     private void Awake(){
         playerInputs = new PlayerInputAction();
+        enemyMaterial = Resources.Load("Materials/Damnage.mat", typeof(Material)) as Material;
     }
     
     // Update is called once per frame
