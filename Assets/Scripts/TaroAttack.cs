@@ -11,8 +11,10 @@ public class TaroAttack : MonoBehaviour
     public InventorySystem inv;
     public CoinsManager cm;
     public int damage = 1;
+    public Material damageColor;
 
     private bool isTaroAttacking = false;
+    private Material enemyMaterial;
 
     private void Awake(){
         playerInputs = new PlayerInputAction();
@@ -67,7 +69,19 @@ public class TaroAttack : MonoBehaviour
             Vector2 hitVector = (col.transform.position - transform.position).normalized;
             hitVector.y = 0;
             hitVector = hitVector.normalized;
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000); 
+            col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000);
+            StartCoroutine(DamageToEnemy(col.transform.GetChild(0).gameObject)); 
+            isTaroAttacking = false;
+        } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
+            col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes = col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes - damage;
+            col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().animator.SetTrigger("Hit");
+            if(col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes <= 0){
+                Destroy(col.gameObject.transform.parent.parent.gameObject);
+                inv.croquetasQty = inv.croquetasQty + col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().coinsToAdd;
+                cm.coinsToAdd = cm.coinsToAdd + col.gameObject.GetComponent<CatBossIA>().coinsToAdd;
+                cm.addCoins();
+                inv.Update_Ui();
+            }
             isTaroAttacking = false;
         }
     }
@@ -76,5 +90,14 @@ public class TaroAttack : MonoBehaviour
     bool AnimatorIsPlaying(){
         return animator.GetCurrentAnimatorStateInfo(0).length >
             animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
+
+    IEnumerator DamageToEnemy(GameObject enemy){
+        enemyMaterial = enemy.GetComponent<Renderer>().material;
+        enemy.GetComponent<Renderer>().material = damageColor;
+
+        yield return new WaitForSeconds(0.25f);
+
+        enemy.GetComponent<Renderer>().material = enemyMaterial;
     }
 }

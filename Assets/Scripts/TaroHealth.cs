@@ -67,7 +67,7 @@ public class TaroHealth : MonoBehaviour
         Debug.Log(hitVector);
 
         if(timeInmmunity > 3f){
-            if(other.gameObject.tag == "Enemy"){
+            if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "BossHit"){
                 if(health == 1){
                     anim.SetTrigger("isDeath");
                     health--;
