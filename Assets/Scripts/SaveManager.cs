@@ -37,10 +37,11 @@ public class SaveManager : MonoBehaviour
             textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
             saveOptions = GameObject.Find("SaveOptions");
             interactionButton = GameObject.Find("InteractSaveZone");
+
+            saveOptions.SetActive(false);
         }
 
         playerInputs = new PlayerInputAction();
-        saveOptions.SetActive(false);
 
         Load();
     }
