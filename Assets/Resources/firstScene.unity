@@ -27306,6 +27306,7 @@ MonoBehaviour:
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
+  saveOptions: {fileID: 0}
 --- !u!114 &1330825297 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6721545551432920954, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
@@ -30504,6 +30505,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6718050866402750357, guid: 3aad705183a9a824db8e57456696f49f, type: 3}
   m_PrefabInstance: {fileID: 656950331}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1947305580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1332511504, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+  m_PrefabInstance: {fileID: 6721545552554026795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1956609757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39988022854f7fb488c16e680b750e17, type: 3}
@@ -31884,7 +31890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -31896,7 +31902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Mejora
+      value: displayUpgrade
       objectReference: {fileID: 0}
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -31905,10 +31911,10 @@ PrefabInstance:
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1947305580}
     - target: {fileID: 93720994, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 384646505, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_SizeDelta.x
@@ -31961,7 +31967,7 @@ PrefabInstance:
     - target: {fileID: 1332511506, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6721545552554026798}
     - target: {fileID: 1332511506, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -31972,7 +31978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1332511506, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Forge, Assembly-CSharp
+      value: ButtonPrefabHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1332511506, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -32981,6 +32987,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0

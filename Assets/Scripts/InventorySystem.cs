@@ -218,8 +218,6 @@ public class InventorySystem : MonoBehaviour
         for(int i = 0; i < items.Count; i++){
             if(items[i].obj.name == "Mineral"){
                 return i;
-            } else{
-                return -1;
             }
         }
         return -1;

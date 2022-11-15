@@ -33,9 +33,7 @@ public class Forge : MonoBehaviour
 
     private void Awake()
     {
-        foreach(ForgeInfo item in weapons){
-            item.button = GameObject.Find("NeedleForge");
-        }
+        weapons[0].button = GameObject.Find("NeedleForge");
 
         forgePanel = GameObject.Find("Forge");
         panelUI = GameObject.Find("UIPlayer");
@@ -43,6 +41,10 @@ public class Forge : MonoBehaviour
         
         playerInputs = new PlayerInputAction();
         forgePanel.SetActive(false);
+    }
+
+
+    void Update(){
     }
 
     void ForgeInput(InputAction.CallbackContext context)
@@ -79,57 +81,48 @@ public class Forge : MonoBehaviour
 
     public void Mejora(int id)
     {
-        inventoryTaro.items[idMineral].stack = inventoryTaro.items[idMineral].stack - weapons[id].cost;
+        for(int i = 0; i < weapons[id].cost; i++){
+            inventoryTaro.Consume(inventoryTaro.FindIDMineral());
+        }
         weapons[id].actualLevel++;
         taroAttack.damage = weapons[id].actualLevel;
-        weapons[id].cost = weapons[id].cost + 2;
         UpdateForge();
+        weapons[id].cost = weapons[id].cost + 2;
         weapons[id].button.transform.GetChild(5).gameObject.SetActive(false);
     }
 
     public void UpdateForge(){
         idMineral = inventoryTaro.FindIDMineral();
-        foreach(ForgeInfo forgeitem in weapons){
             if(idMineral != -1){
-                if(inventoryTaro.items[idMineral].stack >= forgeitem.cost && forgeitem.actualLevel < forgeitem.maxLevel){
-                    forgeitem.button.GetComponent<Button>().interactable = true;
-                    forgeitem.button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = true;
+                if(inventoryTaro.items[idMineral].stack >= weapons[0].cost && weapons[0].actualLevel < weapons[0].maxLevel){
+                    weapons[0].button.GetComponent<Button>().interactable = true;
+                    weapons[0].button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = true;
                     mineralQtyText.GetComponent<TMP_Text>().text = inventoryTaro.items[idMineral].stack.ToString();
-                    forgeitem.button.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Level " + (forgeitem.actualLevel + 1).ToString();
-                    forgeitem.button.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "Level " + (forgeitem.actualLevel).ToString();
-                    forgeitem.button.transform.GetChild(5).GetChild(1).gameObject.GetComponent<TMP_Text>().text = "Level " + (forgeitem.actualLevel + 1).ToString();
-                    forgeitem.button.transform.GetChild(5).GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Damage " + (forgeitem.actualLevel + 1).ToString();
+                    weapons[0].button.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "Level " + (weapons[0].actualLevel + 1).ToString();
+                    weapons[0].button.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Level " + (weapons[0].actualLevel).ToString();
+                    weapons[0].button.transform.GetChild(5).GetChild(1).gameObject.GetComponent<TMP_Text>().text = "Level " + (weapons[0].actualLevel + 1).ToString();
+                    weapons[0].button.transform.GetChild(5).GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Damage " + (weapons[0].actualLevel + 1).ToString();
                 } else{
-                    forgeitem.button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
-                    forgeitem.button.GetComponent<Button>().interactable = false;
+                    weapons[0].button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
+                    weapons[0].button.GetComponent<Button>().interactable = false;
                 }
 
-                if(forgeitem.actualLevel == forgeitem.maxLevel){
-                    forgeitem.button.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Level Max";
-                    forgeitem.button.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "Level Max";
+                if(weapons[0].actualLevel == weapons[0].maxLevel){
+                    weapons[0].button.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "Level Max";
+                    weapons[0].button.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Level Max";
                 }
             }
             else{
+                weapons[0].button.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "Level " + (weapons[0].actualLevel + 1).ToString();
+                weapons[0].button.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Level " + (weapons[0].actualLevel).ToString();
                 mineralQtyText.GetComponent<TMP_Text>().text = "0";
-                forgeitem.button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
-                forgeitem.button.GetComponent<Button>().interactable = false;
+                weapons[0].button.transform.GetChild(5).gameObject.GetComponent<Button>().interactable = false;
+                weapons[0].button.GetComponent<Button>().interactable = false;
             }
-        }
     }
 
     public void displayUpgrade(GameObject weapon){
         weapon.SetActive(true);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 

@@ -217,16 +217,6 @@ MonoBehaviour:
     actualLevel: 1
     maxLevel: 10
     button: {fileID: 0}
-  - name: Hammer
-    cost: 1
-    actualLevel: 1
-    maxLevel: 20
-    button: {fileID: 0}
-  - name: Pop
-    cost: 1
-    actualLevel: 1
-    maxLevel: 20
-    button: {fileID: 0}
   forgePanel: {fileID: 0}
   panelUI: {fileID: 0}
   mineralQtyText: {fileID: 0}
