@@ -30,6 +30,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         if(taroHealth == null){
             taroHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<TaroHealth>();
         }
+        if(savemang == null){
+            savemang = GameObject.FindGameObjectWithTag("Player").GetComponent<SaveManager>();
+        }
     }
 
     //Inv System
@@ -70,7 +73,7 @@ public class ButtonPrefabHandler : MonoBehaviour
     //MultiplayerController
 
     public void SalirMultiJugador(){
-        gameController.WinGame();
+        GameController.instance.WinGame();
     }
 
     //save
