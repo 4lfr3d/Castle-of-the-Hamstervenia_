@@ -11,6 +11,7 @@ public class ButtonPrefabHandler : MonoBehaviour
     private GameController gameController;
     private SaveManager savemang;
 
+    private TaroHealth taroHealth;
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +26,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         }
         if(taroDialogue == null){
             taroDialogue = GameObject.FindGameObjectWithTag("Player").GetComponent<DialogueTrigger>();
+        }
+        if(taroHealth == null){
+            taroHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<TaroHealth>();
         }
     }
 
@@ -74,4 +78,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         savemang.Save();
     }
 
+
+    //Respawn
+    public void Respawn(){
+        taroHealth.Respawn();
+    }
 }

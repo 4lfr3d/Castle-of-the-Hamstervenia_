@@ -9,12 +9,12 @@ public class TaroAttack : MonoBehaviour
     public Animator animator;
     private PlayerInputAction playerInputs;
     public InventorySystem inv;
-    public CoinsManager cm;
     public int damage = 1;
     public Material damageColor;
 
     private bool isTaroAttacking = false;
     private Material enemyMaterial;
+    private CoinsManager cm;
 
     private void Awake(){
         playerInputs = new PlayerInputAction();
@@ -30,6 +30,9 @@ public class TaroAttack : MonoBehaviour
         if(!AnimatorIsPlaying()){
             animator.SetBool("isAttacking", false); //Animator Attack check by Omar
             isTaroAttacking = false; 
+        }
+        if(cm == null){
+            cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
 
     }
@@ -60,17 +63,17 @@ public class TaroAttack : MonoBehaviour
         if((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Destructible") && isTaroAttacking){
             col.gameObject.GetComponent<CommonEnemy>().lifes = col.gameObject.GetComponent<CommonEnemy>().lifes - damage;
             if(col.gameObject.GetComponent<CommonEnemy>().lifes <= 0){
-                Destroy(col.gameObject);
                 inv.croquetasQty = inv.croquetasQty + col.gameObject.GetComponent<CommonEnemy>().coinsToAdd;
                 cm.coinsToAdd = cm.coinsToAdd + col.gameObject.GetComponent<CommonEnemy>().coinsToAdd;
                 cm.addCoins();
                 inv.Update_Ui();
+                Destroy(col.gameObject);
             }
+            StartCoroutine(DamageToEnemy(col.transform.GetChild(0).gameObject)); 
             Vector2 hitVector = (col.transform.position - transform.position).normalized;
             hitVector.y = 0;
             hitVector = hitVector.normalized;
             col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000);
-            StartCoroutine(DamageToEnemy(col.transform.GetChild(0).gameObject)); 
             isTaroAttacking = false;
         } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
             col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes = col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes - damage;

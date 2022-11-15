@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: c52935f9922d36f41ad8e0fb77cdcb58, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ac2722c71fb101746bd4917190e28014, type: 2}
 --- !u!1001 &1351463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32418,6 +32418,14 @@ PrefabInstance:
     - target: {fileID: 6721545551084060520, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1735021473821194162, guid: b20b8c13d43c2954ba5a9eb596ab5831, type: 3}
+    - target: {fileID: 6721545551084060520, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721545551084060520, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6721545551087656201, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_IsActive
@@ -32630,6 +32638,14 @@ PrefabInstance:
     - target: {fileID: 6721545553060290673, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 6721545552554026798}
+    - target: {fileID: 6721545553060290673, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721545553060290673, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonPrefabHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6721545553075345944, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_sharedMaterial

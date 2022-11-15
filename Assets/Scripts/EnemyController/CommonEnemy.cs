@@ -25,10 +25,6 @@ public class CommonEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Awake(){
-        target = GameObject.Find("Protag").transform;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

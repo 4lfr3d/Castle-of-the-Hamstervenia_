@@ -49,6 +49,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     // <param name="_name">Nombre del room al que se quiere unir</param>
     public void JoinRoom(string _name)
     {
+        Debug.Log(_name);
         PhotonNetwork.JoinRoom(_name);
     }
 
