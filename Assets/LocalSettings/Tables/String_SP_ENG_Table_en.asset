@@ -134,6 +134,14 @@ MonoBehaviour:
     m_Localized: Player Info
     m_Metadata:
       m_Items: []
+  - m_Id: 19977629118820352
+    m_Localized: Save Progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19979903824097280
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

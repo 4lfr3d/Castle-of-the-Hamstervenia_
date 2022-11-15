@@ -8,6 +8,9 @@ public class ButtonPrefabHandler : MonoBehaviour
     private Store taroStore;
     private Forge taroForge;
     private DialogueTrigger taroDialogue;
+    private GameController gameController;
+    private SaveManager savemang;
+
     private TaroHealth taroHealth;
     // Update is called once per frame
     void Update()
@@ -63,6 +66,18 @@ public class ButtonPrefabHandler : MonoBehaviour
     public void Mejora(int id){
         taroForge.Mejora(id);
     }
+
+    //MultiplayerController
+
+    public void SalirMultiJugador(){
+        gameController.WinGame();
+    }
+
+    //save
+    public void SaveProgress(){
+        savemang.Save();
+    }
+
 
     //Respawn
     public void Respawn(){

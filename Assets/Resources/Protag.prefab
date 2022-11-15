@@ -429,6 +429,7 @@ MonoBehaviour:
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
+  saveOptions: {fileID: 0}
 --- !u!114 &1735021473821194124
 MonoBehaviour:
   m_ObjectHideFlags: 0
