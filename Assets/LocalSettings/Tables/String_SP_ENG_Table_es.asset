@@ -134,6 +134,14 @@ MonoBehaviour:
     m_Localized: Datos de Jugador
     m_Metadata:
       m_Items: []
+  - m_Id: 19977629118820352
+    m_Localized: Guardar Progreso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19979903824097280
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

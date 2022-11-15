@@ -428,6 +428,7 @@ MonoBehaviour:
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
+  saveOptions: {fileID: 0}
 --- !u!114 &1735021473821194124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +645,7 @@ MonoBehaviour:
   inv: {fileID: 1735021473821194160}
   cm: {fileID: 0}
   damage: 1
+  damageColor: {fileID: 0}
 --- !u!1 &1735021475152993389
 GameObject:
   m_ObjectHideFlags: 0
