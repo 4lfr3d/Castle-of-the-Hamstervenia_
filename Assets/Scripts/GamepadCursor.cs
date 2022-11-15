@@ -31,8 +31,11 @@ public class GamepadCursor : MonoBehaviour
 
     void Awake(){
         cursorTransform = GameObject.Find("Cursor").GetComponent<RectTransform>();
-        canvas = GameObject.Find("UIGame").GetComponent<Canvas>();
-        canvasRectTransform = GameObject.Find("UIGame").GetComponent<RectTransform>();
+
+        if(this.tag == "Player"){
+            canvas = GameObject.Find("UIGame").GetComponent<Canvas>();
+            canvasRectTransform = GameObject.Find("UIGame").GetComponent<RectTransform>();
+        }
 
         playerInputs = new PlayerInputAction();
         Cursor.visible = false;
