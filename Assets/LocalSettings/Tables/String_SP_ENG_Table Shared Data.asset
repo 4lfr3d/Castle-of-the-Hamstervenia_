@@ -131,6 +131,14 @@ MonoBehaviour:
     m_Key: Player Info
     m_Metadata:
       m_Items: []
+  - m_Id: 19977629118820352
+    m_Key: Guardar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19979903824097280
+    m_Key: Cancelar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

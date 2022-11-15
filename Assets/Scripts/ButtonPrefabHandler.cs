@@ -8,6 +8,9 @@ public class ButtonPrefabHandler : MonoBehaviour
     private Store taroStore;
     private Forge taroForge;
     private DialogueTrigger taroDialogue;
+    private GameController gameController;
+    private SaveManager savemang;
+
     private TaroHealth taroHealth;
     // Update is called once per frame
     void Update()
@@ -26,6 +29,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         }
         if(taroHealth == null){
             taroHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<TaroHealth>();
+        }
+        if(savemang == null){
+            savemang = GameObject.FindGameObjectWithTag("Player").GetComponent<SaveManager>();
         }
     }
 
@@ -63,6 +69,18 @@ public class ButtonPrefabHandler : MonoBehaviour
     public void Mejora(int id){
         taroForge.Mejora(id);
     }
+
+    //MultiplayerController
+
+    public void SalirMultiJugador(){
+        GameController.instance.WinGame();
+    }
+
+    //save
+    public void SaveProgress(){
+        savemang.Save();
+    }
+
 
     //Respawn
     public void Respawn(){

@@ -26,8 +26,24 @@ public class SaveManager : MonoBehaviour
     private bool saveZoneTrigger;
     
     public GameObject interactionButton;
+    public GameObject saveOptions;
 
     private PlayerInputAction playerInputs;
+
+
+    private void Awake(){
+        animationSaver = GameObject.Find("SaveAdvisor").GetComponent<Animator>();
+        textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
+        saveOptions = GameObject.Find("SaveOptions");
+        interactionButton = GameObject.Find("InteractSaveZone");
+
+        playerInputs = new PlayerInputAction();
+
+        saveOptions.SetActive(false);
+
+
+        Load();
+    }
 
     private void OnEnable(){
         playerInputs.Player.Interaction.performed += SaveInput;
@@ -40,7 +56,7 @@ public class SaveManager : MonoBehaviour
 
     void SaveInput(InputAction.CallbackContext context){
         if(saveZoneTrigger){
-            Save();
+            saveOptions.SetActive(true);
         }
     }
 
