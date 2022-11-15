@@ -60,18 +60,6 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    private void Awake(){
-        if(this.tag == "Player"){
-            animationSaver = GameObject.Find("SaveAdvisor").GetComponent<Animator>();
-            textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
-            interactionButton = GameObject.Find("InteractSaveZone");
-        }
-
-        playerInputs = new PlayerInputAction();
-
-        Load();
-    }
-
     void Start()
     {
         if(gameObject.tag == "Player"){
