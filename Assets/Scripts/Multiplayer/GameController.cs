@@ -17,15 +17,25 @@ public class GameController : MonoBehaviourPunCallbacks
 
     private int playerInGame; //Numero de players en el room
 
+    private SaveManager saveHelper; //Carga de juego
+
     private void Awake(){
         instance = this;
+
+        saveHelper = this.GetComponent<SaveManager>();    
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
-        photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
+        saveHelper.Load();
+
+        if(!PhotonNetwork.IsConnected){
+            SpawnPlayerOffline();
+        } else {
+            players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
+            photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
+        }
     }
 
     [PunRPC]
@@ -44,6 +54,10 @@ public class GameController : MonoBehaviourPunCallbacks
         PM playScript = playerObj.GetComponent<PM>(); //Obtener script que controla al jugador
         playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer); //Mandar ejecutar funcion de inicializador de player
         
+    }
+
+    void SpawnPlayerOffline(){
+        Instantiate(Resources.Load("Protag"), saveHelper.respawnPoint, Quaternion.identity);
     }
 
     public void WinGame(){

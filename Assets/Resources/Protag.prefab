@@ -643,7 +643,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1735021475091504642}
   inv: {fileID: 1735021473821194160}
-  cm: {fileID: 0}
   damage: 1
   damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
 --- !u!1 &1735021475152993389
