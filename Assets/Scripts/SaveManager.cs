@@ -32,15 +32,15 @@ public class SaveManager : MonoBehaviour
 
 
     private void Awake(){
-        animationSaver = GameObject.Find("SaveAdvisor").GetComponent<Animator>();
-        textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
-        saveOptions = GameObject.Find("SaveOptions");
-        interactionButton = GameObject.Find("InteractSaveZone");
+        if(this.tag == "Player"){
+            animationSaver = GameObject.Find("SaveAdvisor").GetComponent<Animator>();
+            textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
+            saveOptions = GameObject.Find("SaveOptions");
+            interactionButton = GameObject.Find("InteractSaveZone");
+        }
 
         playerInputs = new PlayerInputAction();
-
         saveOptions.SetActive(false);
-
 
         Load();
     }
