@@ -142,6 +142,10 @@ MonoBehaviour:
     m_Localized: Cancelar
     m_Metadata:
       m_Items: []
+  - m_Id: 20479383287689216
+    m_Localized: Presiona  "X" para interactuar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

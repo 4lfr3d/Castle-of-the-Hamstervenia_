@@ -139,6 +139,14 @@ MonoBehaviour:
     m_Key: Cancelar
     m_Metadata:
       m_Items: []
+  - m_Id: 20473230252109824
+    m_Key: Credito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20479383287689216
+    m_Key: TipClic
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
