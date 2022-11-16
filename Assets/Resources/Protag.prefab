@@ -411,11 +411,15 @@ MonoBehaviour:
     numOfSeeds: 0
     idEquipableItem: 0
     croquetasQty: 0
+    needleDamage: 0
     sceneName: 
   hasLoaded: 0
   respawnPoint: {x: -4600, y: 382, z: -5}
   healthTaro: {fileID: 1735021473821194163}
   inventoryTaro: {fileID: 1735021473821194160}
+  storeTaro: {fileID: 1735021473821194127}
+  forgeTaro: {fileID: 1735021473821194121}
+  attackTaro: {fileID: 1735021474088950058}
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
