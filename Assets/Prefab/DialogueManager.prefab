@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5114989325936030623}
-  - component: {fileID: 5114989325936030622}
+  - component: {fileID: 8930559479995558445}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5114989325936030622
+--- !u!114 &8930559479995558445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTxt: {fileID: 0}
   dialogueTxt: {fileID: 0}
-  animator: {fileID: 0}
+  dialogueBox: {fileID: 0}
