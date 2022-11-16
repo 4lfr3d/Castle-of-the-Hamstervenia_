@@ -73,7 +73,7 @@ public class TaroAttack : MonoBehaviour
             Vector2 hitVector = (col.transform.position - transform.position).normalized;
             hitVector.y = 0;
             hitVector = hitVector.normalized;
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 2500000);
+            col.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector * 10000);
             isTaroAttacking = false;
         } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
             col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes = col.gameObject.transform.parent.parent.gameObject.GetComponent<CatBossIA>().lifes - damage;
