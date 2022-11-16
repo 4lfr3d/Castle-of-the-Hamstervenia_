@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -53,9 +54,11 @@ public class InventorySystem : MonoBehaviour
     }
 
     void Start(){
-        description_image.gameObject.SetActive(false);
+        /*description_image.gameObject.SetActive(false);
         description_Title.gameObject.SetActive(false);
-        item_description.gameObject.SetActive(false);
+        item_description.gameObject.SetActive(false);*/
+
+        DOTween.Init();
     }
 
     private void OnEnable(){
@@ -152,13 +155,17 @@ public class InventorySystem : MonoBehaviour
             counter.gameObject.SetActive(false);
         }
 
-        HideDescription();
+        HideDescriptionALL();
     }
 
     //mostrar info al hacer hover en inventario
 
     public void ShowDescription(int id){
         description_image.sprite = items_images[id].sprite;
+
+        Vector3 valorFinal = new Vector3(1.5f,1.5f,1.5f);
+        items_images[id].transform.DOScale(valorFinal, 1);
+
 
         if(items[id].stack == 1)
         {
@@ -172,19 +179,37 @@ public class InventorySystem : MonoBehaviour
 
         item_description.text = items[id].obj.GetComponent<Item>().item_desc;
 
+        description_image.DOFade(2, 1);
+        description_Title.DOFade(2, 1);
+        item_description.DOFade(2, 1);
 
-        description_image.gameObject.SetActive(true);
+        /*description_image.gameObject.SetActive(true);
         description_Title.gameObject.SetActive(true);
-        item_description.gameObject.SetActive(true);
-        
-
+        item_description.gameObject.SetActive(true);*/
     }
 
 //ocultar informacion descriptcion
-    public void HideDescription(){
-        description_image.gameObject.SetActive(false);
+    public void HideDescription(int id){
+        Vector3 valorFinal = new Vector3(1,1,1);
+        items_images[id].transform.DOScale(valorFinal, .5f);
+
+        description_image.DOFade(0, 1);
+        description_Title.DOFade(0, 1);
+        item_description.DOFade(0, 1);
+
+        /*description_image.gameObject.SetActive(false);
         description_Title.gameObject.SetActive(false);
-        item_description.gameObject.SetActive(false);
+        item_description.gameObject.SetActive(false);*/
+    }
+
+    public void HideDescriptionALL(){
+        /*description_image.gameObject.SetActive(false);
+        description_Title.gameObject.SetActive(false);
+        item_description.gameObject.SetActive(false);*/
+
+        description_image.DOFade(0, .5f);
+        description_Title.DOFade(0, .5f);
+        item_description.DOFade(0, .5f);
     }
 
     public void DoConsume(InputAction.CallbackContext context){

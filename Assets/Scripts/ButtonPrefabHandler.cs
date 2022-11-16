@@ -42,8 +42,8 @@ public class ButtonPrefabHandler : MonoBehaviour
     public void InvEquipedItem(int id){
         taroInv.EquipedItem(id);
     }
-    public void InvHideDescription(){
-        taroInv.HideDescription();
+    public void InvHideDescription(int id){
+        taroInv.HideDescription(id);
     }
 
     //DialogStuff
