@@ -101,7 +101,7 @@ public class Store : MonoBehaviour
         }
     }
 
-    void UpdateStore()
+    public void UpdateStore()
     {
         croquetas.text =  "x " + inventoryTaro.croquetasQty.ToString();
         

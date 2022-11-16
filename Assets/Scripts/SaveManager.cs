@@ -17,6 +17,9 @@ public class SaveManager : MonoBehaviour
     public Vector3 respawnPoint;
     public TaroHealth healthTaro;
     public InventorySystem inventoryTaro;
+    public Store storeTaro;
+    public Forge forgeTaro;
+    public TaroAttack attackTaro;
 
     public Animator animationSaver;
     public TMP_Text textSaver;
@@ -84,6 +87,16 @@ public class SaveManager : MonoBehaviour
                     inventoryTaro.items[i].stack = activeSave.infoList[i].stack;
                 }
 
+                this.attackTaro.damage = activeSave.needleDamage;
+                this.forgeTaro.weapons[0].cost = activeSave.forgeCost;
+                this.forgeTaro.weapons[0].actualLevel = activeSave.forgeActualLevel;
+
+                for(int i = 0; i<activeSave.infoStore.Count; i++){
+                    this.storeTaro.items[i].obj.name = activeSave.infoStore[i].name;
+                    this.storeTaro.items[i].qty = activeSave.infoStore[i].qty;
+                }
+
+                storeTaro.UpdateStore();
                 inventoryTaro.Update_Ui();
                 inventoryTaro.EquipedItem(activeSave.idEquipableItem);
                
@@ -119,6 +132,21 @@ public class SaveManager : MonoBehaviour
 
             activeSave.infoList.Add(info);
         }
+
+        activeSave.infoStore.Clear();
+
+        for(int i = 0; i < 3; i++){
+            StoreSaveInfo info = new StoreSaveInfo();
+
+            info.name = storeTaro.items[i].obj.name;
+            info.qty = storeTaro.items[i].qty;
+
+            activeSave.infoStore.Add(info);
+        }
+
+        activeSave.needleDamage = this.attackTaro.damage;
+        activeSave.forgeCost = this.forgeTaro.weapons[0].cost;
+        activeSave.forgeActualLevel = this.forgeTaro.weapons[0].actualLevel;
 
         //activeSave.itemSave = this.inventoryTaro.items;
 
@@ -184,14 +212,21 @@ public class SaveManager : MonoBehaviour
 public class SaveData {
     public Vector3 respawnPoint;
 
-    public int health, numOfSeeds, idEquipableItem, croquetasQty;
+    public int health, numOfSeeds, idEquipableItem, croquetasQty, needleDamage, forgeCost, forgeActualLevel;
 
     public string sceneName;
 
     public List<InventoryInfo> infoList = new List<InventoryInfo>();
+
+    public List<StoreSaveInfo> infoStore = new List<StoreSaveInfo>();
 }
 
 public class InventoryInfo {
     public string name;
     public int stack;
+}
+
+public class StoreSaveInfo {
+    public string name;
+    public int qty;
 }
