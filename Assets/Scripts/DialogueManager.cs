@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class DialogueManager : MonoBehaviour
 {
     public TMP_Text nameTxt;
     public TMP_Text dialogueTxt;
 
-    public Animator animator;
+    //public Animator animator;
+
+    public Transform dialogueBox;
+
+    private Vector3 entradaDialogo = new Vector3(1000,300,0);
+    private Vector3 salidaDialogo = new Vector3(3000,300,0);
 
     private Queue<string> sentences;
 
@@ -29,11 +35,19 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+
+        dialogueBox = GameObject.Find("DialogBox").GetComponent<Transform>();
+
+        DOTween.Init();
+
+        dialogueBox.DOMove(salidaDialogo,0);
     }
 
     public void StartDialogue(Dialogue dialogue){
 
-       animator.SetBool("IsOpen",true);
+      // animator.SetBool("IsOpen",true);
+
+        dialogueBox.DOMove(entradaDialogo ,1);
 
         nameTxt.text = dialogue.name;
 
@@ -80,7 +94,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue(){
-        animator.SetBool("IsOpen", false);
+        //animator.SetBool("IsOpen", false);
+        dialogueBox.DOMove(salidaDialogo,2);
         Debug.Log("End of conversation");
     }
 }
