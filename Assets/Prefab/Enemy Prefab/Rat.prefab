@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1180336269059349063}
-  fuerza: 100
-  delay: 0.1
+  fuerza: 250000
+  delay: 0.15
   OnBegin:
     m_PersistentCalls:
       m_Calls:

@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 6622371788291470}
-  fuerza: 20
+  fuerza: 250000
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
