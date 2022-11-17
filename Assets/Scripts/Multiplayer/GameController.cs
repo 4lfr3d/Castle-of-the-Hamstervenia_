@@ -61,7 +61,7 @@ public class GameController : MonoBehaviourPunCallbacks
     }
 
     public void WinGame(){
-        Invoke("GoBackToMenu", 3f);
+        Invoke("GoBackToMenu", 1f);
     }
 
     void GoBackToMenu(){

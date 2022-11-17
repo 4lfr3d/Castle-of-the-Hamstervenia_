@@ -69,7 +69,7 @@ public class TaroAttack : MonoBehaviour
                 inv.Update_Ui();
                 Destroy(col.gameObject);
             }
-            col.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback(this.gameObject);
+            col.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback();
             StartCoroutine(DamageToEnemy(col.transform.GetChild(0).gameObject)); 
             isTaroAttacking = false;
         } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
