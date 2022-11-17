@@ -35,7 +35,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
 
         playerInputs = new PlayerInputAction();
-        playerInputs.Menú.Disable();
+        //playerInputs.Menú.Disable();
+
+
+        mapUI.SetActive(false);
+        gameplayUI.SetActive(false);
+        settingsUI.SetActive(false);
     }
 
     private void OnEnable(){
