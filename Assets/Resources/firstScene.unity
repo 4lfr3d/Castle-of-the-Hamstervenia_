@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: ac2722c71fb101746bd4917190e28014, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3cb1af703f098ae44906112d12eff4ab, type: 2}
 --- !u!1001 &1351463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11913,11 +11913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8397930592353285408, guid: ecd9e6b2ed079ae43b5ea276a962f727, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3130.8635
+      value: -3135.6
       objectReference: {fileID: 0}
     - target: {fileID: 8397930592353285408, guid: ecd9e6b2ed079ae43b5ea276a962f727, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 804
+      value: 805.2
       objectReference: {fileID: 0}
     - target: {fileID: 8397930592353285408, guid: ecd9e6b2ed079ae43b5ea276a962f727, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31022,11 +31022,17 @@ MonoBehaviour:
     numOfSeeds: 0
     idEquipableItem: 0
     croquetasQty: 0
+    needleDamage: 0
+    forgeCost: 0
+    forgeActualLevel: 0
     sceneName: 
   hasLoaded: 0
   respawnPoint: {x: -4600, y: 382, z: -5}
   healthTaro: {fileID: 0}
   inventoryTaro: {fileID: 0}
+  storeTaro: {fileID: 0}
+  forgeTaro: {fileID: 0}
+  attackTaro: {fileID: 0}
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
@@ -35454,7 +35460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131102090062738370, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: fuerza
-      value: 1000
+      value: 100000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}

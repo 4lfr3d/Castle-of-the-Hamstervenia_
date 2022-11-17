@@ -6,13 +6,21 @@ using UnityEngine.Events;
 public class KnockbackFeedback : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-    public float fuerza = 16, delay = 0.15f;
+    public float fuerza = 16, delay = 0.25f;
     public UnityEvent OnBegin, OnDone;
 
-    public void PlayFeedback(GameObject sender){
+    private GameObject protag;
+
+    void Update(){
+        if(protag == null){
+            protag = GameObject.FindGameObjectWithTag("Player");
+        }
+    }
+
+    public void PlayFeedback(){
         StopAllCoroutines();
         OnBegin?.Invoke();
-        Vector3 direccion = (transform.position - sender.transform.position).normalized;
+        Vector3 direccion = (transform.position - protag.transform.position).normalized;
         rb2d.AddForce(direccion * fuerza, ForceMode2D.Impulse);
         StartCoroutine(Reset());
     }

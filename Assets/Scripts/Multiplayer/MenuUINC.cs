@@ -112,7 +112,10 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         </summary>
     */
     public void StartGame(){
-        Debug.Log("Entro");
         MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "firstScene");
+    }
+
+    public void LeaveMulti(){
+        PhotonNetwork.Disconnect();
     }
 }
