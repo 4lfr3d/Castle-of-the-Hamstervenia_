@@ -47,6 +47,10 @@ public class ButtonPrefabHandler : MonoBehaviour
     }
 
     //DialogStuff
+    public void ChosenOption(){
+        taroDialogue.OpcionElegida();
+    }
+
     public void showtienda(){
         taroDialogue.showtienda();
     }
@@ -80,6 +84,11 @@ public class ButtonPrefabHandler : MonoBehaviour
     }
 
     //save
+
+    public void SaveChosenOption(){
+        savemang.OpcionGuardadoElegida();
+    }
+
     public void SaveProgress(){
         savemang.Save();
     }

@@ -10,16 +10,21 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameTxt;
     public TMP_Text dialogueTxt;
 
-    //public Animator animator;
+    private Queue<string> sentences;
+    public static DialogueManager instance;
 
-    public Transform dialogueBox;
+
+    [Header("Dotween DialogueBox")]
+    public Transform dialogueBox_transform;
+    public Image dialogueBox_Bg;
+    
+    private float fadeTime = 1f;
+    private float duration = 1f;
+    private float moveTime = 2f;
 
     private Vector3 entradaDialogo = new Vector3(1000,300,0);
     private Vector3 salidaDialogo = new Vector3(3000,300,0);
 
-    private Queue<string> sentences;
-
-    public static DialogueManager instance;
 
 
     void Awake(){
@@ -36,18 +41,19 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
 
-        dialogueBox = GameObject.Find("DialogBox").GetComponent<Transform>();
+        dialogueBox_transform = GameObject.Find("DialogBox").GetComponent<Transform>();
+
+        dialogueBox_Bg = GameObject.Find("DIalogBG").GetComponent<Image>();
 
         DOTween.Init();
 
-        dialogueBox.DOMove(salidaDialogo,0);
+        dialogueBox_transform.DOMove(salidaDialogo,0);
+        dialogueBox_Bg.DOFade(0f, fadeTime);
     }
 
     public void StartDialogue(Dialogue dialogue){
 
-      // animator.SetBool("IsOpen",true);
-
-        dialogueBox.DOMove(entradaDialogo ,1);
+        PanelFadeIn();
 
         nameTxt.text = dialogue.name;
 
@@ -94,8 +100,21 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue(){
-        //animator.SetBool("IsOpen", false);
-        dialogueBox.DOMove(salidaDialogo,2);
+        PanelFadeOut();
+        dialogueTxt.text = "";
+        nameTxt.text = "";
         Debug.Log("End of conversation");
+    }
+
+    public void PanelFadeIn(){
+        Sequence entradaPanelSecuencia = DOTween.Sequence();
+        entradaPanelSecuencia.Join(dialogueBox_Bg.DOFade(1, fadeTime).SetDelay(1f));
+        entradaPanelSecuencia.Join(dialogueBox_transform.DOMove(entradaDialogo,moveTime).SetEase(Ease.OutBounce));
+    }
+
+    public void PanelFadeOut(){
+        Sequence salidaPanelSecuencia = DOTween.Sequence();
+        salidaPanelSecuencia.Join(dialogueBox_Bg.DOFade(0, fadeTime).SetDelay(0.5f));
+        salidaPanelSecuencia.Join(dialogueBox_transform.DOMove(salidaDialogo,moveTime).SetEase(Ease.InOutQuint));
     }
 }
