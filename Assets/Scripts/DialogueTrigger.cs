@@ -20,9 +20,14 @@ public class DialogueTrigger : MonoBehaviour
 
     private PlayerInputAction playerInputs;
 
+    private Dialogue selector;
+    private bool chat;
+    private string nombreVendedor;
+    private string tagNpc;
+
+    [Header("Dialog Options Trigger")]
     public GameObject dialogoptions_GB;
     public CanvasGroup dialogueOptions_Panel;
-
 
     private Transform tienda_boton;
     private Transform platica_boton;
@@ -30,19 +35,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private Vector3 objetoScalaNormal = new Vector3(1.3359f,1.403096f,1.3359f);
     private Vector3 objetoScalaReducido = new Vector3(0f,0f,0f);
-
-
-    public List<GameObject> options = new List<GameObject>();
-
+    
     private float scaleTime = 0.25f;
-
-    private Dialogue selector;
-
-    private bool chat;
-
-    private string nombreVendedor;
-    private string tagNpc;
-
     private float fadeTime = 0.5f;
 
     private void Awake(){
@@ -59,9 +53,8 @@ public class DialogueTrigger : MonoBehaviour
         chat = false;
 
         DOTween.Init();
-
+        /* Es una interpolación que desvanece el panel a 0 de opacidad durante 0 segundos. */
         dialogueOptions_Panel.DOFade(0f,0f);
-
         ScaleDownOptions();
     }
 
@@ -101,6 +94,7 @@ public class DialogueTrigger : MonoBehaviour
         if(chat){
             if(tagNpc == "NPCVendor") {
                 dialogoptions_GB.SetActive(true);
+                /* Una interpolación que desvanece el panel a 1 de opacidad durante 0,5 segundos. Despues llama a la funcion ScaleUpOptions */
                 dialogueOptions_Panel.DOFade(1f,fadeTime).OnComplete(ScaleUpOptions);
             }
             else DialogueManager.instance.StartDialogue(selector);
@@ -108,6 +102,8 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     public void ScaleUpOptions(){
+        /* Es una secuencia que escala los botones a su tamaño predeterminado, uno tras otro. Cada
+        botón realiza una curva de animación de rebote después de escalar. */
         Sequence escalarArriba = DOTween.Sequence();
         escalarArriba.Append(tienda_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
         escalarArriba.Append(platica_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
@@ -115,6 +111,9 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     public void ScaleDownOptions(){
+        /* Una secuencia que escala los botones a su tamaño predeterminado, uno tras otro. 
+        Cada botón realiza una curva de animación de rebote después de escalar. 
+        Al completar se llama a la funcion Activate_Panel con un parametro de falso*/
         Sequence escalarAbajo = DOTween.Sequence();
         escalarAbajo.Join(tienda_boton.DOScale(objetoScalaReducido, 0f));
         escalarAbajo.Join(platica_boton.DOScale(objetoScalaReducido, 0f));
@@ -123,6 +122,10 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     public void OpcionElegida(){
+        /* Una secuencia que despues del desvanecimiento del panel a 0 de opacidad durante 0,5 segundos, 
+        escala los botones a su tamaño predeterminado, uno tras otro. Cada botón
+        realiza una curva de animación de rebote después de escalar. Cuando se completa, llama a la
+        función Activate_Panel con un parámetro falso. */
         Sequence opcionelegida = DOTween.Sequence();
         opcionelegida.Join(dialogueOptions_Panel.DOFade(0,0.5f));
         opcionelegida.Append(tienda_boton.DOScale(objetoScalaReducido, 0f).SetDelay(1f));
