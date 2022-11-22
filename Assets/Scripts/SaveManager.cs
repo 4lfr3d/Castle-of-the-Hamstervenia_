@@ -31,7 +31,9 @@ public class SaveManager : MonoBehaviour
     
     public GameObject interactionButton;
 
+    private PlayerInputAction playerInputs;
 
+    [Header("Save Options Interaction")]
     public CanvasGroup saveOptions_Panel;
     public GameObject saveOptions_GB;
 
@@ -45,7 +47,6 @@ public class SaveManager : MonoBehaviour
     private Vector3 objetoScalaNormal = new Vector3(1.3359f,1.403096f,1.3359f);
     private Vector3 objetoScalaReducido = Vector3.zero;
 
-    private PlayerInputAction playerInputs;
 
 
     private void Awake(){
@@ -64,6 +65,7 @@ public class SaveManager : MonoBehaviour
 
             DOTween.Init();
 
+            /* Está desvaneciendo el panel a 0 de opacidad durante 0 segundos. */
             saveOptions_Panel.DOFade(0f,0f);
 
             ScaleDownSaveOptions();
@@ -86,32 +88,38 @@ public class SaveManager : MonoBehaviour
     void SaveInput(InputAction.CallbackContext context){
         if(saveZoneTrigger){
             saveOptions_GB.SetActive(true);
+            /* Descaneciendo el panel a 1 de opacidad durante 0,5 segundos y luego llamando a la función ScaleUpSaveOptions. */
             saveOptions_Panel.DOFade(1f,fadeTime).OnComplete(ScaleUpSaveOptions);
         }
     }
 
     public void ScaleUpSaveOptions(){
+        /* Es una secuencia que escala los botones a su tamaño predeterminado, uno tras otro. Cada
+        botón realiza una curva de animación de rebote después de escalar. */
         Sequence escalarArriba = DOTween.Sequence();
         escalarArriba.Append(guardar_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
         escalarArriba.Append(salirPartida_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
         escalarArriba.Append(cancelar_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
     }
 
+/* Reduce todos los botones en las interacciones al mismo tiempo, después de completar eso, desactiva la interacción del panel. */
     public void ScaleDownSaveOptions(){
         Sequence escalarAbajo = DOTween.Sequence();
         escalarAbajo.Join(guardar_boton.DOScale(objetoScalaReducido, 0f));
         escalarAbajo.Join(salirPartida_boton.DOScale(objetoScalaReducido, 0f));
+        /* Reduciendo la escala del botón y luego llamando a la función Activate_Panel con un parámetro falso. */
         escalarAbajo.Join(cancelar_boton.DOScale(objetoScalaReducido, 0f).OnComplete(()=>Activate_Panel(false)));
-
     }
 
     public void OpcionGuardadoElegida(){
+        /* Una secuencia que desvanece la imagen del panel, luego reduce cada botón a Vector3.zero uno
+        tras otro. Finalmente, después de escalar el último botón, se llama a la función
+        Activate_Panel con un parámetro falso. */
         Sequence opcionelegida = DOTween.Sequence();
         opcionelegida.Join(saveOptions_Panel.DOFade(0,0.5f));
         opcionelegida.Append(guardar_boton.DOScale(objetoScalaReducido, 0f).SetDelay(1f));
         opcionelegida.Append(salirPartida_boton.DOScale(objetoScalaReducido, 0f));
         opcionelegida.Append(cancelar_boton.DOScale(objetoScalaReducido, 0f).OnComplete(()=>Activate_Panel(false)));
-        
     }
 
     public void Activate_Panel(bool activate){

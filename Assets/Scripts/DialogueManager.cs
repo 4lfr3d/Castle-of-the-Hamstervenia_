@@ -47,6 +47,8 @@ public class DialogueManager : MonoBehaviour
 
         DOTween.Init();
 
+
+        /* Está configurando el estado inicial del cuadro de diálogo. Moviendo el cuadro del dialogo fuera del canvas y desvaneciendo su opacidado a 0 en 1 segundo */
         dialogueBox_transform.DOMove(salidaDialogo,0);
         dialogueBox_Bg.DOFade(0f, fadeTime);
     }
@@ -108,13 +110,21 @@ public class DialogueManager : MonoBehaviour
 
     public void PanelFadeIn(){
         Sequence entradaPanelSecuencia = DOTween.Sequence();
+        /* Moviendo el dialogBox_transform a la posición de entradaDialogo en
+        moveTime segundos y usando la aceleración Ease.InOutBack. */
         entradaPanelSecuencia.Join(dialogueBox_transform.DOMove(entradaDialogo,moveTime).SetEase(Ease.InOutBack));
+        /* Desvaneciendo el dialogBox_Bg a 1 en 1 segundo y retrasándolo por
+        1 segundo. */
         entradaPanelSecuencia.Join(dialogueBox_Bg.DOFade(1, fadeTime).SetDelay(1f));
     }
 
     public void PanelFadeOut(){
         Sequence salidaPanelSecuencia = DOTween.Sequence();
+        /* Desvaneciendo el dialogBox_Bg a 0 en fadeTime segundos y
+        retrasándolo por 0.5 segundos. */
         salidaPanelSecuencia.Join(dialogueBox_Bg.DOFade(0, fadeTime).SetDelay(0.5f));
+        /* Moviendo el dialogBox_transform a la posición de salidaDialogo en
+        moveTime segundos y usando la aceleración Ease.InOutQuint. */
         salidaPanelSecuencia.Join(dialogueBox_transform.DOMove(salidaDialogo,moveTime).SetEase(Ease.InOutQuint));
     }
 }
