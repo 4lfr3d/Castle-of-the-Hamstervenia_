@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Store : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class Store : MonoBehaviour
 
     private bool talpaTrigger;
     private PlayerInputAction playerInputs;
+
+    // Vectores para el movimiento del UI en DoTween
+    private Vector3 entradaUI = new Vector3(950,550,0);
+    private Vector3 salidaUI = new Vector3(2950,550,0);
+    private Vector3 objetoEscalaNormal = new Vector3(1f,1f,1f);
+    private Vector3 objetoEscalaReducido = new Vector3(0f,0f,0f);
 
     private void OnEnable()
     {
@@ -49,7 +56,24 @@ public class Store : MonoBehaviour
         //interactionIcon = GameObject.Find("SaleIcon");
 
         playerInputs = new PlayerInputAction();
-        storePanel.SetActive(false);
+    }
+
+    void Start(){
+        // Mandamos el UI fuera de la vista de la camara
+        DOTween.Init();
+
+        // Panel de Tienda
+        storePanel.GetComponent<Transform>().DOMove(salidaUI, 0f);
+        storePanel.GetComponent<Image>().DOFade(0f, 0.5f);
+
+        // Panel de Boton de Talpas
+        storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
+
+        // Panel de Boton de Mineral
+        storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
+
+        // Panel de Boton de Bendicion
+        storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
     }
 
     void StoreInput(InputAction.CallbackContext context)
@@ -64,13 +88,15 @@ public class Store : MonoBehaviour
 
     public void displayStore()
     {
-        storePanel.SetActive(true);
+        // Llamamos la animación de Dotween
+        PanelFadeIn();
         panelUI.SetActive(false);
     }
 
     public void ExitStore()
     {
-        storePanel.SetActive(false);
+        // Llamamos la animación de Dotween
+        PanelFadeOut();
         panelUI.SetActive(true);
     }
 
@@ -79,13 +105,10 @@ public class Store : MonoBehaviour
         if (other.gameObject.name == "Talpa")
         {
             talpaTrigger = true;
-            //interactionIcon.gameObject.transform.position = other.gameObject.transform.position + new Vector3(0, 75, 0);
-            //interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
         } else
         {
             talpaTrigger = false;
-           // interactionIcon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -99,6 +122,39 @@ public class Store : MonoBehaviour
             items[id].qty--;
             UpdateStore();
         }
+    }
+
+    public void PanelFadeIn(){
+        Sequence dotweenAnimation = DOTween.Sequence();
+        // Panel de Tienda
+        dotweenAnimation.Append(storePanel.GetComponent<Image>().DOFade(1, 0.5f));
+        dotweenAnimation.Append(storePanel.GetComponent<Transform>().DOMove(entradaUI, 0.5f).SetEase(Ease.OutBounce));
+
+        // Panel de Boton de Talpas
+        dotweenAnimation.Join(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+
+        // Panel de Boton de Mineral
+        dotweenAnimation.Join(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+
+        // Panel de Boton de Bendicion
+        dotweenAnimation.Join(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+    }
+
+    public void PanelFadeOut(){
+        Sequence dotweenAnimation = DOTween.Sequence();
+        
+        // Panel de Boton de Talpas
+        dotweenAnimation.Join(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+
+        // Panel de Boton de Mineral
+        dotweenAnimation.Join(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+
+        // Panel de Boton de Bendicion
+        dotweenAnimation.Join(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+
+        // Panel de Tienda
+        dotweenAnimation.Join(storePanel.GetComponent<Image>().DOFade(0, 0.25f));
+        dotweenAnimation.Join(storePanel.GetComponent<Transform>().DOMove(salidaUI, 0.25f).SetEase(Ease.InOutQuint));
     }
 
     public void UpdateStore()
