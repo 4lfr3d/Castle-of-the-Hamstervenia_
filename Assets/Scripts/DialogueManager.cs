@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     
     private float fadeTime = 1f;
     private float duration = 1f;
-    private float moveTime = 2f;
+    private float moveTime = 1.5f;
 
     private Vector3 entradaDialogo = new Vector3(1000,300,0);
     private Vector3 salidaDialogo = new Vector3(3000,300,0);
@@ -108,8 +108,8 @@ public class DialogueManager : MonoBehaviour
 
     public void PanelFadeIn(){
         Sequence entradaPanelSecuencia = DOTween.Sequence();
+        entradaPanelSecuencia.Join(dialogueBox_transform.DOMove(entradaDialogo,moveTime).SetEase(Ease.InOutBack));
         entradaPanelSecuencia.Join(dialogueBox_Bg.DOFade(1, fadeTime).SetDelay(1f));
-        entradaPanelSecuencia.Join(dialogueBox_transform.DOMove(entradaDialogo,moveTime).SetEase(Ease.OutBounce));
     }
 
     public void PanelFadeOut(){
