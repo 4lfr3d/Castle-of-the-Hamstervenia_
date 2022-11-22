@@ -54,20 +54,13 @@ public class InventorySystem : MonoBehaviour
     }
 
     void Start(){
-        /*description_image.gameObject.SetActive(false);
-        description_Title.gameObject.SetActive(false);
-        item_description.gameObject.SetActive(false);*/
-
+        //Inicia DOTWeen
         DOTween.Init();
     }
 
     private void OnEnable(){
         playerInputs.Player.CONSUMETHECHILD.performed += DoConsume;
         playerInputs.Player.CONSUMETHECHILD.Enable();
-
-
-        /*playerInputs.Menú.Selected.performed += DoSelected;
-        playerInputs.Menú.Selected.Enable();*/
     }
 
     private void OnDisable(){
@@ -164,7 +157,6 @@ public class InventorySystem : MonoBehaviour
         description_image.sprite = items_images[id].sprite;
 
         Vector3 valorFinal = new Vector3(1.5f,1.5f,1.5f);
-        items_images[id].transform.DOScale(valorFinal, 1);
 
 
         if(items[id].stack == 1)
@@ -179,64 +171,45 @@ public class InventorySystem : MonoBehaviour
 
         item_description.text = items[id].obj.GetComponent<Item>().item_desc;
 
-        description_image.DOFade(2, 1);
-        description_Title.DOFade(2, 1);
-        item_description.DOFade(2, 1);
-
-        /*description_image.gameObject.SetActive(true);
-        description_Title.gameObject.SetActive(true);
-        item_description.gameObject.SetActive(true);*/
+        //Hace la animación de Scale en el objeto en el que se hace hover, después de completar se hace la función OnComplete
+        items_images[id].transform.DOScale(valorFinal, 1).OnComplete(FadeItems);
     }
 
-//ocultar informacion descriptcion
+    //Función para hacer el OnComplete en DOTween
+    public void FadeItems(){
+        //Secuencia de Dotween de nombre FadeItems
+        Sequence fadeThings = DOTween.Sequence();
+        //Animaciones que se añaden a la secuencia (se hacen en ese orden)
+        fadeThings.Append(description_image.DOFade(2, 1).SetEase(Ease.OutBounce));
+        fadeThings.Append(description_Title.DOFade(2, 1).SetEase(Ease.OutBounce));
+        fadeThings.Append(item_description.DOFade(2, 1).SetEase(Ease.OutBounce));
+    }
+
+    //ocultar informacion descriptcion
     public void HideDescription(int id){
         Vector3 valorFinal = new Vector3(1,1,1);
         items_images[id].transform.DOScale(valorFinal, .5f);
 
-        description_image.DOFade(0, 1);
-        description_Title.DOFade(0, 1);
-        item_description.DOFade(0, 1);
-
-        /*description_image.gameObject.SetActive(false);
-        description_Title.gameObject.SetActive(false);
-        item_description.gameObject.SetActive(false);*/
+        //Delay de DOTween para cuando se quita el hover
+        description_image.DOFade(0, 1).SetDelay(.25f);
+        description_Title.DOFade(0, 1).SetDelay(.25f);
+        item_description.DOFade(0, 1).SetDelay(.25f);
     }
 
     public void HideDescriptionALL(){
-        /*description_image.gameObject.SetActive(false);
-        description_Title.gameObject.SetActive(false);
-        item_description.gameObject.SetActive(false);*/
-
+        //Se hace el Fade para estas imagénes (es un método necesario para que no despliegue la información)
         description_image.DOFade(0, .5f);
         description_Title.DOFade(0, .5f);
         item_description.DOFade(0, .5f);
     }
 
     public void DoConsume(InputAction.CallbackContext context){
-        //Consume(int.Parse(idItem.text));
         bool resultParse;
         int numberParse;
         resultParse = int.TryParse(idItem.text, out numberParse);
         if(resultParse){
             Consume(numberParse);
         }
-    }
-
-    public void DoSelected(InputAction.CallbackContext context){
-        //EquipedItem(int.Parse(idItem.text));
-        //string gameobjectFinder = "InventorySlot";
-        //GameObject.Find("InventorySlot"+i.ToString())
-        /*for(int i = 0; i < 6 ; i++){
-            inventorySlots.Add(GameObject.Find("InventorySlot"+i.ToString()));
-        }*/
-
-        /*bool resultParse;
-        int numberParse;
-        resultParse = int.TryParse(idItem.text, out numberParse);
-        if(resultParse){
-            EquipedItem(numberParse);
-        }
-        Debug.Log(idItem.text);*/
     }
 
     public int FindIDMineral(){
