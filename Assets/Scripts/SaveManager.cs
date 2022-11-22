@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class SaveManager : MonoBehaviour
 {
@@ -29,7 +30,20 @@ public class SaveManager : MonoBehaviour
     private bool saveZoneTrigger;
     
     public GameObject interactionButton;
-    public GameObject saveOptions;
+
+
+    public CanvasGroup saveOptions_Panel;
+    public GameObject saveOptions_GB;
+
+    private Transform guardar_boton;
+    private Transform salirPartida_boton;
+    private Transform cancelar_boton;
+
+    private float scaleTime = 0.25f;
+    private float fadeTime = 0.5f;
+
+    private Vector3 objetoScalaNormal = new Vector3(1.3359f,1.403096f,1.3359f);
+    private Vector3 objetoScalaReducido = Vector3.zero;
 
     private PlayerInputAction playerInputs;
 
@@ -38,10 +52,21 @@ public class SaveManager : MonoBehaviour
         if(this.tag == "Player"){
             animationSaver = GameObject.Find("SaveAdvisor").GetComponent<Animator>();
             textSaver = GameObject.Find("SaveAdvisor").GetComponent<TMP_Text>();
-            saveOptions = GameObject.Find("SaveOptions");
+            saveOptions_Panel = GameObject.Find("SaveOptions").GetComponent<CanvasGroup>();
+
+            saveOptions_GB = GameObject.Find("SaveOptions");
             interactionButton = GameObject.Find("InteractSaveZone");
 
-            saveOptions.SetActive(false);
+
+            guardar_boton = GameObject.Find("Guardar").GetComponent<Transform>();
+            salirPartida_boton = GameObject.Find("Salir").GetComponent<Transform>();
+            cancelar_boton = GameObject.Find("CancelarChat").GetComponent<Transform>();
+
+            DOTween.Init();
+
+            saveOptions_Panel.DOFade(0f,0f);
+
+            ScaleDownSaveOptions();
         }
 
         playerInputs = new PlayerInputAction();
@@ -60,9 +85,39 @@ public class SaveManager : MonoBehaviour
 
     void SaveInput(InputAction.CallbackContext context){
         if(saveZoneTrigger){
-            saveOptions.SetActive(true);
+            saveOptions_GB.SetActive(true);
+            saveOptions_Panel.DOFade(1f,fadeTime).OnComplete(ScaleUpSaveOptions);
         }
     }
+
+    public void ScaleUpSaveOptions(){
+        Sequence escalarArriba = DOTween.Sequence();
+        escalarArriba.Append(guardar_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
+        escalarArriba.Append(salirPartida_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
+        escalarArriba.Append(cancelar_boton.DOScale(objetoScalaNormal, scaleTime).SetEase(Ease.OutBounce));
+    }
+
+    public void ScaleDownSaveOptions(){
+        Sequence escalarAbajo = DOTween.Sequence();
+        escalarAbajo.Join(guardar_boton.DOScale(objetoScalaReducido, 0f));
+        escalarAbajo.Join(salirPartida_boton.DOScale(objetoScalaReducido, 0f));
+        escalarAbajo.Join(cancelar_boton.DOScale(objetoScalaReducido, 0f).OnComplete(()=>Activate_Panel(false)));
+
+    }
+
+    public void OpcionGuardadoElegida(){
+        Sequence opcionelegida = DOTween.Sequence();
+        opcionelegida.Join(saveOptions_Panel.DOFade(0,0.5f));
+        opcionelegida.Append(guardar_boton.DOScale(objetoScalaReducido, 0f).SetDelay(1f));
+        opcionelegida.Append(salirPartida_boton.DOScale(objetoScalaReducido, 0f));
+        opcionelegida.Append(cancelar_boton.DOScale(objetoScalaReducido, 0f).OnComplete(()=>Activate_Panel(false)));
+        
+    }
+
+    public void Activate_Panel(bool activate){
+        saveOptions_GB.SetActive(activate);
+    }
+
 
     void Start()
     {
