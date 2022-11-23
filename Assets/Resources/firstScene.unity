@@ -35943,7 +35943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437499633431197714, guid: daec39f9880ee974bb232c6042c3d906, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -746.4
+      value: -1313.3
       objectReference: {fileID: 0}
     - target: {fileID: 4437499633431197714, guid: daec39f9880ee974bb232c6042c3d906, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38512,6 +38512,14 @@ PrefabInstance:
     - target: {fileID: 6721545552608112789, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721545552618176513, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721545552618176513, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.025
       objectReference: {fileID: 0}
     - target: {fileID: 6721545552618176514, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_IsActive

@@ -25,9 +25,7 @@ public class Store : MonoBehaviour
 
     // Vectores para el movimiento del UI en DoTween
     private Vector3 entradaUI = new Vector3(950,550,0);
-    private Vector3 salidaUI = new Vector3(2950,550,0);
-    private Vector3 objetoEscalaNormal = new Vector3(1f,1f,1f);
-    private Vector3 objetoEscalaReducido = new Vector3(0f,0f,0f);
+    private Vector3 salidaUI = new Vector3(2850,550,0);
 
     private void OnEnable()
     {
@@ -59,7 +57,7 @@ public class Store : MonoBehaviour
     }
 
     void Start(){
-        // Mandamos el UI fuera de la vista de la camara
+        // Inicializamos DoTween en el Script
         DOTween.Init();
 
         // Panel de Tienda
@@ -67,37 +65,33 @@ public class Store : MonoBehaviour
         storePanel.GetComponent<Image>().DOFade(0f, 0.5f);
 
         // Panel de Boton de Talpas
-        storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
+        storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(0f, 0f);
 
         // Panel de Boton de Mineral
-        storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
+        storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(0f, 0f);
 
         // Panel de Boton de Bendicion
-        storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0f);
+        storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0f);
     }
 
     void StoreInput(InputAction.CallbackContext context)
     {
-        if (talpaTrigger)
-
-        {
-            UpdateStore();
-            //displayStore();
-        }
+        
     }
 
     public void displayStore()
     {
-        // Llamamos la animación de Dotween
-        PanelFadeIn();
+        UpdateStore();
+
+        // Llamamos la animación de Dotween de Entrada
+        InAnimation();
         panelUI.SetActive(false);
     }
 
     public void ExitStore()
     {
-        // Llamamos la animación de Dotween
-        PanelFadeOut();
-        panelUI.SetActive(true);
+        // Llamamos la animación de Dotween de Salida
+        OutAnimation();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -124,37 +118,40 @@ public class Store : MonoBehaviour
         }
     }
 
-    public void PanelFadeIn(){
+    // Animación de Dotween de Entrada
+    public void InAnimation(){
         Sequence dotweenAnimation = DOTween.Sequence();
+        
         // Panel de Tienda
-        dotweenAnimation.Append(storePanel.GetComponent<Image>().DOFade(1, 0.5f));
-        dotweenAnimation.Append(storePanel.GetComponent<Transform>().DOMove(entradaUI, 0.5f).SetEase(Ease.OutBounce));
+        dotweenAnimation.Append(storePanel.GetComponent<Image>().DOFade(1, 0.75f));
+        dotweenAnimation.Append(storePanel.GetComponent<Transform>().DOMove(entradaUI, 0.75f).SetEase(Ease.OutBounce));
 
         // Panel de Boton de Talpas
-        dotweenAnimation.Join(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+        dotweenAnimation.Append(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(1f, 0.25f).SetEase(Ease.OutBounce));
 
         // Panel de Boton de Mineral
-        dotweenAnimation.Join(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+        dotweenAnimation.Append(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(1f, 0.25f).SetEase(Ease.OutBounce));
 
         // Panel de Boton de Bendicion
-        dotweenAnimation.Join(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaNormal, 0.5f).SetEase(Ease.OutBounce));
+        dotweenAnimation.Append(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(1f, 0.25f).SetEase(Ease.OutBounce));
     }
 
-    public void PanelFadeOut(){
+    // Animación de DoTween de Salida
+    public void OutAnimation(){
         Sequence dotweenAnimation = DOTween.Sequence();
         
         // Panel de Boton de Talpas
-        dotweenAnimation.Join(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0.25f));
 
         // Panel de Boton de Mineral
-        dotweenAnimation.Join(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(0f, 0.25f));
 
         // Panel de Boton de Bendicion
-        dotweenAnimation.Join(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(objetoEscalaReducido, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(0f, 0.25f));
 
         // Panel de Tienda
-        dotweenAnimation.Join(storePanel.GetComponent<Image>().DOFade(0, 0.25f));
-        dotweenAnimation.Join(storePanel.GetComponent<Transform>().DOMove(salidaUI, 0.25f).SetEase(Ease.InOutQuint));
+        dotweenAnimation.Join(storePanel.GetComponent<Image>().DOFade(0, 0.75f));
+        dotweenAnimation.Join(storePanel.GetComponent<Transform>().DOMove(salidaUI, 0.75f).SetEase(Ease.InOutQuint).OnComplete(() => panelUI.SetActive(true)));
     }
 
     public void UpdateStore()
@@ -178,39 +175,53 @@ public class Store : MonoBehaviour
 
         foreach (StoreInfo info in items)
         {
-            if (info.cost > inventoryTaro.croquetasQty)
-            {
-                if (info.obj.name == "Talps")
-                {
-                    talpsText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
-                }
-
-                if (info.obj.name == "Mineral")
-                {
-                    mineralText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
-                }
-
-                if (info.obj.name == "Bendicion")
-                {
-                    bendicionText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
-                }
-            }
-
-            if (info.qty == 0)
-            {
+            if (info.qty == 0){
                 if (info.obj.name == "Talps")
                 {
                     talpsText.transform.GetChild(1).gameObject.SetActive(true);
                 }
 
-                if (info.obj.name == "Mineral")
+                else if (info.obj.name == "Mineral")
                 {
                     mineralText.transform.GetChild(1).gameObject.SetActive(true);
                 }
 
-                if (info.obj.name == "Bendicion")
+                else if (info.obj.name == "Bendicion")
                 {
                     bendicionText.transform.GetChild(1).gameObject.SetActive(true);
+                }
+            }
+
+            if (info.cost > inventoryTaro.croquetasQty){
+                if (info.obj.name == "Talps")
+                {
+                    talpsText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                }
+
+                else if (info.obj.name == "Mineral")
+                {
+                    mineralText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                }
+
+                else if (info.obj.name == "Bendicion")
+                {
+                    bendicionText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                }
+            }
+            else {
+                if (info.obj.name == "Talps")
+                {
+                    talpsText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = true;
+                }
+
+                else if (info.obj.name == "Mineral")
+                {
+                    mineralText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = true;
+                }
+
+                else if (info.obj.name == "Bendicion")
+                {
+                    bendicionText.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = true;
                 }
             }
         }
