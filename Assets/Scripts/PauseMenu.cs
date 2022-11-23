@@ -3,24 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class PauseMenu : MonoBehaviour
 {
     
+
+    [Header("Game Panels")]
+    public GameObject canvasGameUI;
+    public GameObject pauseMenuUI;
     public bool GameIsPaused = false;
 
-    public GameObject[] viewports; 
-    
-    public int pest = 0;
 
-    public GameObject pauseMenuUI;
+    [Header("Pause Menu Panels")]
     public GameObject settingsUI;
     public GameObject inventoryUI;
-    public GameObject canvasGameUI;
     public GameObject gameplayUI;
     public GameObject mapUI;
+
+    public int pest = 0;    
+    
+    [Header("Pause Menu BG Img")]
+    public Image settingsIconBG;
+    public Image gameplayIconBG;
+    public Image mapIconBg;
+    public Image inventoryIconBG;
+
+    private float fadeTime = 1f;
+
+    [Header("Interaction Panels")]
     public GameObject storePanel;
 
+        
     private PlayerInputAction playerInputs;
 
     void Awake(){
@@ -32,22 +47,32 @@ public class PauseMenu : MonoBehaviour
         mapUI = GameObject.Find("Map");
         storePanel = GameObject.Find("Store");
 
-        pauseMenuUI.SetActive(false);
+        settingsIconBG = GameObject.Find("Settings_Icon_BG").GetComponent<Image>();
+        gameplayIconBG = GameObject.Find("Gameplay_Icon_BG").GetComponent<Image>();
+        mapIconBg = GameObject.Find("Mapa_Icon_BG").GetComponent<Image>();
+        inventoryIconBG = GameObject.Find("Inventario_Icon_BG").GetComponent<Image>();
+
 
         playerInputs = new PlayerInputAction();
-        //playerInputs.Menú.Disable();
 
-
+        pauseMenuUI.SetActive(false);
         mapUI.SetActive(false);
         gameplayUI.SetActive(false);
         settingsUI.SetActive(false);
+       
+        DOTween.Init();
+
+        settingsIconBG.DOFade(0f,0f);
+        gameplayIconBG.DOFade(0f,0f);
+        mapIconBg.DOFade(0f,0f);
+        inventoryIconBG.DOFade(0f,0f);
+        
+
     }
 
     private void OnEnable(){
         playerInputs.Player.Menu.performed += DoMenu;
         playerInputs.Player.Menu.Enable();
-
-
     }
 
     private void OnEnableUI(){
@@ -98,13 +123,10 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    public void Settings(){
-        settingsUI.SetActive(true);
-    }
-
     public void Inventory(){
         Pause();
         inventoryUI.SetActive(true);
+        inventoryIconBG.DOFade(0.5f,fadeTime);
     }
 
     public void Pause(){
@@ -127,12 +149,22 @@ public class PauseMenu : MonoBehaviour
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(false);
+
+                inventoryIconBG.DOFade(0.5f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
                 break;
             case 1:
                 inventoryUI.SetActive(false);
                 mapUI.SetActive(true);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(false);
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0.5f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
 
                 break;
 
@@ -141,12 +173,25 @@ public class PauseMenu : MonoBehaviour
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(true);
                 settingsUI.SetActive(false);
+
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0.5f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
+
                 break;
             case 3:
                 inventoryUI.SetActive(false);
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(true);
+
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0.5f,fadeTime);
                 break;
         }
 
@@ -164,12 +209,22 @@ public class PauseMenu : MonoBehaviour
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(false);
+
+                inventoryIconBG.DOFade(0.5f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
                 break;
             case 1:
                 inventoryUI.SetActive(false);
                 mapUI.SetActive(true);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(false);
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0.5f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
 
                 break;
 
@@ -178,12 +233,22 @@ public class PauseMenu : MonoBehaviour
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(true);
                 settingsUI.SetActive(false);
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0.5f,fadeTime);
+                settingsIconBG.DOFade(0f,fadeTime);
                 break;
             case 3:
                 inventoryUI.SetActive(false);
                 mapUI.SetActive(false);
                 gameplayUI.SetActive(false);
                 settingsUI.SetActive(true);
+
+                inventoryIconBG.DOFade(0f,fadeTime);
+                mapIconBg.DOFade(0f,fadeTime);
+                gameplayIconBG.DOFade(0f,fadeTime);
+                settingsIconBG.DOFade(0.5f,fadeTime);
                 break;
         }
 
