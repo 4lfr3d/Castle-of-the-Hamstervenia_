@@ -141,17 +141,17 @@ public class Store : MonoBehaviour
         Sequence dotweenAnimation = DOTween.Sequence();
         
         // Panel de Boton de Talpas
-        dotweenAnimation.Append(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0.2f));
 
         // Panel de Boton de Mineral
-        dotweenAnimation.Append(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(0f, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(0f, 0.2f));
 
         // Panel de Boton de Bendicion
-        dotweenAnimation.Append(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(0f, 0.25f));
+        dotweenAnimation.Append(storePanel.transform.GetChild(2).GetComponent<Transform>().DOScale(0f, 0.2f));
 
         // Panel de Tienda
-        dotweenAnimation.Join(storePanel.GetComponent<Image>().DOFade(0, 0.75f));
-        dotweenAnimation.Join(storePanel.GetComponent<Transform>().DOMove(salidaUI, 0.75f).SetEase(Ease.InOutQuint).OnComplete(() => panelUI.SetActive(true)));
+        dotweenAnimation.Join(storePanel.GetComponent<Image>().DOFade(0, 0.4f));
+        dotweenAnimation.Join(storePanel.GetComponent<Transform>().DOMove(salidaUI, 0.4f).SetEase(Ease.InOutQuint).OnComplete(() => panelUI.SetActive(true)));
     }
 
     public void UpdateStore()
