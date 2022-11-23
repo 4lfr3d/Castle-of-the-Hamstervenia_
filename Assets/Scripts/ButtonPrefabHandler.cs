@@ -70,8 +70,8 @@ public class ButtonPrefabHandler : MonoBehaviour
     public void ExitForge(){
         taroForge.ExitForge();
     }
-    public void displayUpgrade(GameObject weapon){
-        taroForge.displayUpgrade(weapon);
+    public void displayUpgrade(){
+        taroForge.displayUpgrade();
     }
     public void Mejora(int id){
         taroForge.Mejora(id);

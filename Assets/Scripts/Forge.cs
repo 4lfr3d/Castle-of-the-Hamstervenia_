@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Forge : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Forge : MonoBehaviour
     public TaroAttack taroAttack;
 
     public ForgeInfo[] weapons;
-    public GameObject forgePanel;
     public GameObject panelUI;
 
     public GameObject mineralQtyText;
@@ -19,6 +19,15 @@ public class Forge : MonoBehaviour
     private PlayerInputAction playerInputs;
     private bool sashaTrigger;
     private int idMineral;
+
+    public CanvasGroup forgePanel;
+    public GameObject forge_GB;
+
+    public CanvasGroup weapon;
+    public GameObject infoweapon_GB;
+
+    private Transform needle;
+    public Image img_needle;
 
     private void OnEnable()
     {
@@ -35,12 +44,29 @@ public class Forge : MonoBehaviour
     {
         weapons[0].button = GameObject.Find("NeedleForge");
 
-        forgePanel = GameObject.Find("Forge");
+        forgePanel = GameObject.Find("Forge").GetComponent<CanvasGroup>();
+        forge_GB = GameObject.Find("Forge");
+
+        needle = GameObject.Find("NeedleForge").GetComponent<Transform>();
+        img_needle = GameObject.Find("NeedleForge").GetComponent<Image>();
+
         panelUI = GameObject.Find("UIPlayer");
+
         mineralQtyText = GameObject.Find("QtyForge");
+
+        weapon = GameObject.Find("InfoWeapon").GetComponent<CanvasGroup>();
+
+        infoweapon_GB = GameObject.Find("InfoWeapon");
         
         playerInputs = new PlayerInputAction();
-        forgePanel.SetActive(false);
+
+        DOTween.Init();
+
+        forgePanel.DOFade(0f,0f);
+        needle.DOScale(0f,0f);
+        weapon.DOFade(0f,0f);
+        forge_GB.SetActive(false);
+        infoweapon_GB.SetActive(false);
     }
 
 
@@ -58,13 +84,20 @@ public class Forge : MonoBehaviour
 
     public void displayForge()
     {
-        forgePanel.SetActive(true);
+        forge_GB.SetActive(true);
+        forgePanel.DOFade(1f, 0.5f).SetDelay(0.25f);
+        needle.DOScale(1f,0.5f).SetEase(Ease.OutBounce).SetDelay(0.5f);
         panelUI.SetActive(false);
     }
 
     public void ExitForge()
     {
-        forgePanel.SetActive(false);
+        needle.DOScale(0f,0.25f);
+        forgePanel.DOFade(0f, 0.5f).SetDelay(0.5f).OnComplete(CloseForge);
+    }
+
+    public void CloseForge(){
+        forge_GB.SetActive(false);
         panelUI.SetActive(true);
     }
 
@@ -88,7 +121,8 @@ public class Forge : MonoBehaviour
         taroAttack.damage = weapons[id].actualLevel;
         UpdateForge();
         weapons[id].cost = weapons[id].cost + 2;
-        weapons[id].button.transform.GetChild(5).gameObject.SetActive(false);
+        weapon.DOFade(0f,0.25f).OnComplete(() => infoweapon_GB.SetActive(true));
+        
     }
 
     public void UpdateForge(){
@@ -121,8 +155,9 @@ public class Forge : MonoBehaviour
             }
     }
 
-    public void displayUpgrade(GameObject weapon){
-        weapon.SetActive(true);
+    public void displayUpgrade(){
+        infoweapon_GB.SetActive(true);
+        weapon.DOFade(1f,0.5f);
     }
 }
 

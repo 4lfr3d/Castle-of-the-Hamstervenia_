@@ -217,9 +217,14 @@ MonoBehaviour:
     actualLevel: 1
     maxLevel: 10
     button: {fileID: 0}
-  forgePanel: {fileID: 0}
   panelUI: {fileID: 0}
   mineralQtyText: {fileID: 0}
+  forgePanel: {fileID: 0}
+  forge_GB: {fileID: 0}
+  colorList:
+  - {r: 0.6784314, g: 0.54509807, b: 0.38039216, a: 1}
+  - {r: 0.7764706, g: 0.6156863, b: 0.41960785, a: 1}
+  - {r: 1, g: 0.84313726, b: 0.6509804, a: 1}
 --- !u!114 &1735021473821194164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +417,8 @@ MonoBehaviour:
     idEquipableItem: 0
     croquetasQty: 0
     needleDamage: 0
+    forgeCost: 0
+    forgeActualLevel: 0
     sceneName: 
   hasLoaded: 0
   respawnPoint: {x: -4600, y: 382, z: -5}
@@ -423,7 +430,8 @@ MonoBehaviour:
   animationSaver: {fileID: 0}
   textSaver: {fileID: 0}
   interactionButton: {fileID: 0}
-  saveOptions: {fileID: 0}
+  saveOptions_Panel: {fileID: 0}
+  saveOptions_GB: {fileID: 0}
 --- !u!114 &1735021473821194124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +511,8 @@ MonoBehaviour:
   store: {fileID: 1735021473821194127}
   forge: {fileID: 1735021473821194121}
   conversationIcon: {fileID: 0}
-  dialogoptions: {fileID: 0}
+  dialogoptions_GB: {fileID: 0}
+  dialogueOptions_Panel: {fileID: 0}
 --- !u!114 &1320003235273805497
 MonoBehaviour:
   m_ObjectHideFlags: 0
