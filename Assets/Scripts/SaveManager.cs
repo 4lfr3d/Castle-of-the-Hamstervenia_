@@ -132,8 +132,10 @@ public class SaveManager : MonoBehaviour
         if(gameObject.tag == "Player"){
             textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
             if(hasLoaded){
-                this.transform.position = activeSave.respawnPoint;
-                this.healthTaro.respawnPoint = activeSave.respawnPoint;
+                if(activeSave.sceneName ==  SceneManager.GetActiveScene().name){
+                    this.transform.position = activeSave.respawnPoint;
+                    this.healthTaro.respawnPoint = activeSave.respawnPoint;
+                }
                 this.healthTaro.numOfSeeds = activeSave.numOfSeeds;
                 this.healthTaro.health = activeSave.health;
                 this.inventoryTaro.idSaver = activeSave.idEquipableItem;
