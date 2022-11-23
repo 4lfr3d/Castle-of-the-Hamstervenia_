@@ -15,14 +15,14 @@ public class CoinsManager : MonoBehaviour
 
     void Update()
     {
-        if(inventoryTaro == null){
+        /*if(inventoryTaro == null){
             inventoryTaro = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
-        }
+        }*/
         this.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = inventoryTaro.croquetasQty.ToString();
     }
 
     public void addCoins(){
-        StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(ShowCoinsAdd());
     }
 
