@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI = GameObject.Find("PauseMenu");
         settingsUI = GameObject.Find("Settings");
         inventoryUI = GameObject.Find("Inventario");
-        //canvasGameUI = GameObject.Find("UIPlayer");
+        canvasGameUI = GameObject.Find("UIPlayer");
         gameplayUI = GameObject.Find("Controls");
         mapUI = GameObject.Find("Map");
         storePanel = GameObject.Find("Store");

@@ -41,17 +41,14 @@ public class InventorySystem : MonoBehaviour
         }
 
         description_image = GameObject.Find("DescriptionImage").GetComponent<Image>();
+        hud_item = GameObject.Find("ConsumableItem").GetComponent<Image>();
         description_Title = GameObject.Find("Infotitle").GetComponent<TMP_Text>();
         item_description = GameObject.Find("ItemDescription").GetComponent<TMP_Text>();
-        idItem = GameObject.Find("idHolderInvisible").GetComponent<TMP_Text>();
-        croquetasQtyTxt = GameObject.Find("CroquetasQty").GetComponent<TMP_Text>();
-
-/*
-        hud_item = GameObject.Find("ConsumableItem").GetComponent<Image>();
-        cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         equipedItemImg = GameObject.Find("ConsumableItem").GetComponent<Image>();
         equipedItemQty = GameObject.Find("ConsumableText").GetComponent<TMP_Text>();
-*/
+        idItem = GameObject.Find("idHolderInvisible").GetComponent<TMP_Text>();
+        croquetasQtyTxt = GameObject.Find("CroquetasQty").GetComponent<TMP_Text>();
+        cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
 
         playerInputs = new PlayerInputAction();
     }

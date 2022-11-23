@@ -18,7 +18,7 @@ public class KnockbackFeedback : MonoBehaviour
     }
 
     public void PlayFeedback(){
-        //StopAllCoroutines();
+        StopAllCoroutines();
         OnBegin?.Invoke();
         Vector3 direccion = (transform.position - protag.transform.position).normalized;
         rb2d.AddForce(direccion * fuerza, ForceMode2D.Impulse);
