@@ -28,6 +28,10 @@ public class Forge : MonoBehaviour
 
     private Transform needle;
     public Image img_needle;
+    public Transform Metal;
+
+    private Vector3 MoveUi = new Vector3(500,1500,0);
+    private Vector3 Milim = new Vector3(500,100,0);
 
     private void OnEnable()
     {
@@ -60,11 +64,14 @@ public class Forge : MonoBehaviour
         
         playerInputs = new PlayerInputAction();
 
+        Metal = GameObject.Find("Metal").GetComponent<Transform>();
+
         DOTween.Init();
 
         forgePanel.DOFade(0f,0f);
         needle.DOScale(0f,0f);
         weapon.DOFade(0f,0f);
+        Metal.DOMove(MoveUi,0f);
         forge_GB.SetActive(false);
         infoweapon_GB.SetActive(false);
     }
@@ -87,6 +94,7 @@ public class Forge : MonoBehaviour
         forge_GB.SetActive(true);
         forgePanel.DOFade(1f, 0.5f).SetDelay(0.25f);
         needle.DOScale(1f,0.5f).SetEase(Ease.OutBounce).SetDelay(0.5f);
+        Metal.DOMove(Milim,0.75f);
         panelUI.SetActive(false);
     }
 
