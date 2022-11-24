@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuSaveManager : MonoBehaviour
 {
+    [Space(5)]
+    public string NextScene;
     [Header("General Settings")]
     [SerializeField] private GameObject noSaveGame = null;
     
     //New Game
     public void StartGame(){
         GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().DeleteSaveData();
-        SceneManager.LoadScene("firstScene");
+        SceneManager.LoadScene(NextScene);
     }
-
 
     //Load Game
     public void LoadGame(){
@@ -21,14 +22,11 @@ public class MenuSaveManager : MonoBehaviour
 
         //load player's scene
         if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
-            Debug.Log("GAME LOADED");
-            SceneManager.LoadScene("firstScene");
+            SceneManager.LoadScene(NextScene);
         } else{
             noSaveGame.SetActive(true);
-            Debug.Log("GAME NOT LOADED");
         }
     }
-
 
     //Quit Game
     public void QuitGame(){
