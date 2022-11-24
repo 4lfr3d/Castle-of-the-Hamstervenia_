@@ -34,13 +34,12 @@ public class BuildingsMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D TuGfa){
-        if(TuGfa.gameObject.tag == "Player"){
-            taroSale = TuGfa.gameObject;
-            swotch = true;
-        }
-        else{
-            swotch = false;
-        }
+    void OnTriggerStay2D(Collider2D TuGfa){
+        taroSale = TuGfa.gameObject;
+        swotch = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        swotch = false;
     }
 }
