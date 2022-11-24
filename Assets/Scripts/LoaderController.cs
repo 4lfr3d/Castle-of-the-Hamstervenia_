@@ -7,36 +7,46 @@ using TMPro;
 public class LoaderController : MonoBehaviour
 {
     public TextMeshProUGUI loaderText;
-    public float delay = 4f;
-    public int maxDots = 4;
-    
-    private int count = 0;
+    public TextMeshProUGUI hintText;
+    public float delay = 10f;
+    public int maxDots = 3;
+    public string nextScene;
+
+    private string[] hints = {"El gancho de Taro no funciona en vidrio", 
+                              "Talpa tiene items interesantes en su tienda",
+                              "Sasha te ayudara a mejorar tu aguja",
+                              "Las ratas tienen mayor vida que las cucarachas",
+                              "Las bendiciones te ayudaran a aumentar el máximo de vidas",
+                              "Consume Talpas para curarte"};
 
     void Start()
     {
-        StartCoroutine(GameLoaderScene());
+        RandomHint();
         StartCoroutine(LoadingText());
+        StartCoroutine(GameLoaderScene());
+    }
+
+    void RandomHint(){
+        hintText.text = hints[Random.Range(0, hints.Length)];
     }
 
     IEnumerator LoadingText(){
-        yield return new WaitForSeconds(0.25f);
         loaderText.text = "Cargando ";
-        for(int i = 0; i < count; i++){
-            loaderText.text = loaderText + ".";
+        for(int i = 0; i <= maxDots; i++){
+            yield return new WaitForSeconds(0.25f);
+            loaderText.text = loaderText.text + ".";
         }
-        count++;
-        if(count == maxDots){
-            count = 0;
-        }
+
         StartCoroutine(LoadingText());
     }
 
     IEnumerator GameLoaderScene(){
         AsyncOperation op;
-        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Nueva Escena");
-
+        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
+
         yield return new WaitForSeconds(delay);
+
         op.allowSceneActivation = true;
     }
 }
