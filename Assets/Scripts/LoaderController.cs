@@ -7,8 +7,8 @@ using TMPro;
 public class LoaderController : MonoBehaviour
 {
     public TextMeshProUGUI loaderText;
-    public float delay = 4f;
-    public int maxDots = 4;
+    public float delay = 10f;
+    public int maxDots = 5;
     
     private int count = 0;
 
@@ -19,10 +19,12 @@ public class LoaderController : MonoBehaviour
     }
 
     IEnumerator LoadingText(){
-        yield return new WaitForSeconds(0.25f);
         loaderText.text = "Cargando ";
-        for(int i = 0; i < count; i++){
-            loaderText.text = loaderText + ".";
+
+        // yield return new WaitForSeconds(0.25f);
+
+        for(int i = 0; i < maxDots; i++){
+            loaderText.text = loaderText.text + ".";
         }
         count++;
         if(count == maxDots){
@@ -33,7 +35,7 @@ public class LoaderController : MonoBehaviour
 
     IEnumerator GameLoaderScene(){
         AsyncOperation op;
-        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Nueva Escena");
+        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("firstScene");
 
         op.allowSceneActivation = false;
         yield return new WaitForSeconds(delay);
