@@ -19,6 +19,8 @@ public class GameController : MonoBehaviourPunCallbacks
 
     private SaveManager saveHelper; //Carga de juego
 
+    private CoinsManager cm;
+
     private void Awake(){
         instance = this;
 
@@ -38,12 +40,40 @@ public class GameController : MonoBehaviourPunCallbacks
         }
     }
 
+    void Update(){
+        if(cm == null){
+            cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
+        }
+    }
+
     [PunRPC]
     void InGame(){
         playerInGame++; //Contador de jugadores
         if(playerInGame == PhotonNetwork.PlayerList.Length){
             SpawnPlayer(); //Mandar llamar posiciones de player
         }
+    }
+
+    public void preHit(int damage, int viewID){
+        PhotonView photonView = PhotonView.Get(this);
+        photonView.RPC("HitEnemy", RpcTarget.All, damage, viewID);
+    }
+
+    [PunRPC]
+    public void HitEnemy(int damage, int viewID){
+        CommonEnemy rat = PhotonView.Find(viewID).gameObject.GetComponent<CommonEnemy>();
+        rat.lifes = rat.lifes - damage;
+        if(rat.lifes <= 0){
+            InventorySystem player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+            player.croquetasQty = player.croquetasQty + rat.coinsToAdd;
+            player.Update_Ui(); 
+            
+            cm.coinsToAdd = cm.coinsToAdd + rat.coinsToAdd;
+            cm.addCoins();
+            PhotonNetwork.Destroy(rat.gameObject);
+        }
+        rat.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback();
+        StartCoroutine(rat.DamageToEnemy(rat.transform.GetChild(0).gameObject));
     }
 
     void SpawnPlayer(){

@@ -187,6 +187,7 @@ MonoBehaviour:
   coinsToAdd: 3
   enemyType: c
   animator: {fileID: 896955520840308950}
+  damageColor: {fileID: 0}
 --- !u!195 &2091801429
 NavMeshAgent:
   m_ObjectHideFlags: 0

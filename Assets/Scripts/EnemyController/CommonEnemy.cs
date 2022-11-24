@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class CommonEnemy : MonoBehaviour
 {
@@ -18,11 +20,83 @@ public class CommonEnemy : MonoBehaviour
     private string currentState = "IdleState";
     private NavMeshAgent agent;
     private Transform target;
+    
+    public Material damageColor;
+    private Material enemyMaterial;
+
+    private GameController gameController;
+
+    private CoinsManager cm;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Update(){
+        if(cm == null){
+            cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
+        }
+        if(gameController == null){
+            gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        }
+    }
+
+    public void Damage(int damage){
+        if(!PhotonNetwork.IsConnected){
+            HitEnemyOffline(damage);
+        } else{
+            //Llamar a la función de GameController para que esa llame a PhotonView (enviar ID)
+            PhotonView photonView = PhotonView.Get(this);
+            Debug.Log(photonView.ViewID);
+
+            gameController.preHit(damage, photonView.ViewID);
+
+            //photonView.RPC("HitEnemy", RpcTarget.All, damage);
+        }
+    }
+
+    public void HitEnemyOffline(int damage){
+        lifes = lifes - damage;
+        if(lifes <= 0){
+            InventorySystem player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+            player.croquetasQty = player.croquetasQty + coinsToAdd;
+            player.Update_Ui();
+            cm.coinsToAdd = cm.coinsToAdd + coinsToAdd;
+            cm.addCoins();
+            Destroy(this.gameObject);
+        }
+        this.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback();
+        StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject)); 
+    }
+
+    /*[PunRPC]
+    public void HitEnemy(int damage, int viewID){
+        lifes = lifes - damage;
+        if(lifes <= 0){
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject p in players)
+            {
+                InventorySystem player = p.GetComponent<InventorySystem>();
+                player.croquetasQty = player.croquetasQty + coinsToAdd;
+                player.Update_Ui();   
+            }
+            cm.coinsToAdd = cm.coinsToAdd + coinsToAdd;
+            cm.addCoins();
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+        this.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback();
+        StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject));
+    }*/
+
+    public IEnumerator DamageToEnemy(GameObject enemy){
+        enemyMaterial = enemy.GetComponent<Renderer>().material;
+        enemy.GetComponent<Renderer>().material = damageColor;
+
+        yield return new WaitForSeconds(0.25f);
+
+        enemy.GetComponent<Renderer>().material = enemyMaterial;
     }
 
     // Update is called once per frame

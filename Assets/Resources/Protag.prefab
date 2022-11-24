@@ -221,10 +221,10 @@ MonoBehaviour:
   mineralQtyText: {fileID: 0}
   forgePanel: {fileID: 0}
   forge_GB: {fileID: 0}
-  colorList:
-  - {r: 0.6784314, g: 0.54509807, b: 0.38039216, a: 1}
-  - {r: 0.7764706, g: 0.6156863, b: 0.41960785, a: 1}
-  - {r: 1, g: 0.84313726, b: 0.6509804, a: 1}
+  weapon: {fileID: 0}
+  infoweapon_GB: {fileID: 0}
+  img_needle: {fileID: 0}
+  Metal: {fileID: 0}
 --- !u!114 &1735021473821194164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,15 +388,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec675ccf6f7e4a4ebd8bc971068d19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameIsPaused: 0
-  viewports: []
-  pest: 0
+  canvasGameUI: {fileID: 0}
   pauseMenuUI: {fileID: 0}
+  GameIsPaused: 0
   settingsUI: {fileID: 0}
   inventoryUI: {fileID: 0}
-  canvasGameUI: {fileID: 0}
   gameplayUI: {fileID: 0}
   mapUI: {fileID: 0}
+  pest: 0
+  settingsIconBG: {fileID: 0}
+  gameplayIconBG: {fileID: 0}
+  mapIconBg: {fileID: 0}
+  inventoryIconBG: {fileID: 0}
   storePanel: {fileID: 0}
 --- !u!114 &1735021473821194125
 MonoBehaviour:
@@ -648,7 +651,6 @@ MonoBehaviour:
   animator: {fileID: 1735021475091504642}
   inv: {fileID: 1735021473821194160}
   damage: 1
-  damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
 --- !u!1 &1735021475152993389
 GameObject:
   m_ObjectHideFlags: 0
