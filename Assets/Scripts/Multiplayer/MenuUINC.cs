@@ -19,6 +19,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     [Header("Lobby")]
     public Button startGameBtn; //Boton iniciar partida
     public TextMeshProUGUI playerTextList; //Texto para imprimir jugadores en room
+    public TextMeshProUGUI roomTitle; // Nombre de la Room
 
     void Start(){
         PhotonNetwork.ConnectUsingSettings(); //Realizar conexion con datos colocados en editor
@@ -53,6 +54,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     */
     public void CreateRoom(TMP_InputField _roomName){
         MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        roomTitle.text = "Room: " + _roomName.text;
     }
 
     /*
@@ -83,7 +85,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
     public void UpdatePlayerInfo(){
         playerTextList.text=""; //Limpiar campo de texto
         foreach(Player player in PhotonNetwork.PlayerList){
-            playerTextList.text += player.NickName + "\n"; //agregar nombre de players
+            playerTextList.text += "Player: " + player.NickName + "\n"; //agregar nombre de players
         }
         if(PhotonNetwork.IsMasterClient){
             startGameBtn.interactable=true; //Activar si eres host

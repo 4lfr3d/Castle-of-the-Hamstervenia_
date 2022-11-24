@@ -41,16 +41,30 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
 
-        dialogueBox_transform = GameObject.Find("DialogBox").GetComponent<Transform>();
-
-        dialogueBox_Bg = GameObject.Find("DIalogBG").GetComponent<Image>();
-
         DOTween.Init();
 
 
         /* Está configurando el estado inicial del cuadro de diálogo. Moviendo el cuadro del dialogo fuera del canvas y desvaneciendo su opacidado a 0 en 1 segundo */
         dialogueBox_transform.DOMove(salidaDialogo,0);
         dialogueBox_Bg.DOFade(0f, fadeTime);
+    }
+
+    void Update(){
+        if(dialogueTxt == null){
+            dialogueTxt = GameObject.Find("DialogText").GetComponent<TMP_Text>();
+        }
+        if(nameTxt == null){
+            nameTxt = GameObject.Find("NPCname").GetComponent<TMP_Text>();
+        }
+        if(dialogueBox_transform == null){
+            dialogueBox_transform = GameObject.Find("DialogBox").GetComponent<Transform>();
+            dialogueBox_transform.DOMove(salidaDialogo,0);
+        }
+        if(dialogueBox_Bg == null){
+            dialogueBox_Bg = GameObject.Find("DIalogBG").GetComponent<Image>();
+            dialogueBox_Bg.DOFade(0f, fadeTime);
+        }
+    
     }
 
     public void StartDialogue(Dialogue dialogue){

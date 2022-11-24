@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44334638, g: 0.49261445, b: 0.5722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.44334614, g: 0.4926141, b: 0.5722537, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32370,9 +32370,10 @@ GameObject:
   - component: {fileID: 1494815628}
   - component: {fileID: 1494815630}
   - component: {fileID: 1494815631}
+  - component: {fileID: 1494815632}
   m_Layer: 0
   m_Name: WinPoint
-  m_TagString: WinPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32490,6 +32491,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 1.0000001}
   m_EdgeRadius: 0
+--- !u!114 &1494815632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494815625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd6048f2bf5cf488b9972bce5c4830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextScene: Hamsburgo
 --- !u!1 &1495920347
 GameObject:
   m_ObjectHideFlags: 0

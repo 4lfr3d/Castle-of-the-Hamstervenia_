@@ -71,7 +71,7 @@ public class Store : MonoBehaviour
         storePanel.transform.GetChild(3).GetComponent<Transform>().DOScale(0f, 0f);
 
         // Panel de Boton de Bendicion
-        storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0f);
+        storePanel.transform.GetChild(4).GetComponent<Transform>().DOScale(0f, 0f).OnComplete(() => storePanel.SetActive(false));
     }
 
     void StoreInput(InputAction.CallbackContext context)
@@ -83,6 +83,7 @@ public class Store : MonoBehaviour
     {
         UpdateStore();
 
+        storePanel.SetActive(true);
         // Llamamos la animación de Dotween de Entrada
         InAnimation();
         panelUI.SetActive(false);

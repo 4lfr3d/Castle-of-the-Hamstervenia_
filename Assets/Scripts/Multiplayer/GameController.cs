@@ -69,5 +69,5 @@ public class GameController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
         MultiplayerController.instance.LoadScene("StartMenu");
     }
-
+    
 }
