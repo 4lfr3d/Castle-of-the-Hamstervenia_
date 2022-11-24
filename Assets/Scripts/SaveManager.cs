@@ -89,7 +89,6 @@ public class SaveManager : MonoBehaviour
         if(saveZoneTrigger){
             saveOptions_GB.SetActive(true);
             /* Descaneciendo el panel a 1 de opacidad durante 0,5 segundos y luego llamando a la función ScaleUpSaveOptions. */
-            SoundManager.instance.WaterDropSFX();
             saveOptions_Panel.DOFade(1f,fadeTime).OnComplete(ScaleUpSaveOptions);
         }
     }
@@ -125,7 +124,6 @@ public class SaveManager : MonoBehaviour
 
     public void Activate_Panel(bool activate){
         saveOptions_GB.SetActive(activate);
-        SoundManager.instance.StopWaterDrop();
     }
 
 
@@ -257,13 +255,14 @@ public class SaveManager : MonoBehaviour
 
         if(System.IO.File.Exists(dataPath + "/mysave1.save")){
             File.Delete(dataPath + "/mysave1.save");
+
         }
     }
 
     private void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.tag == "SaveZone"){
             saveZoneTrigger = true;
-            
+            SoundManager.instance.WaterDropSFX();
             interactionButton.gameObject.transform.position = other.gameObject.transform.position + new Vector3(70, 5, 0);
             interactionButton.SetActive(true);
         } else{
