@@ -10,7 +10,7 @@ public class BuildingsMovement : MonoBehaviour
     private PlayerInputAction playerInputs;
     private GameObject taroSale;
     private bool swotch;
-    private Vector3 pos;
+    private Vector3 lugar;
 
     void Awake(){
         playerInputs = new PlayerInputAction();
@@ -27,9 +27,9 @@ public class BuildingsMovement : MonoBehaviour
 
     void teleport(InputAction.CallbackContext context){
         if(swotch){
-            pos = Enter.transform.position;
-            taroSale.transform.position = pos;
-            Debug.Log(pos);
+            lugar = Enter.transform.position;
+            taroSale.transform.position = lugar;
+            Debug.Log(lugar);
             swotch = false;
         }
     }
