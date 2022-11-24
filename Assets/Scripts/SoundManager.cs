@@ -13,14 +13,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioSource jump;
     [SerializeField] public AudioClip jumpsound;
  
-
     [SerializeField] public AudioSource move;
     [SerializeField] public AudioClip movesound;
 
-
     [SerializeField] public AudioSource waterdrop;
-    [SerializeField] public AudioClip waterdropsound;
-
 
     [SerializeField] public AudioSource gancho;
     [SerializeField] public AudioClip ganchoSound;
@@ -36,6 +32,18 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] public AudioSource taroDash;
     [SerializeField] public AudioClip taroDashSonido;
+
+    [SerializeField] public AudioSource catAngry;
+    [SerializeField] public AudioClip catAngrySonido;
+
+    [SerializeField] public AudioSource catAttack;
+    [SerializeField] public AudioClip catAttackSound;
+
+
+    [SerializeField] public AudioSource taroLostLife;
+    [SerializeField] public AudioClip taroLostLifeSonido;
+
+    
 
 
     #endregion
@@ -70,6 +78,8 @@ public class SoundManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
+
+        waterdrop = GameObject.Find("GoteraSFX").GetComponent<AudioSource>();
     }
 
     //Primera version, mejorar codigo en siguentes versiones
@@ -85,7 +95,11 @@ public class SoundManager : MonoBehaviour
     }
 
     public void WaterDropSFX(){
-        waterdrop.PlayOneShot(waterdropsound);
+        waterdrop.Play();
+    }
+
+    public void StopWaterDrop(){
+        waterdrop.Stop();
     }
 
     public void GanchoSFX(){
@@ -102,6 +116,18 @@ public class SoundManager : MonoBehaviour
 
     public void TaroDash(){
         taroDash.PlayOneShot(taroDashSonido);
+    }
+
+    public void TaroHealthLoss(){
+        taroLostLife.PlayOneShot(taroLostLifeSonido);
+    }
+
+    public void CatAttack(){
+        catAttack.PlayOneShot(catAttackSound);
+    }
+
+    public void CatAngry(){
+        catAngry.PlayOneShot(catAngrySonido);
     }
 
     #endregion
