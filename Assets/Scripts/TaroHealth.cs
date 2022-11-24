@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TaroHealth : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class TaroHealth : MonoBehaviour
     public Vector3 respawnPoint;
 
     public GameObject deathPanel;
+    //Canvas group para la pantalla de muerte
+    public CanvasGroup deadPanel;
 
     public Material damageColor;
     private Material taroMaterial;
@@ -29,6 +32,8 @@ public class TaroHealth : MonoBehaviour
         for(int i = 0; i < 6; i++){
             seeds[i] = GameObject.Find("HamsterLife" + i.ToString()).GetComponent<RawImage>();
         }
+        //Inicializamos Dotween
+        DOTween.Init();
     }
 
     void Start(){
@@ -89,6 +94,10 @@ public class TaroHealth : MonoBehaviour
 
     //Death
     public IEnumerator DeathTaro(){
+        //El fondo del panel de muerte aparece
+        deadPanel.DOFade(0f, 0.05f);
+        //La imagen que sale cuando mueres
+        deathPanel.GetComponent<Image>().DOFade(0f, 0.05f);
         yield return new WaitForSeconds(1);
         deathPanel.SetActive(true);
         Time.timeScale = 0f;
