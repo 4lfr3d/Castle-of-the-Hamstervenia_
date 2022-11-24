@@ -80,6 +80,7 @@ public class TaroHealth : MonoBehaviour
                     StartCoroutine(DamageToTaro());
                     this.gameObject.GetComponent<Rigidbody2D>().AddForce(hitVector*150000);
                     anim.SetTrigger("Damaged");
+                    SoundManager.instance.TaroHealthLoss();
                     health--;
                     timeInmmunity = 0f;
                 }
