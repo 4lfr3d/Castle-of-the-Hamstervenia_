@@ -47,7 +47,7 @@ public class GameController : MonoBehaviourPunCallbacks
             cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
 
-        if(PhotonNetwork.IsConnected){
+        if(PhotonNetwork.IsConnected && PhotonNetwork.PlayerList.Length > 1){
             if(PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
                 photonView.RPC("Texture", RpcTarget.All);
             }
