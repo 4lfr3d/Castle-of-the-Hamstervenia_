@@ -89,6 +89,7 @@ public class SaveManager : MonoBehaviour
         if(saveZoneTrigger){
             saveOptions_GB.SetActive(true);
             /* Descaneciendo el panel a 1 de opacidad durante 0,5 segundos y luego llamando a la función ScaleUpSaveOptions. */
+            SoundManager.instance.WaterDropSFX();
             saveOptions_Panel.DOFade(1f,fadeTime).OnComplete(ScaleUpSaveOptions);
         }
     }
@@ -124,6 +125,7 @@ public class SaveManager : MonoBehaviour
 
     public void Activate_Panel(bool activate){
         saveOptions_GB.SetActive(activate);
+        SoundManager.instance.StopWaterDrop();
     }
 
 

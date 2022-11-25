@@ -71,25 +71,6 @@ public class CommonEnemy : MonoBehaviour
         StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject)); 
     }
 
-    /*[PunRPC]
-    public void HitEnemy(int damage, int viewID){
-        lifes = lifes - damage;
-        if(lifes <= 0){
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject p in players)
-            {
-                InventorySystem player = p.GetComponent<InventorySystem>();
-                player.croquetasQty = player.croquetasQty + coinsToAdd;
-                player.Update_Ui();   
-            }
-            cm.coinsToAdd = cm.coinsToAdd + coinsToAdd;
-            cm.addCoins();
-            PhotonNetwork.Destroy(this.gameObject);
-        }
-        this.gameObject.GetComponent<KnockbackFeedback>().PlayFeedback();
-        StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject));
-    }*/
-
     public IEnumerator DamageToEnemy(GameObject enemy){
         enemyMaterial = enemy.GetComponent<Renderer>().material;
         enemy.GetComponent<Renderer>().material = damageColor;

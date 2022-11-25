@@ -41,6 +41,8 @@ MonoBehaviour:
   - UpdatePlayerInfo
   - Winner
   - HitEnemy
+  - HitBoss
+  - Texture
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
