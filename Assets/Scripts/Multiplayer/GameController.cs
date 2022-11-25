@@ -39,7 +39,6 @@ public class GameController : MonoBehaviourPunCallbacks
         } else {
             players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
             photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
-            photonView.RPC("Texture", RpcTarget.AllBuffered);
         }
     }
 
@@ -47,14 +46,17 @@ public class GameController : MonoBehaviourPunCallbacks
         if(cm == null){
             cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
+
+        if(PhotonNetwork.IsConnected){
+            if(PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
+                photonView.RPC("Texture", RpcTarget.All);
+            }
+        }
     }
 
     [PunRPC]
     void Texture(){
-        if(PhotonNetwork.PlayerList.Length > 1){
-            //Debug.Log(PhotonView.Find(2001).gameObject.name);
-            PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
-        }
+        PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
     }
 
     [PunRPC]
@@ -63,11 +65,6 @@ public class GameController : MonoBehaviourPunCallbacks
         if(playerInGame == PhotonNetwork.PlayerList.Length){
             SpawnPlayer(); //Mandar llamar posiciones de player
         }
-        
-        /*if(PhotonNetwork.PlayerList.Length > 1){
-            //Debug.Log(PhotonView.Find(2001).gameObject.name);
-            PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
-        }*/
     }
 
     //Stuff for the CAT BOSS
@@ -118,12 +115,6 @@ public class GameController : MonoBehaviourPunCallbacks
     void SpawnPlayer(){
         int randomPosition = Random.Range(0, spawnPlayerPositions.Length); //Obtener una posicion random de lista de posiciones
         GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab, spawnPlayerPositions[randomPosition].position, Quaternion.identity); //Instanciar el player en una posicion aleatoria
-        /*//playerObj.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
-        PhotonView idViewer = playerObj.GetComponent<PhotonView>();
-        Debug.Log(idViewer.ViewID);
-        if(idViewer.ViewID != PhotonNetwork.LocalPlayer.ActorNumber){
-            PhotonView.Find(idViewer.ViewID).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
-        }*/
         
         PM playScript = playerObj.GetComponent<PM>(); //Obtener script que controla al jugador
         playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer); //Mandar ejecutar funcion de inicializador de player
