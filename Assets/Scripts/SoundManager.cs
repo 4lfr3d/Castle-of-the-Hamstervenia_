@@ -19,7 +19,6 @@ public class SoundManager : MonoBehaviour
 
 
     [SerializeField] public AudioSource waterdrop;
-    [SerializeField] public AudioClip waterdropsound;
 
 
     [SerializeField] public AudioSource gancho;
@@ -85,8 +84,10 @@ public class SoundManager : MonoBehaviour
     }
 
     public void WaterDropSFX(){
-        waterdrop.PlayOneShot(waterdropsound);
+        waterdrop.Play();
     }
+
+
 
     public void GanchoSFX(){
         gancho.PlayOneShot(ganchoSound);

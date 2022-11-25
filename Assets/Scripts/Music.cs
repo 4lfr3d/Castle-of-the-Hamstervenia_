@@ -14,8 +14,4 @@ public class Music : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = true;
         gameObject.layer = 12;
     }
-
-    // public void InteractTrack(){
-    //     soundmanager.InteractMusic(gameObject);
-    // }
 }
