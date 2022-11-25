@@ -39,6 +39,7 @@ public class GameController : MonoBehaviourPunCallbacks
         } else {
             players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
             photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
+            photonView.RPC("Texture", RpcTarget.AllBuffered);
         }
     }
 
@@ -49,16 +50,24 @@ public class GameController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    void Texture(){
+        if(PhotonNetwork.PlayerList.Length > 1){
+            //Debug.Log(PhotonView.Find(2001).gameObject.name);
+            PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
+        }
+    }
+
+    [PunRPC]
     void InGame(){
         playerInGame++; //Contador de jugadores
         if(playerInGame == PhotonNetwork.PlayerList.Length){
             SpawnPlayer(); //Mandar llamar posiciones de player
         }
         
-        if(PhotonNetwork.PlayerList.Length > 1){
+        /*if(PhotonNetwork.PlayerList.Length > 1){
             //Debug.Log(PhotonView.Find(2001).gameObject.name);
             PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
-        }
+        }*/
     }
 
     //Stuff for the CAT BOSS
