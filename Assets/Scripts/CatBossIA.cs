@@ -29,8 +29,6 @@ public class CatBossIA : MonoBehaviour
 
     void Awake(){
         halflifes= lifes/2;
-
-
     }
 
     // Update is called once per frame
@@ -82,7 +80,7 @@ public class CatBossIA : MonoBehaviour
             this.transform.position = segundafase.transform.position;
             paredSegundaFase.SetActive(false);
         }
-        StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject)); 
+        StartCoroutine(DamageToEnemy(GameObject.Find("Galleto"))); 
     }
 
     public IEnumerator DamageToEnemy(GameObject enemy){

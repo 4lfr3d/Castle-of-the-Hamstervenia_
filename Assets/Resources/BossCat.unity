@@ -744,15 +744,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5183
+      value: 1846.7668
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 601.0392
+      value: 388.1176
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -110.3902
+      value: 36.971863
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -848,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084592684489918116, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5084592684489918116, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -6141,6 +6141,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 480692605828232863, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 750599966864795504, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 750599966905237052, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 750599967088801367, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 999820885415963685, guid: a8d53d7f27780104683d516a74897929, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -6184,6 +6200,26 @@ PrefabInstance:
     - target: {fileID: 999820885415963685, guid: a8d53d7f27780104683d516a74897929, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165102459743227779, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_TagString
+      value: CatBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404929251326944255, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: damageColor
+      value: 
+      objectReference: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
+    - target: {fileID: 3404929251326944255, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: segundafase
+      value: 
+      objectReference: {fileID: 1450095685}
+    - target: {fileID: 3404929251326944255, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: paredSegundaFase
+      value: 
+      objectReference: {fileID: 560469065}
+    - target: {fileID: 5662266575382666566, guid: a8d53d7f27780104683d516a74897929, type: 3}
+      propertyPath: m_TagString
+      value: BossHit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d53d7f27780104683d516a74897929, type: 3}
@@ -18733,7 +18769,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh105754
+  m_Name: pb_Mesh27728
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

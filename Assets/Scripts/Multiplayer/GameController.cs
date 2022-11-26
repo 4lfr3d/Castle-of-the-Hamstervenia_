@@ -92,7 +92,7 @@ public class GameController : MonoBehaviourPunCallbacks
             cat.paredSegundaFase.SetActive(false);
         }
 
-        StartCoroutine(cat.DamageToEnemy(cat.transform.GetChild(0).gameObject));
+        StartCoroutine(cat.DamageToEnemy(GameObject.Find("Galleto"))); 
     }
 
     //Stuff for the COMMON ENEMIES
