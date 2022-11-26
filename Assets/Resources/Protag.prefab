@@ -316,6 +316,7 @@ MonoBehaviour:
   emptySeed: {fileID: 2800000, guid: 5780fb900b218a34e8749e1ec254cb77, type: 3}
   respawnPoint: {x: 0, y: 0, z: 0}
   deathPanel: {fileID: 0}
+  deadPanel: {fileID: 0}
   damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
 --- !u!114 &1735021473821194161
 MonoBehaviour:
@@ -794,11 +795,11 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviourPunCallbacks
 {
@@ -86,7 +87,12 @@ public class GameController : MonoBehaviourPunCallbacks
             cm.addCoins();
             PhotonNetwork.Destroy(cat.gameObject);
         }
-        StartCoroutine(cat.DamageToEnemy(cat.transform.GetChild(0).gameObject));
+        if(cat.lifes <= cat.halflifes){
+            cat.transform.position = cat.segundafase.transform.position;
+            cat.paredSegundaFase.SetActive(false);
+        }
+
+        StartCoroutine(cat.DamageToEnemy(GameObject.Find("Galleto"))); 
     }
 
     //Stuff for the COMMON ENEMIES
@@ -121,7 +127,11 @@ public class GameController : MonoBehaviourPunCallbacks
     }
 
     void SpawnPlayerOffline(){
-        Instantiate(Resources.Load("Protag"), saveHelper.respawnPoint, Quaternion.identity);
+        if(saveHelper.activeSave.sceneName ==  SceneManager.GetActiveScene().name){
+            Instantiate(Resources.Load("Protag"), saveHelper.respawnPoint, Quaternion.identity);        
+        }else{
+            Instantiate(Resources.Load("Protag"), this.transform.position, Quaternion.identity);
+        }
     }
 
     public void WinGame(){
