@@ -9,6 +9,8 @@ public class CatBossIA : MonoBehaviour
     public int lifes = 2;
     public int coinsToAdd = 100;
 
+    public int halflifes;
+
     public Animator animator;
     public Transform center;
     private Transform target;
@@ -22,6 +24,14 @@ public class CatBossIA : MonoBehaviour
 
     private CoinsManager cm;
 
+    public GameObject segundafase;
+    public GameObject paredSegundaFase;
+
+    void Awake(){
+        halflifes= lifes/2;
+
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,6 +45,12 @@ public class CatBossIA : MonoBehaviour
 
         if(target == null){
             target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        if(segundafase == null){
+            segundafase = GameObject.Find("SegundaFase");
+        }
+        if(paredSegundaFase == null){
+            paredSegundaFase = GameObject.Find("EntradaFase2");
         }
     }
 
@@ -61,6 +77,10 @@ public class CatBossIA : MonoBehaviour
             cm.coinsToAdd = cm.coinsToAdd + coinsToAdd;
             cm.addCoins();
             Destroy(this.gameObject);
+        }
+        if(lifes <= halflifes){
+            this.transform.position = segundafase.transform.position;
+            paredSegundaFase.SetActive(false);
         }
         StartCoroutine(DamageToEnemy(this.transform.GetChild(0).gameObject)); 
     }
