@@ -49,15 +49,19 @@ public class GameController : MonoBehaviourPunCallbacks
         }
 
         if(PhotonNetwork.IsConnected && PhotonNetwork.PlayerList.Length > 1){
-            if(PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
-                photonView.RPC("Texture", RpcTarget.All);
-            }
-        }
+                    for(int i = 2001 ; i <= 2003 ; i++){
+                        if(PhotonView.Find(i) != null){
+                            if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
+                                photonView.RPC("Texture", RpcTarget.All, i);
+                            }
+                        }
+                    }
+                }
     }
 
     [PunRPC]
-    void Texture(){
-        PhotonView.Find(2001).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
+    void Texture(int i){
+        PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
     }
 
     [PunRPC]
