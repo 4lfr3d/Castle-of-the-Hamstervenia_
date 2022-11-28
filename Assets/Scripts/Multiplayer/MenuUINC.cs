@@ -114,7 +114,8 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         </summary>
     */
     public void StartGame(){
-        MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "firstScene");
+        PlayerPrefs.SetFloat("LoadScreenDelay", 5f);
+        MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "LoadScene");
     }
 
     public void LeaveMulti(){
