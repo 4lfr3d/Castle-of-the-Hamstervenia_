@@ -11,7 +11,8 @@ public class MenuSaveManager : MonoBehaviour
     //New Game
     public void StartGame(){
         GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().DeleteSaveData();
-        SceneManager.LoadScene("firstScene");
+
+        SceneManager.LoadScene("LoadScene");
     }
 
 
@@ -22,7 +23,7 @@ public class MenuSaveManager : MonoBehaviour
         //load player's scene
         if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
             Debug.Log("GAME LOADED");
-            SceneManager.LoadScene("firstScene");
+            SceneManager.LoadScene("LoadScene");
         } else{
             noSaveGame.SetActive(true);
             Debug.Log("GAME NOT LOADED");

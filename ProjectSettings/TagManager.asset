@@ -21,6 +21,8 @@ TagManager:
   - NPCVendor
   - SpawnPoint
   - WinPoint
+  - CatBoss
+  - BossHit
   layers:
   - Default
   - TransparentFX
