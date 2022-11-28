@@ -7,6 +7,11 @@ public class MenuSaveManager : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private GameObject noSaveGame = null;
+
+    void Start(){
+        PlayerPrefs.SetString("LoadScreenNextScene", "firstScene");
+        PlayerPrefs.SetFloat("LoadScreenDelay", 4f);
+    }
     
     //New Game
     public void StartGame(){
