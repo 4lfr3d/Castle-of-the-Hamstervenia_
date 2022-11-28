@@ -8,7 +8,9 @@ public class LoaderController : MonoBehaviour
 {
     public TextMeshProUGUI loaderText;
     public TextMeshProUGUI hintText;
-    private int maxDots = 5;
+    public float delay = 10f;
+    public int maxDots = 3;
+    public string nextScene;
 
     private string[] hints = {"El gancho de Taro no funciona en vidrio", 
                               "Talpa tiene items interesantes en su tienda",
@@ -40,10 +42,10 @@ public class LoaderController : MonoBehaviour
 
     IEnumerator GameLoaderScene(){
         AsyncOperation op;
-        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(PlayerPrefs.GetString("LoadScreenNextScene"));
+        op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
 
-        yield return new WaitForSeconds(PlayerPrefs.GetFloat("LoadScreenDelay"));
+        yield return new WaitForSeconds(delay);
 
         op.allowSceneActivation = true;
     }

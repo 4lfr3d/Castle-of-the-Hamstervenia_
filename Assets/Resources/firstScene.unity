@@ -20288,37 +20288,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &666668017
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 666668018}
-  m_Layer: 0
-  m_Name: ChangeRespawnIn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &666668018
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666668017}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -78.8, y: 15.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 705274279}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670962570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20549,39 +20518,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8397930592353285408, guid: ecd9e6b2ed079ae43b5ea276a962f727, type: 3}
   m_PrefabInstance: {fileID: 700725648}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &705274278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 705274279}
-  m_Layer: 0
-  m_Name: ChangeScene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &705274279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705274278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -999.27057, y: 1170.4905, z: -23.899641}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1494815626}
-  - {fileID: 666668018}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &737687021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32012,7 +31948,7 @@ GameObject:
   - component: {fileID: 1494815631}
   - component: {fileID: 1494815632}
   m_Layer: 0
-  m_Name: ChangePointIn
+  m_Name: WinPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32026,17 +31962,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494815625}
   m_LocalRotation: {x: -0.0021008675, y: -0.0013608967, z: 0.7047459, w: 0.70945543}
-  m_LocalPosition: {x: 0.7, y: 187.4, z: 38.9}
-  m_LocalScale: {x: 73.988075, y: 143.71268, z: 53.51775}
+  m_LocalPosition: {x: -998.4435, y: 1357.7017, z: 15}
+  m_LocalScale: {x: 134.16339, y: 275.52292, z: 275.51413}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< Updated upstream
   m_Father: {fileID: 0}
   m_RootOrder: 12
-=======
-  m_Father: {fileID: 705274279}
-  m_RootOrder: 0
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: -0.061, y: -0.28, z: 89.619}
 --- !u!23 &1494815628
 MeshRenderer:
@@ -32149,9 +32080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextScene: Hamsburgo
-  taro: {fileID: 0}
-  respawnIn: {fileID: 0}
-  respawnOut: {fileID: 0}
 --- !u!1 &1495920347
 GameObject:
   m_ObjectHideFlags: 0
@@ -36346,7 +36274,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2066203518
 Transform:
   m_ObjectHideFlags: 0
