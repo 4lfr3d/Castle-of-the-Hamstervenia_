@@ -25,7 +25,12 @@ public class GameController : MonoBehaviourPunCallbacks
     public Material secondplayer;
 
     private void Awake(){
-        instance = this;
+        if(instance == null && instance != this){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else{
+            Destroy(gameObject);
+        }
 
         saveHelper = this.GetComponent<SaveManager>();    
     }
