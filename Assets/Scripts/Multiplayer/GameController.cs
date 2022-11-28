@@ -16,7 +16,7 @@ public class GameController : MonoBehaviourPunCallbacks
     public Transform[] spawnPlayerPositions; //Posiciones donde se puede colocar los players
     public PM[] players; //controlador de player
 
-    private int playerInGame; //Numero de players en el room
+    public int playerInGame; //Numero de players en el room
 
     private SaveManager saveHelper; //Carga de juego
 
@@ -64,6 +64,7 @@ public class GameController : MonoBehaviourPunCallbacks
     void InGame(){
         playerInGame++; //Contador de jugadores
         if(playerInGame == PhotonNetwork.PlayerList.Length){
+            Debug.Log(PhotonNetwork.PlayerList.Length);
             SpawnPlayer(); //Mandar llamar posiciones de player
         }
     }
@@ -118,9 +119,9 @@ public class GameController : MonoBehaviourPunCallbacks
         StartCoroutine(rat.DamageToEnemy(rat.transform.GetChild(0).gameObject));
     }
 
-    void SpawnPlayer(){
+    public void SpawnPlayer(){
         int randomPosition = Random.Range(0, spawnPlayerPositions.Length); //Obtener una posicion random de lista de posiciones
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab, spawnPlayerPositions[randomPosition].position, Quaternion.identity); //Instanciar el player en una posicion aleatoria
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab, this.transform.position, Quaternion.identity); //Instanciar el player en una posicion aleatoria
         
         PM playScript = playerObj.GetComponent<PM>(); //Obtener script que controla al jugador
         playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer); //Mandar ejecutar funcion de inicializador de player

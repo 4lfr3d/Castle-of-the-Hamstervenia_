@@ -60,7 +60,7 @@ public class CatBossIA : MonoBehaviour
             PhotonView photonView = PhotonView.Get(this);
             Debug.Log(photonView.ViewID);
 
-            gameController.preHit(damage, photonView.ViewID);
+            gameController.preHitBoss(damage, photonView.ViewID);
 
             //photonView.RPC("HitEnemy", RpcTarget.All, damage);
         }

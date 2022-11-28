@@ -15,6 +15,7 @@ public class SceneChanger : MonoBehaviourPunCallbacks
         }
         else{
             MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, NextScene);
+            photonView.RPC("InGame", RpcTarget.AllBuffered);
         }
     }
 

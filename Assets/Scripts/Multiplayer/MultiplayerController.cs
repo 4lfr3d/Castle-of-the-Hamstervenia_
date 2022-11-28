@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerController : MonoBehaviourPunCallbacks
 {
@@ -70,6 +71,6 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     */
     [PunRPC]
     public void LoadScene(string _nameScene){
-        PhotonNetwork.LoadLevel(_nameScene);
+        SceneManager.LoadScene(_nameScene);
     }
 }
