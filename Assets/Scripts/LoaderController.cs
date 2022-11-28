@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class LoaderController : MonoBehaviour
 {
@@ -41,6 +43,7 @@ public class LoaderController : MonoBehaviour
     IEnumerator GameLoaderScene(){
         AsyncOperation op;
         op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(PlayerPrefs.GetString("LoadScreenNextScene"));
+
         op.allowSceneActivation = false;
 
         yield return new WaitForSeconds(PlayerPrefs.GetFloat("LoadScreenDelay"));
