@@ -146,6 +146,34 @@ MonoBehaviour:
     m_Localized: Presiona  "X" para interactuar
     m_Metadata:
       m_Items: []
+  - m_Id: 25374405724270592
+    m_Localized: Quiero comprarte algo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374655335690240
+    m_Localized: Platicar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374818657693696
+    m_Localized: Adios
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374992499011584
+    m_Localized: Guardar progreso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25375684592726016
+    m_Localized: Aguja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25376387188977664
+    m_Localized: Ultimo punto de guardado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25377652669214720
+    m_Localized: Has Muerto
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

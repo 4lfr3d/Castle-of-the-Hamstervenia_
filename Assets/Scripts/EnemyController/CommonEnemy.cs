@@ -22,7 +22,7 @@ public class CommonEnemy : MonoBehaviour
     private Transform target;
     
     public Material damageColor;
-    private Material enemyMaterial;
+    public Material enemyMaterial;
 
     private GameController gameController;
 
@@ -72,7 +72,6 @@ public class CommonEnemy : MonoBehaviour
     }
 
     public IEnumerator DamageToEnemy(GameObject enemy){
-        enemyMaterial = enemy.GetComponent<Renderer>().material;
         enemy.GetComponent<Renderer>().material = damageColor;
 
         yield return new WaitForSeconds(0.25f);

@@ -187,7 +187,9 @@ MonoBehaviour:
   coinsToAdd: 3
   enemyType: c
   animator: {fileID: 896955520840308950}
-  damageColor: {fileID: 0}
+  agent: {fileID: 0}
+  damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: 4e4e18ba6b35bfb49a901ada15e973d9, type: 2}
 --- !u!195 &2091801429
 NavMeshAgent:
   m_ObjectHideFlags: 0

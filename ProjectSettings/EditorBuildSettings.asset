@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/LoadScene.unity
     guid: 0bb5ac57809893d44b3d45a1038b5fda
+  - enabled: 1
+    path: Assets/Resources/Hamzil.unity
+    guid: ce8bfd23b6be71449b6c367b09bc6540
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 3fe12d18daa40a945b658b1bd0c601b4, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3644115ada1250a46a21658741ae5129, type: 2}
