@@ -6811,6 +6811,7 @@ MonoBehaviour:
   attackRange: 250
   animator: {fileID: 246945457}
   damageColor: {fileID: 2100000, guid: e42d4eeb07956e043878684942acc86d, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: a5b6d81f0b81e034a8c0ba52a1a09742, type: 2}
   unlockablePath: {fileID: 721168507}
   afterBossPath: {fileID: 1543023391}
 --- !u!50 &156791637
@@ -6891,7 +6892,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 15
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &160066670

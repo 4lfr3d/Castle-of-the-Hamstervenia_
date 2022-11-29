@@ -21,7 +21,7 @@ public class RatBossIA : MonoBehaviour
     private float distance;
 
     public Material damageColor;
-    private Material enemyMaterial;
+    public Material enemyMaterial;
 
     private GameController gameController;
 
@@ -77,11 +77,10 @@ public class RatBossIA : MonoBehaviour
             unlockablePath.SetActive(true);
             afterBossPath.SetActive(false);
         }
-        StartCoroutine(DamageToEnemy(this.gameObject)); 
+        StartCoroutine(DamageToEnemy(this.transform.GetChild(0).GetChild(1).gameObject)); 
     }
 
     public IEnumerator DamageToEnemy(GameObject enemy){
-        enemyMaterial = enemy.GetComponent<Renderer>().material;
         enemy.GetComponent<Renderer>().material = damageColor;
 
         yield return new WaitForSeconds(0.25f);

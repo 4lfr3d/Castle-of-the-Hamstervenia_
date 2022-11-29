@@ -51,18 +51,17 @@ public class InteractionSystem : MonoBehaviour
     void Update(){
         Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position,
         detectionRadius, detectionLayer);
-        if (obj != null)
-        {
-            //Debug.Log(obj.name);
+        if (obj != null){
             if(obj.name == "Croquetas"){
-                Debug.Log(obj.name);
                 this.gameObject.GetComponent<InventorySystem>().PickUp(obj.gameObject);
                 obj.gameObject.SetActive(false);
             }
-            detectedObject = obj.gameObject;
-            detectObject = true;
-            interactionButton.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 60, 0);
-            interaction_Sprite.DOFade(1.5f, fadeTime);
+            else{
+                detectedObject = obj.gameObject;
+                detectObject = true;
+                interactionButton.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 60, 0);
+                interaction_Sprite.DOFade(1.5f, fadeTime);
+            }
         }
         else
         {

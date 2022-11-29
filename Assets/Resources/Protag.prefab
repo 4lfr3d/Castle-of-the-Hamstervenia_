@@ -333,7 +333,7 @@ MonoBehaviour:
   detectionPoint: {fileID: 1735021473959555913}
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8448
   detectedObject: {fileID: 0}
   interactionButton: {fileID: 0}
   interaction_Sprite: {fileID: 0}

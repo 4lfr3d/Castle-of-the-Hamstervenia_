@@ -214,6 +214,7 @@ public class SaveManager : MonoBehaviour
         activeSave.needleDamage = this.attackTaro.damage;
         activeSave.forgeCost = this.forgeTaro.weapons[0].cost;
         activeSave.forgeActualLevel = this.forgeTaro.weapons[0].actualLevel;
+        activeSave.sceneName =  SceneManager.GetActiveScene().name;
 
         //activeSave.itemSave = this.inventoryTaro.items;
 

@@ -7,9 +7,10 @@ public class LeverPlatform : MonoBehaviour
 {
     public Transform bridge;
     public Animator animator;
-    private PlayerInputAction playerInputs;
+    public bool doLever;
 
-    private bool leverTrigger, doLever;
+    private PlayerInputAction playerInputs;
+    private bool leverTrigger;
 
     void Awake(){
         playerInputs = new PlayerInputAction();
@@ -43,6 +44,8 @@ public class LeverPlatform : MonoBehaviour
         if(leverTrigger){
             animator.SetBool("lever", true);
             doLever = true;
+            GameObject.Find("Lever2").GetComponent<CapsuleCollider2D>().enabled=false;
+            GameObject.Find("Lever3").GetComponent<CapsuleCollider2D>().enabled=false;
         }
     }
 
