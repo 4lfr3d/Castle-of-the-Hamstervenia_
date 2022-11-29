@@ -66,6 +66,9 @@ public class TaroAttack : MonoBehaviour
         } else if((col.gameObject.tag == "CatBoss") && isTaroAttacking){
             col.gameObject.transform.parent.parent.GetComponent<CatBossIA>().Damage(damage);
             isTaroAttacking = false;
+        } else if((col.gameObject.tag == "RatBoss") && isTaroAttacking){
+            col.gameObject.GetComponent<RatBossIA>().Damage(damage);
+            isTaroAttacking = false;
         }
     }
 

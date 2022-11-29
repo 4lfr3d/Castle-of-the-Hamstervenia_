@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Forge : MonoBehaviour
 {
@@ -65,6 +67,11 @@ public class Forge : MonoBehaviour
         playerInputs = new PlayerInputAction();
 
         Metal = GameObject.Find("Metal").GetComponent<Transform>();
+
+        if(PhotonNetwork.IsConnected){
+            forge_GB.SetActive(false);
+            this.GetComponent<Forge>().enabled = false;
+        }
 
         DOTween.Init();
 

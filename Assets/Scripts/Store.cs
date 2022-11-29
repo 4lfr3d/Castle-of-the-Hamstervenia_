@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Store : MonoBehaviour
 {
@@ -52,6 +54,11 @@ public class Store : MonoBehaviour
         storePanel = GameObject.Find("Store");
         panelUI = GameObject.Find("UIPlayer");
         //interactionIcon = GameObject.Find("SaleIcon");
+
+        if(PhotonNetwork.IsConnected){
+            storePanel.SetActive(false);
+            this.GetComponent<Store>().enabled = false;
+        }
 
         playerInputs = new PlayerInputAction();
     }

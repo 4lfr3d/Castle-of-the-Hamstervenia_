@@ -18,7 +18,7 @@ public class CommonEnemy : MonoBehaviour
     public Animator animator;
 
     private string currentState = "IdleState";
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Transform target;
     
     public Material damageColor;

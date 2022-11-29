@@ -36,6 +36,10 @@ public class GameController : MonoBehaviourPunCallbacks
         if(!PhotonNetwork.IsConnected){
             SpawnPlayerOffline();
         } else {
+            if(GameObject.Find("Sasha") != null && GameObject.Find("Talpa") != null){
+                GameObject.Find("Sasha").GetComponent<BoxCollider2D>().enabled = false;
+                GameObject.Find("Talpa").GetComponent<BoxCollider2D>().enabled = false;
+            }
             players = new PM[PhotonNetwork.PlayerList.Length]; //Inicializar el vector de jugadores
             photonView.RPC("InGame", RpcTarget.AllBuffered); //Colocar los players en una posicion de lista de spawner
         }
@@ -69,6 +73,31 @@ public class GameController : MonoBehaviourPunCallbacks
             Debug.Log(PhotonNetwork.PlayerList.Length);
             SpawnPlayer(); //Mandar llamar posiciones de player
         }
+    }
+
+    //Stuff for the RAt BOSS
+    public void preHitBossRat(int damage, int viewID){
+        PhotonView photonView = PhotonView.Get(this);
+        photonView.RPC("HitBossRat", RpcTarget.All, damage, viewID);
+    }
+
+    [PunRPC]
+    public void HitBossRat(int damage, int viewID){
+        RatBossIA rat = PhotonView.Find(viewID).gameObject.GetComponent<RatBossIA>();
+        rat.lifes = rat.lifes - damage;
+        if(rat.lifes <= 0){
+            InventorySystem player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+            player.croquetasQty = player.croquetasQty + rat.coinsToAdd;
+            player.Update_Ui(); 
+            
+            cm.coinsToAdd = cm.coinsToAdd + rat.coinsToAdd;
+            cm.addCoins();
+            PhotonNetwork.Destroy(rat.gameObject);
+            rat.unlockablePath.SetActive(true);
+            rat.afterBossPath.SetActive(false);
+        }
+
+        StartCoroutine(rat.DamageToEnemy(GameObject.Find("RatShield"))); 
     }
 
     //Stuff for the CAT BOSS

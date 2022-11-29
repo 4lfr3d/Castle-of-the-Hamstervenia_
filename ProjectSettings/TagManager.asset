@@ -23,6 +23,7 @@ TagManager:
   - WinPoint
   - CatBoss
   - BossHit
+  - RatBoss
   layers:
   - Default
   - TransparentFX

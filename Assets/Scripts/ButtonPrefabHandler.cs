@@ -80,7 +80,7 @@ public class ButtonPrefabHandler : MonoBehaviour
     //MultiplayerController
 
     public void SalirMultiJugador(){
-        GameController.instance.WinGame();
+        GameObject.Find("GameController").GetComponent<GameController>().WinGame();
     }
 
     //save
