@@ -146,6 +146,30 @@ MonoBehaviour:
     m_Localized: Press "X" to interact
     m_Metadata:
       m_Items: []
+  - m_Id: 25374405724270592
+    m_Localized: I want to buy from you
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374655335690240
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374818657693696
+    m_Localized: Goodbye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25375684592726016
+    m_Localized: Needle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25376387188977664
+    m_Localized: Last CheckPoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25377652669214720
+    m_Localized: You are Dead
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

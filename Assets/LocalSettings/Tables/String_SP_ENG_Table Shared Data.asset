@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19977629118820352
-    m_Key: Guardar
+    m_Key: Guardar_progreso
     m_Metadata:
       m_Items: []
   - m_Id: 19979903824097280
@@ -145,6 +145,34 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 20479383287689216
     m_Key: TipClic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374405724270592
+    m_Key: Tienda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374655335690240
+    m_Key: Platicar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374818657693696
+    m_Key: Adios
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25374992499011584
+    m_Key: Guardar progreso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25375684592726016
+    m_Key: Needle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25376387188977664
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25377652669214720
+    m_Key: New Entry 1
     m_Metadata:
       m_Items: []
   m_Metadata:
