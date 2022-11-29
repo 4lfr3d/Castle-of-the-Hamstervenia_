@@ -28,8 +28,7 @@ public class BuildingsMovement : MonoBehaviour
     void teleport(InputAction.CallbackContext context){
         if(swotch){
             lugar = Enter.transform.position;
-            taroSale.transform.position = lugar;
-            Debug.Log(lugar);
+            taroSale.transform.position = lugar;;
             swotch = false;
         }
     }

@@ -1,44 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LeverPlatform : MonoBehaviour
 {
-    private Transform door;
+    public Transform bridge;
     public Animator animator;
+    private PlayerInputAction playerInputs;
+
+    private bool leverTrigger, doLever;
+
+    void Awake(){
+        playerInputs = new PlayerInputAction();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        door = transform.Find("Platforms");
-        door.gameObject.SetActive(false);
+        bridge = GameObject.Find("Bridge").transform;
     }
 
-    private void OnTriggerEnter2D(Collider2D col) {
-        if(door!=null){
-            if(Input.GetKeyDown(KeyCode.V) && col.gameObject.tag == "Player")
-            {
-		    	animator.SetBool("lever", true); //Animator Lever check by Omar
-                door.gameObject.SetActive(true);
-            }
+    void Update() {
+        if(doLever){
+            bridge.Rotate(new Vector3 (0, 0,- Time.deltaTime * 20));
+        }
+        if(bridge.eulerAngles.z < 1){
+            doLever = false;
         }
     }
-    private void OnTriggerStay2D(Collider2D col) {
-        if(door!=null){
-            if(Input.GetKeyDown(KeyCode.V) && col.gameObject.tag == "Player")
-            {
-		    	animator.SetBool("lever", true); //Animator Lever check by Omar
-                door.gameObject.SetActive(true);
-            }
+
+    private void OnEnable(){
+        playerInputs.Player.Interaction.performed += BridgeInteraction;
+        playerInputs.Player.Interaction.Enable();
+    }
+
+    private void OnDisable(){
+        playerInputs.Player.Interaction.Disable();
+    }
+
+    void BridgeInteraction(InputAction.CallbackContext context){
+        if(leverTrigger){
+            animator.SetBool("lever", true);
+            doLever = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D col) {
-        if(door!=null){
-            if(Input.GetKeyDown(KeyCode.V) && col.gameObject.tag == "Player")
-            {
-		    	animator.SetBool("lever", true); //Animator Lever check by Omar
-                door.gameObject.SetActive(true);
-            }
+
+    private void OnTriggerStay2D(Collider2D other){
+        if(other.gameObject.tag == "Player"){
+            leverTrigger = true;
+        } else{
+            leverTrigger = false;
         }
     }
 }
