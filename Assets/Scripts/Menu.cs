@@ -67,16 +67,6 @@ public class Menu : MonoBehaviour
     [SerializeField] public GameObject confirmationPrompt = null;
 
     void Awake(){
-
-
-        if(instance == null){
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else{
-            Destroy(gameObject);
-        }
-
         masterSlidder.onValueChanged.AddListener(SetMasterVolume);
         musicSlidder.onValueChanged.AddListener(SetMusicVolume);
         sfxSlidder.onValueChanged.AddListener(SetSFXVolume);

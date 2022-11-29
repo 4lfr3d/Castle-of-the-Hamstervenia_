@@ -38,6 +38,7 @@ public class InventorySystem : MonoBehaviour
             items_images[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
             items_images[i].color = new Color(items_images[i].color.r, items_images[i].color.g, items_images[i].color.b, 0f);
             items_counters[i] = GameObject.Find("InventorySlot" + i.ToString()).transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
+            items_counters[i].text = "";
         }
 
         description_image = GameObject.Find("DescriptionImage").GetComponent<Image>();
@@ -49,6 +50,11 @@ public class InventorySystem : MonoBehaviour
         idItem = GameObject.Find("idHolderInvisible").GetComponent<TMP_Text>();
         croquetasQtyTxt = GameObject.Find("CroquetasQty").GetComponent<TMP_Text>();
         cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
+
+        item_description.text = "";
+        description_Title.text = "";
+        
+        description_image.DOFade(0f,0f);
 
         playerInputs = new PlayerInputAction();
     }
