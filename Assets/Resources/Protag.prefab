@@ -336,6 +336,7 @@ MonoBehaviour:
     m_Bits: 256
   detectedObject: {fileID: 0}
   interactionButton: {fileID: 0}
+  interaction_Sprite: {fileID: 0}
 --- !u!114 &1735021473821194160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
     - Regreso en la 1.0
   store: {fileID: 1735021473821194127}
   forge: {fileID: 1735021473821194121}
+  conversationIcon_Sprite: {fileID: 0}
   conversationIcon: {fileID: 0}
   dialogoptions_GB: {fileID: 0}
   dialogueOptions_Panel: {fileID: 0}
