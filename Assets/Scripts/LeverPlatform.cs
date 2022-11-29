@@ -41,6 +41,7 @@ public class LeverPlatform : MonoBehaviour
 
     void BridgeInteraction(InputAction.CallbackContext context){
         if(leverTrigger){
+            animator.SetBool("lever", true);
             doLever = true;
         }
     }
