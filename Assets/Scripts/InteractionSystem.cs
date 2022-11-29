@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -14,15 +15,22 @@ public class InteractionSystem : MonoBehaviour
      
     public GameObject detectedObject;
     public GameObject interactionButton;
+    public SpriteRenderer interaction_Sprite;
 
     private bool detectObject = false;
+    private float fadeTime = 0.5f;
 
     private PlayerInputAction playerInputs;
 
     private void Awake(){
         interactionButton = GameObject.Find("manoAgarrar");
+        interaction_Sprite = GameObject.Find("manoAgarrar").GetComponent<SpriteRenderer>();
 
         playerInputs = new PlayerInputAction();
+
+        DOTween.Init();
+
+        interaction_Sprite.DOFade(0f,0f);
     }
 
     private void OnEnable(){
@@ -53,14 +61,14 @@ public class InteractionSystem : MonoBehaviour
             }
             detectedObject = obj.gameObject;
             detectObject = true;
-            interactionButton.gameObject.transform.position = obj.gameObject.transform.position + new Vector3(0, 25, 0);
-            interactionButton.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            interactionButton.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 60, 0);
+            interaction_Sprite.DOFade(1.5f, fadeTime);
         }
         else
         {
             detectedObject = null;
             detectObject = false;
-            interactionButton.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            interaction_Sprite.DOFade(0f,fadeTime);
         }
     }
 

@@ -16,6 +16,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public Forge forge;
 
+    public SpriteRenderer conversationIcon_Sprite;
     public GameObject conversationIcon;
 
     private PlayerInputAction playerInputs;
@@ -41,6 +42,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Awake(){
         conversationIcon = GameObject.Find("ConversationTrigger");
+        conversationIcon_Sprite = GameObject.Find("ConversationTrigger").GetComponent<SpriteRenderer>();
         dialogueOptions_Panel = GameObject.Find("DialogOptions").GetComponent<CanvasGroup>();
 
         dialogoptions_GB = GameObject.Find("DialogOptions");
@@ -55,6 +57,8 @@ public class DialogueTrigger : MonoBehaviour
         DOTween.Init();
         /* Es una interpolación que desvanece el panel a 0 de opacidad durante 0 segundos. */
         dialogueOptions_Panel.DOFade(0f,0f);
+
+        conversationIcon_Sprite.DOFade(0f, 0f);
         ScaleDownOptions();
     }
 
@@ -145,13 +149,13 @@ public class DialogueTrigger : MonoBehaviour
             nombreVendedor = other.gameObject.name;
             tagNpc = other.tag;
             chat = true;
-            conversationIcon.gameObject.transform.position = other.gameObject.transform.position + new Vector3(-20, 75, 0);
-            conversationIcon.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            conversationIcon.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0,60, 0);
+            conversationIcon_Sprite.DOFade(1.5f, fadeTime);
         } 
         else
         {
             chat = false;
-           conversationIcon.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            conversationIcon_Sprite.DOFade(0f, fadeTime);
         }
     }
 }
