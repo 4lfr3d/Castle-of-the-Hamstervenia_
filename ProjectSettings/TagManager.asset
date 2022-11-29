@@ -24,6 +24,7 @@ TagManager:
   - CatBoss
   - BossHit
   - RatBoss
+  - a
   layers:
   - Default
   - TransparentFX
