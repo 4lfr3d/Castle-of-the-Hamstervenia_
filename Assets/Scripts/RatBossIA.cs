@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class RatBossIA : MonoBehaviour
 {
-    public int lifes = 2;
+    public int lifes = 15;
     public int coinsToAdd = 100;
 
     private string currentState = "IdleState";
