@@ -47,6 +47,8 @@ public class SaveManager : MonoBehaviour
     private Vector3 objetoScalaNormal = new Vector3(1.3359f,1.403096f,1.3359f);
     private Vector3 objetoScalaReducido = Vector3.zero;
 
+    public bool isSaveZoneAux = false;
+
 
 
     private void Awake(){
@@ -227,9 +229,10 @@ public class SaveManager : MonoBehaviour
 
         Debug.Log("Saved");
         
-        textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
-    
-        animationSaver.SetTrigger("Saver");
+        if(!isSaveZoneAux){
+            textSaver.text = phraseSaver[Random.Range(0, phraseSaver.Length)];
+            animationSaver.SetTrigger("Saver");
+        }
     }
 
     public void Load(){
