@@ -12,6 +12,7 @@ public class GameController : MonoBehaviourPunCallbacks
 
     public bool isGameEnd = false; //Saber si el juego termino
     public string playerPrefab; //Prefab de la carpeta de recursos
+    public GameObject SaveZone;
 
     public Transform[] spawnPlayerPositions; //Posiciones donde se puede colocar los players
     public PM[] players; //controlador de player
@@ -51,14 +52,14 @@ public class GameController : MonoBehaviourPunCallbacks
         }
 
         if(PhotonNetwork.IsConnected && PhotonNetwork.PlayerList.Length > 1){
-                    for(int i = 2001 ; i <= 2003 ; i++){
-                        if(PhotonView.Find(i) != null){
-                            if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
-                                photonView.RPC("Texture", RpcTarget.All, i);
-                            }
-                        }
+            for(int i = 2001 ; i <= 2003 ; i++){
+                if(PhotonView.Find(i) != null){
+                    if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
+                        photonView.RPC("Texture", RpcTarget.All, i);
                     }
                 }
+            }
+        }
     }
 
     [PunRPC]
@@ -117,6 +118,7 @@ public class GameController : MonoBehaviourPunCallbacks
             
             cm.coinsToAdd = cm.coinsToAdd + cat.coinsToAdd;
             cm.addCoins();
+            SaveZone.SetActive(true);
             PhotonNetwork.Destroy(cat.gameObject);
         }
         if(cat.lifes <= cat.halflifes){

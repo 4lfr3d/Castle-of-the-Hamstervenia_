@@ -26,6 +26,7 @@ public class CatBossIA : MonoBehaviour
 
     public GameObject segundafase;
     public GameObject paredSegundaFase;
+    public GameObject SaveZone;
 
     void Awake(){
         halflifes= lifes/2;
@@ -74,6 +75,7 @@ public class CatBossIA : MonoBehaviour
             player.Update_Ui();
             cm.coinsToAdd = cm.coinsToAdd + coinsToAdd;
             cm.addCoins();
+            SaveZone.SetActive(true);
             Destroy(this.gameObject);
         }
         if(lifes <= halflifes){
