@@ -8,8 +8,6 @@ public class Music : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] public int musicTrack;
 
-    public SoundManager soundmanager;
-
     private void Reset(){
         GetComponent<Collider2D>().isTrigger = true;
         gameObject.layer = 12;

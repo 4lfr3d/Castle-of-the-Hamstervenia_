@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class CatBossIA : MonoBehaviour
 {
-    public int lifes = 2;
+    public int lifes = 20;
     public int coinsToAdd = 100;
 
     public int halflifes;
