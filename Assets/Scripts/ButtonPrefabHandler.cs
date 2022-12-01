@@ -8,6 +8,7 @@ public class ButtonPrefabHandler : MonoBehaviour
     private Store taroStore;
     private Forge taroForge;
     private DialogueTrigger taroDialogue;
+    private DialogueManager dialogueMan;
     private GameController gameController;
     private SaveManager savemang;
 
@@ -33,6 +34,9 @@ public class ButtonPrefabHandler : MonoBehaviour
         if(savemang == null){
             savemang = GameObject.FindGameObjectWithTag("Player").GetComponent<SaveManager>();
         }
+        if(dialogueMan == null){
+            dialogueMan = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        }
     }
 
     //Inv System
@@ -56,6 +60,10 @@ public class ButtonPrefabHandler : MonoBehaviour
     }
     public void showDialogo(){
         taroDialogue.showDialogo();
+    }
+
+    public void NextSentence(){
+        dialogueMan.DisplayNextSentence();
     }
 
     //Store

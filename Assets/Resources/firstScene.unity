@@ -23927,17 +23927,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &516759485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8930559479995558445, guid: 52078b34388e6014e969fd43af08e6eb, type: 3}
-  m_PrefabInstance: {fileID: 5114989325801769136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c4747fc29cb3e4187e6b3d87c07b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &517226936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40739,6 +40728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameEnd: 0
   playerPrefab: Protag
+  SaveZone: {fileID: 0}
   spawnPlayerPositions:
   - {fileID: 2066203518}
   players: []
@@ -42554,6 +42544,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7486470690344300095, guid: 21a0473e9aeee3a438ef8a3d980971bd, type: 3}
   m_PrefabInstance: {fileID: 160066670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1553345168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2932666046121547079, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+  m_PrefabInstance: {fileID: 8499794612175139433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efcb7b00e4f02c4695e05da14b0d291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1559896592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47695,7 +47696,15 @@ PrefabInstance:
     - target: {fileID: 4047254698414366862, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 516759485}
+      objectReference: {fileID: 1553345168}
+    - target: {fileID: 4047254698414366862, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047254698414366862, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonPrefabHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4048945387355859985, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_text
       value: Continue
