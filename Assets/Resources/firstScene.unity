@@ -6546,7 +6546,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cockroach (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2091801425, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
 --- !u!1 &77866227 stripped
 GameObject:
@@ -22126,25 +22127,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
-    - target: {fileID: 1867960700, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+    - target: {fileID: 864253972, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22190,10 +22179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5031915013309641748, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: sceneViewId
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
 --- !u!4 &864253970 stripped
@@ -22201,33 +22186,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
   m_PrefabInstance: {fileID: 864253969}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &864253971 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180336269059349181, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-  m_PrefabInstance: {fileID: 864253969}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &864253972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864253971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 4
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!224 &890372693 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8499794611452538940, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
@@ -29385,6 +29343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 2091801425, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -29588,7 +29550,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cockroach (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2091801425, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
 --- !u!1 &1129510899 stripped
 GameObject:
@@ -34340,6 +34303,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 864253972, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1867960700, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -34408,7 +34375,9 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1867960700, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+    - {fileID: 864253972, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
 --- !u!1 &1683565600 stripped
 GameObject:
@@ -35487,6 +35456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 864253972, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 0
