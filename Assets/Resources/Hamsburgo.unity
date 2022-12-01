@@ -1954,15 +1954,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1604.9861
+      value: 5239.5703
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 708.86816
+      value: 97.431335
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 101.12193
+      value: -20.91373
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 3
+  sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &83477919
@@ -23278,7 +23278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932666046121547097, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: sceneViewId
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3108522281738676814, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -27737,7 +27737,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 14
+  sceneViewId: 17
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!23 &793702403
@@ -41994,6 +41994,7 @@ MonoBehaviour:
   players: []
   playerInGame: 0
   secondplayer: {fileID: 2100000, guid: 73f3f71dafec4864cbf9be6794195395, type: 2}
+  firstplayer: {fileID: 2100000, guid: 96ef01feb1eb47242b872f88f8b43b63, type: 2}
 --- !u!4 &1302735956
 Transform:
   m_ObjectHideFlags: 0
@@ -55657,7 +55658,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!23 &1821997282

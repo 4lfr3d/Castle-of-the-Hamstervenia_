@@ -270,7 +270,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 5
+  sceneViewId: 20
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &16338034
@@ -293,6 +293,7 @@ MonoBehaviour:
   players: []
   playerInGame: 0
   secondplayer: {fileID: 2100000, guid: 73f3f71dafec4864cbf9be6794195395, type: 2}
+  firstplayer: {fileID: 2100000, guid: 96ef01feb1eb47242b872f88f8b43b63, type: 2}
 --- !u!4 &16338035
 Transform:
   m_ObjectHideFlags: 0
@@ -2480,7 +2481,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 8
+  sceneViewId: 22
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!23 &183042830
@@ -2759,7 +2760,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 6
+  sceneViewId: 19
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &218226768
@@ -7287,7 +7288,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 7
+  sceneViewId: 21
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &614093486
@@ -29120,7 +29121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932666046121547097, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: sceneViewId
-      value: 4
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3108522281738676814, guid: 88551ddb44c6ba449b342735940d84f7, type: 3}
       propertyPath: m_AnchorMax.y

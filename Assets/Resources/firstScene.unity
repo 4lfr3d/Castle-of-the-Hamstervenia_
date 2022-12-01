@@ -6892,7 +6892,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &160066670
@@ -27141,7 +27141,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 2
+  sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!224 &890372693 stripped
@@ -40734,6 +40734,7 @@ MonoBehaviour:
   players: []
   playerInGame: 0
   secondplayer: {fileID: 2100000, guid: 73f3f71dafec4864cbf9be6794195395, type: 2}
+  firstplayer: {fileID: 2100000, guid: 96ef01feb1eb47242b872f88f8b43b63, type: 2}
 --- !u!4 &1288437591
 Transform:
   m_ObjectHideFlags: 0
@@ -47342,15 +47343,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1825.3652
+      value: 5239.5703
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -348.693
+      value: 97.431335
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -110.3902
+      value: -20.91373
       objectReference: {fileID: 0}
     - target: {fileID: 5084592682891030697, guid: 67ae72e3a1ed764468fe4c89f211dac6, type: 3}
       propertyPath: m_LocalRotation.w

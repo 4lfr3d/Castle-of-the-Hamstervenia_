@@ -112,12 +112,7 @@ public class TaroHealth : MonoBehaviourPunCallbacks
         health = numOfSeeds;
         deathPanel.SetActive(false);
         Time.timeScale = 1f;
-        if(PhotonNetwork.IsConnected){
-            MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, SceneManager.GetActiveScene().name);
-            PM[] players = new PM[PhotonNetwork.PlayerList.Length];
-            GameObject.Find("GameController").GetComponent<PhotonView>().RPC("InGame", RpcTarget.AllBuffered);
-        }
-        else{
+        if(!PhotonNetwork.IsConnected){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

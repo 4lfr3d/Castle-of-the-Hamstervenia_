@@ -24,6 +24,7 @@ public class GameController : MonoBehaviourPunCallbacks
     private CoinsManager cm;
 
     public Material secondplayer;
+    public Material firstplayer;
 
     private void Awake(){
         saveHelper = this.GetComponent<SaveManager>();    
@@ -51,11 +52,19 @@ public class GameController : MonoBehaviourPunCallbacks
             cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
 
+        for(int i = 1001 ; i <= 1003 ; i++){
+            if(PhotonView.Find(i) != null){
+                if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != firstplayer){
+                    photonView.RPC("Texture", RpcTarget.All, i, 1);
+                }
+            }
+        }
+
         if(PhotonNetwork.IsConnected && PhotonNetwork.PlayerList.Length > 1){
             for(int i = 2001 ; i <= 2003 ; i++){
                 if(PhotonView.Find(i) != null){
                     if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
-                        photonView.RPC("Texture", RpcTarget.All, i);
+                        photonView.RPC("Texture", RpcTarget.All, i, 2);
                     }
                 }
             }
@@ -63,8 +72,12 @@ public class GameController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void Texture(int i){
-        PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
+    void Texture(int i, int player){
+        if(player == 1){
+            PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = firstplayer;
+        } else{
+            PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = secondplayer;
+        }
     }
 
     [PunRPC]
