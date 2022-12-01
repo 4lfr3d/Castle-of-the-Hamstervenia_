@@ -23,10 +23,12 @@ public class MenuSaveManager : MonoBehaviour
 
     //Load Game
     public void LoadGame(){
+        SaveManager save = GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>();
         //view players loaded data (level/zone/checkpoint)
 
         //load player's scene
-        if(GameObject.Find("StartMenu").gameObject.GetComponent<SaveManager>().LoadChecker()){
+        if(save.LoadChecker()){
+            PlayerPrefs.SetString("LoadScreenNextScene", save.activeSave.sceneName);
             Debug.Log("GAME LOADED");
             SceneManager.LoadScene("LoadScene");
         } else{
