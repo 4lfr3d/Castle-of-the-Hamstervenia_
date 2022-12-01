@@ -15343,6 +15343,7 @@ MonoBehaviour:
   interactionButton: {fileID: 0}
   saveOptions_Panel: {fileID: 0}
   saveOptions_GB: {fileID: 0}
+  isSaveZoneAux: 0
 --- !u!1 &1442893863
 GameObject:
   m_ObjectHideFlags: 0
@@ -23530,11 +23531,11 @@ PrefabInstance:
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: musicTxtValue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 185311543}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: masterTxtValue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1947295075}
     - target: {fileID: 2246784827121821922, guid: a9602dce0c4886c4e98b47bb1a2c94b2, type: 3}
       propertyPath: qualityDropdown
       value: 
