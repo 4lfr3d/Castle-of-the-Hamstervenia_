@@ -73,13 +73,14 @@ public class SoundManager : MonoBehaviour
 
     void Awake(){
         
-        if(instance == null){
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else{
-            Destroy(gameObject);
-        }
+        // if(instance == null){
+        //     instance = this;
+        //     DontDestroyOnLoad(gameObject);
+        // }
+        // else{
+        //     Destroy(gameObject);
+        // }
+        instance = this;
         waterdrop = GameObject.Find("GoteraSFX").GetComponent<AudioSource>();
     }
 

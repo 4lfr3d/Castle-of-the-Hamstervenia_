@@ -52,23 +52,25 @@ public class GameController : MonoBehaviourPunCallbacks
             cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
 
-        for(int i = 1001 ; i <= 1003 ; i++){
-            if(PhotonView.Find(i) != null){
-                if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != firstplayer){
-                    photonView.RPC("Texture", RpcTarget.All, i, 1);
-                }
-            }
-        }
-
-        if(PhotonNetwork.IsConnected && PhotonNetwork.PlayerList.Length > 1){
-            for(int i = 2001 ; i <= 2003 ; i++){
+if(PhotonNetwork.IsConnected){
+            for(int i = 1001 ; i <= 1003 ; i++){
                 if(PhotonView.Find(i) != null){
-                    if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
-                        photonView.RPC("Texture", RpcTarget.All, i, 2);
+                    if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != firstplayer){
+                        photonView.RPC("Texture", RpcTarget.All, i, 1);
                     }
                 }
             }
-        }
+
+            if(PhotonNetwork.PlayerList.Length > 1){
+                for(int i = 2001 ; i <= 2003 ; i++){
+                    if(PhotonView.Find(i) != null){
+                        if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
+                            photonView.RPC("Texture", RpcTarget.All, i, 2);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     [PunRPC]
