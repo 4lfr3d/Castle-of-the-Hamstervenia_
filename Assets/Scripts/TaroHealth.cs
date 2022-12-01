@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class TaroHealth : MonoBehaviour
+public class TaroHealth : MonoBehaviourPunCallbacks
 {
     public int health;
     public int numOfSeeds;
@@ -109,6 +112,14 @@ public class TaroHealth : MonoBehaviour
         health = numOfSeeds;
         deathPanel.SetActive(false);
         Time.timeScale = 1f;
+        if(PhotonNetwork.IsConnected){
+            MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, SceneManager.GetActiveScene().name);
+            PM[] players = new PM[PhotonNetwork.PlayerList.Length];
+            GameObject.Find("GameController").GetComponent<PhotonView>().RPC("InGame", RpcTarget.AllBuffered);
+        }
+        else{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     IEnumerator DamageToTaro(){

@@ -18,7 +18,7 @@ public class CatBossIA : MonoBehaviour
     private float distance;
 
     public Material damageColor;
-    private Material enemyMaterial;
+    public Material enemyMaterial;
 
     private GameController gameController;
 
@@ -85,8 +85,7 @@ public class CatBossIA : MonoBehaviour
         StartCoroutine(DamageToEnemy(GameObject.Find("Galleto"))); 
     }
 
-    public IEnumerator DamageToEnemy(GameObject enemy){
-        enemyMaterial = enemy.GetComponent<Renderer>().material;
+    public IEnumerator DamageToEnemy(GameObject enemy){;
         enemy.GetComponent<Renderer>().material = damageColor;
 
         yield return new WaitForSeconds(0.25f);
