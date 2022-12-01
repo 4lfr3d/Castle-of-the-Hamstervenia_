@@ -35,6 +35,8 @@ public class Forge : MonoBehaviour
     private Vector3 MoveUi = new Vector3(500,1500,0);
     private Vector3 Milim = new Vector3(500,100,0);
 
+    public GameObject blackPanel;
+
     private void OnEnable()
     {
         playerInputs.Player.Interaction.performed += ForgeInput;
@@ -68,9 +70,12 @@ public class Forge : MonoBehaviour
 
         Metal = GameObject.Find("Metal").GetComponent<Transform>();
 
+        blackPanel = GameObject.Find("BlackPanel");
+
         if(PhotonNetwork.IsConnected){
             forge_GB.SetActive(false);
             this.GetComponent<Forge>().enabled = false;
+            blackPanel.SetActive(false);
         }
     }
 
@@ -84,6 +89,8 @@ public class Forge : MonoBehaviour
 
         forge_GB.SetActive(false);
         infoweapon_GB.SetActive(false);
+
+        blackPanel.SetActive(false);
     }
 
     void Update(){

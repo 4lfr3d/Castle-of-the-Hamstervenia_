@@ -225,6 +225,7 @@ MonoBehaviour:
   infoweapon_GB: {fileID: 0}
   img_needle: {fileID: 0}
   Metal: {fileID: 0}
+  blackPanel: {fileID: 0}
 --- !u!114 &1735021473821194164
 MonoBehaviour:
   m_ObjectHideFlags: 0
