@@ -52,25 +52,27 @@ public class GameController : MonoBehaviourPunCallbacks
             cm = GameObject.Find("Coins").GetComponent<CoinsManager>();
         }
 
-if(PhotonNetwork.IsConnected){
-            for(int i = 1001 ; i <= 1003 ; i++){
+        if(PhotonNetwork.IsConnected){
+            for(int i = 1001 ; i <= 1020 ; i++){
                 if(PhotonView.Find(i) != null){
                     if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != firstplayer){
                         photonView.RPC("Texture", RpcTarget.All, i, 1);
                     }
+                    break;
                 }
             }
 
             if(PhotonNetwork.PlayerList.Length > 1){
-                for(int i = 2001 ; i <= 2003 ; i++){
+                for(int i = 2001 ; i <= 2020 ; i++){
                     if(PhotonView.Find(i) != null){
                         if(PhotonView.Find(i).gameObject.transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material != secondplayer){
                             photonView.RPC("Texture", RpcTarget.All, i, 2);
                         }
+                        break;
                     }
                 }
-            }
-        }
+            }
+       }
     }
 
     [PunRPC]
