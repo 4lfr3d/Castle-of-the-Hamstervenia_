@@ -467,10 +467,11 @@ public class PM : MonoBehaviourPunCallbacks
             </summary>
             <param name="player">Data de player</param>
         */
+        [PunRPC]
         public void Init(Player player){
             photonPlayer = player; //Asignar el player actual
             id = player.ActorNumber; //Guardar el id del player
-            GameController.instance.players[id-1] = this; //Asignarlo a la lista de player dentro del game controller
+            GameObject.Find("GameController").GetComponent<GameController>().players[id-1] = this; //Asignarlo a la lista de player dentro del game controller
 
             if(!photonView.IsMine){
                 RB.isKinematic = true;

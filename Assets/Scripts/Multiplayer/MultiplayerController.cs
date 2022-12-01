@@ -10,13 +10,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     public static MultiplayerController instance;
 
     private void Awake(){
-        if(instance != null && instance != this){
-            gameObject.SetActive(false);
-        }
-        else{
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        instance = this;
     }
     // Start is called before the first frame update
     void Start()
