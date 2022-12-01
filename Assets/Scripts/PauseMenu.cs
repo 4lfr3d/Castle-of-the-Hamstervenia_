@@ -116,7 +116,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume(){
         settingsUI.SetActive(false);
         pauseMenuUI.SetActive(false);
-        if (!storePanel.active)
+        if (!storePanel.activeInHierarchy)
         {
             canvasGameUI.SetActive(true);
         }

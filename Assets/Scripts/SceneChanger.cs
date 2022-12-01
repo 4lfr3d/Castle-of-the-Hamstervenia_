@@ -9,19 +9,17 @@ public class SceneChanger : MonoBehaviourPunCallbacks
 {
     public string NextScene;
 
-    void Start(){
+    public void ChangeScene(){
         PlayerPrefs.SetString("LoadScreenNextScene", NextScene);
         PlayerPrefs.SetFloat("LoadScreenDelay", 2f);
-    }
 
-    public void ChangeScene(){
         if(!PhotonNetwork.IsConnected){
             SceneManager.LoadScene("LoadScene");
         }
         else{
             MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, NextScene);
-            PM[] players = new PM[PhotonNetwork.PlayerList.Length];
-            photonView.RPC("InGame", RpcTarget.AllBuffered);
+            // PM[] players = new PM[PhotonNetwork.PlayerList.Length];
+            // photonView.RPC("InGame", RpcTarget.AllBuffered);
         }
     }
 

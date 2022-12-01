@@ -433,7 +433,6 @@ public class PM : MonoBehaviourPunCallbacks
         }
 
         private void OnCollisionEnter2D(Collision2D other){
-            Debug.Log(other.collider.tag);
             if(other.collider.CompareTag("Ground")){
                 IsGrounded = true;
                 animator.SetBool("isGrounded",true);

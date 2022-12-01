@@ -263,11 +263,13 @@ public class InventorySystem : MonoBehaviour
 
     public void EquipedItem(int id){
         idSaver = id;
-        if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
-            equipedItemQty.text = items[id].stack.ToString();
-            idItem.text = id.ToString();
-            equipedItemImg.sprite = items_images[id].sprite;
-            equipedItemImg.enabled= true;
+        if(id >= 0 && id < items.Count){
+            if(items[id].obj.GetComponent<Item>().item_type == Item.ItemType.Consumables) {
+                equipedItemQty.text = items[id].stack.ToString();
+                idItem.text = id.ToString();
+                equipedItemImg.sprite = items_images[id].sprite;
+                equipedItemImg.enabled= true;
+            }
         }
     }
 }

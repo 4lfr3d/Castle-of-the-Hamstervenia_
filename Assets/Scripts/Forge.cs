@@ -72,17 +72,19 @@ public class Forge : MonoBehaviour
             forge_GB.SetActive(false);
             this.GetComponent<Forge>().enabled = false;
         }
+    }
 
+    void Start(){
         DOTween.Init();
 
         forgePanel.DOFade(0f,0f);
         needle.DOScale(0f,0f);
         weapon.DOFade(0f,0f);
         Metal.DOMove(MoveUi,0f);
+
         forge_GB.SetActive(false);
         infoweapon_GB.SetActive(false);
     }
-
 
     void Update(){
     }
