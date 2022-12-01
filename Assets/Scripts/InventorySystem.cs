@@ -244,10 +244,6 @@ public class InventorySystem : MonoBehaviour
                 Debug.Log($"Consumed {items[id].obj.name}");
                 items[id].stack--;
                 items_counters[id].text = items[id].stack.ToString();
-            }else{
-                Debug.Log($"Consumed {items[id].obj.name}");
-                items[id].stack--;
-                items_counters[id].text = items[id].stack.ToString();
             }
             
             if(items[id].stack == 0){
