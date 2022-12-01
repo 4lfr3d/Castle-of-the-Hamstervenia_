@@ -437,7 +437,6 @@ MonoBehaviour:
   interactionButton: {fileID: 0}
   saveOptions_Panel: {fileID: 0}
   saveOptions_GB: {fileID: 0}
-  isSaveZoneAux: 0
 --- !u!114 &1735021473821194124
 MonoBehaviour:
   m_ObjectHideFlags: 0

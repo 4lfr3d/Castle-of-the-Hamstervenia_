@@ -53,7 +53,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
 
     */
     public void CreateRoom(TMP_InputField _roomName){
-        GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        MultiplayerController.instance.CreateRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
         roomTitle.text = "Room: " + _roomName.text;
     }
 
@@ -63,7 +63,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         </summary>
     */
     public void JoinRoom(TMP_InputField _roomName){
-        GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().JoinRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
+        MultiplayerController.instance.JoinRoom(_roomName.text); //Crear nuevo room desde el Multiplayer controller
     }
 
     /*
@@ -104,7 +104,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         lobbyWindow.SetActive(false); //Salir del lobby
         mainWindow.SetActive(true); //Entrar al menu inicial
 
-        GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().LeaveRoom(); //Ejecutar funcion de salida
+        MultiplayerController.instance.LeaveRoom(); //Ejecutar funcion de salida
         UpdatePlayerInfo(); //Actualizar informacion
     }
 
@@ -114,7 +114,7 @@ public class MenuUINC : MonoBehaviourPunCallbacks
         </summary>
     */
     public void StartGame(){
-        GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().photonView.RPC("LoadScene", RpcTarget.All, "firstScene");
+        MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, "firstScene");
     }
 
     public void LeaveMulti(){

@@ -173,8 +173,9 @@ public class GameController : MonoBehaviourPunCallbacks
     }
 
     void GoBackToMenu(){
+        Destroy(MultiplayerController.instance.gameObject);
         PhotonNetwork.LeaveRoom();
-        GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().photonView.RPC("LoadScene", RpcTarget.All, "StartMenu");
+        MultiplayerController.instance.LoadScene("StartMenu");
     }
     
 }
