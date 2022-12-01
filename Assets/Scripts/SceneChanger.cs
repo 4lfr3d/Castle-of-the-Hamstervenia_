@@ -19,7 +19,7 @@ public class SceneChanger : MonoBehaviourPunCallbacks
             SceneManager.LoadScene("LoadScene");
         }
         else{
-            GameObject.Find("MultiplayerController").GetComponent<MultiplayerController>().photonView.RPC("LoadScene", RpcTarget.All, NextScene);
+            MultiplayerController.instance.photonView.RPC("LoadScene", RpcTarget.All, NextScene);
             PM[] players = new PM[PhotonNetwork.PlayerList.Length];
             photonView.RPC("InGame", RpcTarget.AllBuffered);
         }
