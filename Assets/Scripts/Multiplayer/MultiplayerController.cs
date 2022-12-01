@@ -6,17 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MultiplayerController : MonoBehaviourPunCallbacks
 {
-    //Singleton
-    public static MultiplayerController instance;
-
     private void Awake(){
-        if(instance != null && instance != this){
-            gameObject.SetActive(false);
-        }
-        else{
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+
     }
     // Start is called before the first frame update
     void Start()
