@@ -6478,6 +6478,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 2091801425, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -22122,6 +22126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 1867960700, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -29382,18 +29390,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -119.6
       objectReference: {fileID: 0}
@@ -29433,21 +29429,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 891782486212355780, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-      propertyPath: sceneViewId
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1128313071616470634, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_Name
       value: Cockroach
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
---- !u!1 &1120023786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1128313071616470634, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
-  m_PrefabInstance: {fileID: 1120023785}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1121334309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29533,6 +29520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 2091801425, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -34349,6 +34340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
+    - target: {fileID: 1867960700, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -35492,10 +35487,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146122176}
     m_Modifications:
-    - target: {fileID: 404719614, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: m_AgentTypeID
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1180336269059349057, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -35544,43 +35535,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
-    - target: {fileID: 5031915013309641748, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: sceneViewId
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131102090062738370, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-      propertyPath: fuerza
-      value: 100000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
---- !u!1 &1867960699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180336269059349181, guid: bcdb0aae8e6f86f459206c3c02fd0065, type: 3}
-  m_PrefabInstance: {fileID: 1867960698}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1867960700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867960699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 14
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1001 &1896689132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36881,28 +36837,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 352198236876928208, guid: 48ba349a4eb84f54d858c10c769a2ecc, type: 3}
   m_PrefabInstance: {fileID: 1120023785}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091801425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120023786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 15
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1001 &2097781355
 PrefabInstance:
   m_ObjectHideFlags: 0

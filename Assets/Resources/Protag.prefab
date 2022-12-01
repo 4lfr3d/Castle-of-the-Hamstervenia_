@@ -240,7 +240,7 @@ MonoBehaviour:
   grapplableMask:
     serializedVersion: 2
     m_Bits: 3144
-  maxDistance: 215
+  maxDistance: 300
   grappleSpeed: 10
   grappleShootSpeed: 100
   flecha: {fileID: 1735021475152993389}

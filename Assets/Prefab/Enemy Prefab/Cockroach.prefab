@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: -5112768642632791819}
   - component: {fileID: 2091801429}
   - component: {fileID: 2348396101528476262}
+  - component: {fileID: 2091801425}
   m_Layer: 10
   m_Name: Cockroach
   m_TagString: Enemy
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 6622371788291470}
-  fuerza: 250000
+  fuerza: 2500
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
@@ -257,6 +258,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &2091801425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128313071616470634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1474485131165973647
 GameObject:
   m_ObjectHideFlags: 0
